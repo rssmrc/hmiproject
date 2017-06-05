@@ -1,12 +1,12 @@
 General:
 	- Localization [User Input/Calculated ?]
-	- Number of batteries
-	- Time [Measured]
+	- Number of batteries [User Input]
+	- Number of panels [User Input]
+	- Current Time [Measured]
 EmonCMS:
 	- API Key [User Input]
 
 PV Panel:
-	- Amount [User Input]
 	- Watt Peak [User Input]
 	- Tilt Angle [User Input]
 	- Irradiation Energy [Measured]
@@ -21,5 +21,8 @@ Utility Meter:
 	- Input [Measured]
 	- Output [Measured]
 	- Status [Measured]
+
+Inverter: 
+	- Power [Measured]
 
 
