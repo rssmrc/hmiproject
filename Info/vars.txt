@@ -1,0 +1,19 @@
+General:
+	- Localization [User Input/Calculated ?]
+	- Number of batteries
+EmonCMS:
+	- API Key [User Input]
+
+PV Panel:
+	- Amount [User Input]
+	- Watt Peak [User Input]
+	- Tilt Angle [User Input]
+	- Irradiation Energy [Measured]
+	- Yield [Calculated]
+	
+Battery:
+	- isFull [Measured]
+	- isEmpty [Measured]
+	- Battery % [Measured]
+
+
