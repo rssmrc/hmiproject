@@ -1,14 +1,14 @@
-Giorno 1
+Day 1 Tasks
 
-Macrotask: Utilizzare git e GitHub
+Macrotask: Use of git and github
 
-- Funzioni base git
-- Sincronizzare progetto ASL con GitHub
+- Basic git functions
+- Sync project with github
 
-Macrotask: Informazioni sul fotovoltaico
+Macrotask: PV information gathering
 
-- Cos'è e come funziona il fotovoltaico
-- Quali sono i dispositivi e come vengono utilizzati
-- Quali sono le misure coinvolte in un impianto
-- Recupero informazioni su OpenEnergyMonitor e EmonCMS
-- Definisco le informazioni estratte
+- What is a PV System and how does it work?
+- Which are the devices used?
+- What data units are used?
+- OpenEnergyMonitor/EmonCMS data gathering
+- Defining gathered informations
