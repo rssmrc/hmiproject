@@ -7,7 +7,7 @@ Macrotask: Utilizzare git e GitHub
 
 Macrotask: Informazioni sul fotovoltaico
 
-- Cos'è e come funziona il fotovoltaico
+- Cos'Ã¨ e come funziona il fotovoltaico
 - Quali sono i dispositivi e come vengono utilizzati
 - Quali sono le misure coinvolte in un impianto
 - Recupero informazioni su OpenEnergyMonitor e EmonCMS
