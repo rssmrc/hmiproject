@@ -11,6 +11,7 @@ PV Panel:
 	- Tilt Angle [User Input]
 	- Irradiation Energy [Measured]
 	- Yield [Calculated]
+	- Azimuth [User Input]
 	
 Battery:
 	- isFull [Measured]
