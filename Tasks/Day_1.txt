@@ -10,5 +10,5 @@ Macrotask: PV information gathering
 - What is a PV System and how does it work?
 - Which are the devices used?
 - What data units are used? [45m]
-- OpenEnergyMonitor/EmonCMS data gathering
+- OpenEnergyMonitor/EmonCMS data gathering [45m]
 - Defining gathered informations [45m]
