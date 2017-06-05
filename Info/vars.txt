@@ -1,6 +1,7 @@
 General:
 	- Localization [User Input/Calculated ?]
 	- Number of batteries
+	- Time [Measured]
 EmonCMS:
 	- API Key [User Input]
 
@@ -15,5 +16,10 @@ Battery:
 	- isFull [Measured]
 	- isEmpty [Measured]
 	- Battery % [Measured]
+
+Utility Meter:
+	- Input [Measured]
+	- Output [Measured]
+	- Status [Measured]
 
 
