@@ -5,4 +5,5 @@ notes:
 - consolidate your skills and make qml source modular splitting controls in different file
 - check if your first test of HMI interface is "finger control ready", and not only "mouse ready"
 - define the qml and C++ source code format to use in whole project
-- 
+- design a first interface overview (panel, navigation, common way to access items, etc..)
+- ...
