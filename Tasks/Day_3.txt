@@ -2,7 +2,7 @@ to be defined.
 notes:
 
 - feedback about the job you did in day 2
-- consolidate your skills and make qml source modular splitting controls in different file
+- consolidate your skills and make qml source modular, splitting controls in different file
 - check if your first test of HMI interface is "finger control ready", and not only "mouse ready"
 - define the qml and C++ source code format to use in whole project
 - define internal variable name linked to the values to read from emoncms
