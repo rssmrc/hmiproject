@@ -64,7 +64,7 @@ Window {
                 Image{
                     source: "images/indicator.png"
                     width: currentPV.width/7
-                    height: width
+                    height: width - width/15
                     anchors.bottom: parent.bottom
                     x: currentPV.width * testSlider.value - width/2
 
@@ -89,11 +89,6 @@ Window {
             y: currentPV.y + currentPV.height + currentPV.height/10
 
         }
-
-        //function that displays the alert symbol if the value is outside the bounds
-
-
-
 
     }
 }
