@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-        <file>images/bar.png</file>
-        <file>main.cpp</file>
-    </qresource>
-</RCC>
