@@ -1,6 +1,7 @@
 import QtQuick 2.8
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.0
+import "basics.js" as Basics
 
 
 Window {
@@ -100,8 +101,91 @@ Window {
             color: "black"
             width: parent.width
             height: parent.height/5
-            //TODO: ADD BUTTONS
+            //menu buttons
+            Button{
+                id: btn1
+                anchors.left : parent.left
+                width: parent.width/3
+                height: parent.height
+                background: Rectangle{
+                    color:{
+                        if(btn1.down){
+                            "#252525"
+                        }
+                        else{
+                            "#303030"
+                        }
+                    }
+                    border.width: 1
+                    border.color: "#404040"
+                }
+
+                Image{
+                    source: "images/info.png"
+                    anchors.centerIn: parent
+                    height: parent.height/2
+                    width: height
+                }
+
+            }
+
+            Button{
+                id: btn2
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: parent.width/3
+                height: parent.height
+                background: Rectangle{
+                    color:{
+                        if(btn2.down){
+                            "#252525"
+                        }
+                        else{
+                            "#303030"
+                        }
+                    }
+                    border.width: 1
+                    border.color: "#404040"
+                }
+
+                Image{
+                    source: "images/menu.png"
+                    anchors.centerIn: parent
+                    height: parent.height/2
+                    width: height
+                }
+                //actions performed when clicked
+                onClicked: Basics.testVisible()
+            }
+
+            Button{
+                id: btn3
+                anchors.right : parent.right
+                width: parent.width/3
+                height: parent.height
+                background: Rectangle{
+                    color:{
+                        if(btn3.down){
+                            "#252525"
+                        }
+                        else{
+                            "#303030"
+                        }
+                    }
+                    border.width: 1
+                    border.color: "#404040"
+                }
+
+                Image{
+                    source: "images/settings.png"
+                    anchors.centerIn: parent
+                    height: parent.height/2
+                    width: height
+                }
+
+            }
         }
+
+
 
     }
 }
