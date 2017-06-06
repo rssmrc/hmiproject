@@ -3,7 +3,7 @@ target: be confident about qml controls
 1. make a main form
 2. put controls on the main form changing anchor, relative and absolute position (main form geometry can be changed from 800x480 to 1024x600)
 3. set controls properties
-4. connect events
+4. connect events on controls and mouse area
 5. change presentation of controls (i.e. background image, color, transparency)
 6. use functions and js code to animate controls
 7. use timer to change control values/properties in background
