@@ -6,3 +6,5 @@ target: be confident about qml controls
 4. connect events
 5. change presentation of controls (i.e. background image, color, transparency)
 6. 
+
+push the code on repository every 45m + 10m pause.
