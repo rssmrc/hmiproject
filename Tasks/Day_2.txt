@@ -1,0 +1,12 @@
+Day 2 Tasks
+
+Macrotask: Building a basic graphical interface
+
+- 800x600 window creation
+- Gradient progress bar creation [45m]
+- Movable indicator on the progress bar [45m]
+- Quick overview of qt controls 2 [45m]
+- Slider creation to test indicator movement [45m]
+- Selectable interval [45m]
+- Graphical elements creation [45m]
+- Adding controls to interface [45m]
