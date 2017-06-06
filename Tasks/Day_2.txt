@@ -5,6 +5,7 @@ target: be confident about qml controls
 3. set controls properties
 4. connect events
 5. change presentation of controls (i.e. background image, color, transparency)
-6. 
+6. use functions and js code to animate controls
+7. use timer to change control values/properties in background
 
 push the code on repository every 45m + 10m pause.
