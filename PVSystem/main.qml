@@ -32,7 +32,7 @@ Window {
         x: 0
         y: 0
         width: parent.width
-        height: parent.height / 20
+        height: parent.height / 16
         color: "black"
 
         //label control indicating current time
@@ -116,6 +116,7 @@ Window {
             color: "black"
             width: parent.width
             height: parent.height/5
+            id: bottomBar
             //menu buttons
             Button{
                 id: btn1
@@ -169,7 +170,8 @@ Window {
                     width: height
                 }
                 //actions performed when clicked
-                onClicked: Basics.testVisible()
+                onClicked: drawer.open()
+
             }
 
             Button{
@@ -200,7 +202,15 @@ Window {
             }
         }
 
-
-
+        Drawer{
+            id: drawer
+            width: parent.width
+            height: parent.height - bottomBar.height
+            edge: Qt.TopEdge
+            Rectangle{
+                anchors.fill: parent
+                color: "#202020"
+            }
+        }
     }
 }
