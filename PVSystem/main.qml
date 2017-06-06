@@ -383,7 +383,7 @@ Window {
     Rectangle{
         id: messageBox
         color: "#a0a0a0a0"
-        visible: false
+        visible: true
         anchors.fill: parent
         Rectangle{
             color: "#303030"
@@ -396,6 +396,34 @@ Window {
                 source: "images/danger.png"
                 anchors.horizontalCenter: parent.horizontalCenter
                 y: parent.y/3
+            }
+            Rectangle{
+                color: "#c63939"
+                height: parent.height/6
+                width: parent.width/5
+                anchors.right: parent.right
+                border.color: "#000000"
+                border.width: 1
+                Label{
+                    color: "white"
+                    anchors.centerIn: parent
+                    text: "X"
+                }
+
+                MouseArea{
+                    anchors.fill: parent
+
+                    onClicked:{
+                        messageBox.visible = false
+                    }
+                }
+            }
+
+            Label{
+                anchors.horizontalCenter: parent.horizontalCenter
+                y: parent.height/2 + 50
+                color: "white"
+                text: "ERROR #CODE"
             }
         }
 
