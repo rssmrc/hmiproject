@@ -35,7 +35,6 @@ Window {
         height: parent.height / 16
         color: "black"
 
-        //label control indicating current time
         Label{
             id: currentTime
             anchors.centerIn: parent
@@ -61,6 +60,7 @@ Window {
 
         }
     }
+
     //rectangle containing all controls
     Rectangle{
         id: controlsContainer
@@ -236,6 +236,127 @@ Window {
                     //when button is pressed hide the slider
                     onPressed:{
                         Basics.testVisible()
+                    }
+
+                }
+
+                Button{
+                    id: menubtn2
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: parent.width
+                    height: parent.height/5
+                    y: hideTestSlider.y + height
+                    background: Rectangle{
+                        color:{
+                            if(menubtn2.down){
+                                "#252525"
+                            }
+                            else{
+                                "#303030"
+                            }
+                        }
+                        border.width: 1
+                        border.color: "#404040"
+                        Label{
+
+                            color: "white"
+                            text: "Button 2"
+                            anchors.centerIn: parent
+                        }
+                    }
+                    //when button is pressed
+                    onPressed:{
+
+                    }
+
+                }
+                Button{
+                    id: menubtn3
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: parent.width
+                    height: parent.height/5
+                    y: menubtn2.y + height
+                    background: Rectangle{
+                        color:{
+                            if(menubtn3.down){
+                                "#252525"
+                            }
+                            else{
+                                "#303030"
+                            }
+                        }
+                        border.width: 1
+                        border.color: "#404040"
+                        Label{
+
+                            color: "white"
+                            text: "Button 3"
+                            anchors.centerIn: parent
+                        }
+                    }
+                    //when button is pressed
+                    onPressed:{
+
+                    }
+
+                }
+                Button{
+                    id: menubtn4
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: parent.width
+                    height: parent.height/5
+                    y: menubtn3.y + height
+                    background: Rectangle{
+                        color:{
+                            if(menubtn4.down){
+                                "#252525"
+                            }
+                            else{
+                                "#303030"
+                            }
+                        }
+                        border.width: 1
+                        border.color: "#404040"
+                        Label{
+
+                            color: "white"
+                            text: "Button 4"
+                            anchors.centerIn: parent
+                        }
+                    }
+                    //when button is pressed
+                    onPressed:{
+
+                    }
+
+                }
+                Button{
+                    id: menubtn5
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: parent.width
+                    height: parent.height/5
+                    y: menubtn4.y + height
+                    background: Rectangle{
+                        color:{
+                            if(menubtn5.down){
+                                "#252525"
+                            }
+                            else{
+                                "#303030"
+                            }
+                        }
+                        border.width: 1
+                        border.color: "#404040"
+                        Label{
+
+                            color: "white"
+                            text: "Button 5"
+                            anchors.centerIn: parent
+                        }
+                    }
+                    //when button is pressed
+                    onPressed:{
+
                     }
 
                 }
