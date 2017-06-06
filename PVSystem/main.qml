@@ -2,6 +2,7 @@ import QtQuick 2.8
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.0
 
+
 Window {
     id: window
     visible: true
@@ -23,6 +24,23 @@ Window {
             text: Qt.formatDateTime(new Date(), "HH:mm:ss a")
             color: "white"
             font.pixelSize: parent.height - 5*2
+        }
+
+        Image{
+            id: alertIcon
+            source: "images/danger.png"
+            height: parent.height
+            width: height
+            //the DANGER ICON will be visible only if the indicator exits the imposed bounds
+            visible: {
+                if(testSlider.value > rslider.first.value && testSlider.value < rslider.second.value){
+                    false
+                }
+                else{
+                    true
+                }
+            }
+
         }
     }
     //rectangle containing all controls
@@ -71,6 +89,9 @@ Window {
             y: currentPV.y + currentPV.height + currentPV.height/10
 
         }
+
+        //function that displays the alert symbol if the value is outside the bounds
+
 
 
 

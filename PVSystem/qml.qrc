@@ -4,5 +4,6 @@
         <file>images/bar.png</file>
         <file>main.cpp</file>
         <file>images/indicator.png</file>
+        <file>images/danger.png</file>
     </qresource>
 </RCC>
