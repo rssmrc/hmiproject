@@ -4,7 +4,9 @@ import QtQuick.Controls 2.0
 import "basics.js" as Basics
 
 
+
 Window {
+
     id: window
     visible: true
     width: 800
@@ -28,6 +30,9 @@ Window {
 
     //status bar creation
     Rectangle{
+        //boolean variable indicating whether the indicatior is inside the bounds or not
+        property bool isOutsideBounds: false
+
         id: statBar
         x: 0
         y: 0
@@ -44,6 +49,7 @@ Window {
         }
 
         Image{
+
             id: alertIcon
             source: "images/danger.png"
             height: parent.height
@@ -55,6 +61,15 @@ Window {
                 }
                 else{
                     true
+                }
+            }
+            //sensible mouse area triggering alert message
+            MouseArea{
+                anchors.fill: parent
+                onClicked:{
+
+
+
                 }
             }
 
@@ -362,5 +377,29 @@ Window {
                 }
             }
         }
+    }
+
+    //alert box
+    Rectangle{
+        id: messageBox
+        color: "#a0a0a0a0"
+        visible: false
+        anchors.fill: parent
+        Rectangle{
+            color: "#303030"
+            width: window.width/2
+            height: window.height/2
+            anchors.centerIn: parent
+            border.width: 1
+            border.color: "#000000"
+            Image{
+                source: "images/danger.png"
+                anchors.horizontalCenter: parent.horizontalCenter
+                y: parent.y/3
+            }
+        }
+
+
+
     }
 }

@@ -8,3 +8,4 @@ function testVisible(){
 function updateTime(){
     currentTime.text = Qt.formatDateTime(new Date(), "HH:mm:ss a")
 }
+
