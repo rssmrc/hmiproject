@@ -1,1 +1,9 @@
+target: be confident about qml controls
+
+1. make mainform
+2. put controls on the form changing anchor
+3. set properties
+4. connect events
+5. change view of controls (i.e. background image, color, transparency)
+ 
 
