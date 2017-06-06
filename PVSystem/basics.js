@@ -4,3 +4,7 @@ function testVisible(){
     else
         testSlider.visible = false
 }
+
+function updateTime(){
+    currentTime.text = Qt.formatDateTime(new Date(), "HH:mm:ss a")
+}

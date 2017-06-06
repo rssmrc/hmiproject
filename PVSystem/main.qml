@@ -12,6 +12,20 @@ Window {
     title: qsTr("PVSystem")
     color: "#585858"
 
+    //timer to update app clock
+    Timer{
+
+        id: timer1
+        repeat: true
+        interval: 1000
+        running: true
+
+        onTriggered:{
+            Basics.updateTime()
+        }
+
+    }
+
     //status bar creation
     Rectangle{
         id: statBar
@@ -23,6 +37,7 @@ Window {
 
         //label control indicating current time
         Label{
+            id: currentTime
             anchors.centerIn: parent
             text: Qt.formatDateTime(new Date(), "HH:mm:ss a")
             color: "white"
