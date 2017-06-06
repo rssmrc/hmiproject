@@ -8,7 +8,7 @@ Window {
     width: 800
     height: 480
     title: qsTr("PVSystem")
-    color: "#282828"
+    color: "#585858"
     //status bar creation
     Rectangle{
         id: statBar
@@ -38,24 +38,34 @@ Window {
             width: window.width - (window.width/10)*2
             height: window.height/2 - (window.height/15)*2
             anchors.centerIn: parent
-            //load the gradient image
+            //load the gradient bar
             Image{
                 source: "images/bar.png"
                 anchors.fill: parent
+                //load indicator on gradient bar
+                Image{
+                    source: "images/indicator.png"
+                    width: currentPV.width/7
+                    height: width
+                    anchors.bottom: parent.bottom
+                    x: currentPV.width * testSlider.value - width/2
+
+                }
             }
         }
 
         //slider to test moving indicator
         Slider{
             id: testSlider
-            width: currentPV.width
-            y: parent.y + parent.y/10
+            width: currentPV.width - currentPV.width/2
+            y: currentPV.y - currentPV.height/3
             anchors.horizontalCenter: parent.horizontalCenter
+            value: 0.5
         }
 
         //allowed interval slider
         RangeSlider{
-
+            id: rslider
             width: currentPV.width
             x: currentPV.x
             y: currentPV.y + currentPV.height + currentPV.height/10
