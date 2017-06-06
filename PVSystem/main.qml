@@ -10,6 +10,7 @@ Window {
     height: 480
     title: qsTr("PVSystem")
     color: "#585858"
+
     //status bar creation
     Rectangle{
         id: statBar
@@ -18,6 +19,7 @@ Window {
         width: parent.width
         height: parent.height / 20
         color: "black"
+
         //label control indicating current time
         Label{
             anchors.centerIn: parent
@@ -53,9 +55,11 @@ Window {
         width: window.width
         Rectangle{
             id: currentPV
+            y: window.height/5
             width: window.width - (window.width/10)*2
             height: window.height/2 - (window.height/15)*2
-            anchors.centerIn: parent
+            anchors.horizontalCenter: parent.horizontalCenter
+
             //load the gradient bar
             Image{
                 source: "images/bar.png"
@@ -88,6 +92,15 @@ Window {
             x: currentPV.x
             y: currentPV.y + currentPV.height + currentPV.height/10
 
+        }
+
+        //bottom bar with controls
+        Rectangle{
+            anchors.bottom : parent.bottom
+            color: "black"
+            width: parent.width
+            height: parent.height/5
+            //TODO: ADD BUTTONS
         }
 
     }
