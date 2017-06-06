@@ -210,6 +210,35 @@ Window {
             Rectangle{
                 anchors.fill: parent
                 color: "#202020"
+                Button{
+                    id: hideTestSlider
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: parent.width
+                    height: parent.height/5
+                    background: Rectangle{
+                        color:{
+                            if(hideTestSlider.down){
+                                "#252525"
+                            }
+                            else{
+                                "#303030"
+                            }
+                        }
+                        border.width: 1
+                        border.color: "#404040"
+                        Label{
+
+                            color: "white"
+                            text: "Hide Test Slider"
+                            anchors.centerIn: parent
+                        }
+                    }
+                    //when button is pressed hide the slider
+                    onPressed:{
+                        Basics.testVisible()
+                    }
+
+                }
             }
         }
     }
