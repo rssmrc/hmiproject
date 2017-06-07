@@ -1,3 +1,12 @@
+/*******************************************************
+ * Copyright (C) 2017-2018 Marco Rossi marco.rossi1337@gmail.com
+ *
+ * This file is part of PVSystem.
+ *
+ * PVSystem can not be copied and/or distributed without the express
+ * permission of Marco Rossi
+ *******************************************************/
+
 import QtQuick 2.8
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.0

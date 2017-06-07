@@ -4,6 +4,7 @@ QT += qml quick
 CONFIG += c++11
 
 SOURCES += main.cpp \
+    emoncms/remoteserver.cpp
 
 
 RESOURCES += qml.qrc
@@ -35,3 +36,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     images/bar.png \
     images/bar.png
+
+HEADERS += \
+    emoncms/remoteserver.h
