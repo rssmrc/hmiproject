@@ -1,0 +1,6 @@
+
+
+. design first C++ object skeleton (remoteServer.cpp/h) to collect and dispatch values from/to emoncms
+. add C++ object to QML context
+. connect some controls to remoteServer method (read and write)
+. 
