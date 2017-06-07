@@ -11,13 +11,15 @@
 #define REMOTESERVER_H
 
 #include <QObject>
+#include <QNetworkAccessManager>
 
 class RemoteServer
 {
 
 public:
   RemoteServer();
-  int test();
+  QNetworkReply *sendRequest();
+  QString output();
 
 };
 

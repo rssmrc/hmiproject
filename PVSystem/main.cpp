@@ -12,13 +12,14 @@
 #include <emoncms/remoteserver.h>
 #include <iostream>
 
+
 using namespace std;
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
     RemoteServer *s = new RemoteServer();
-    cout << "Test: " << s->test() << endl;
+
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
