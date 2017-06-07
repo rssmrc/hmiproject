@@ -53,7 +53,7 @@ Window {
 
         //slider to adjust the acceptable bounds
         RangeSlider{
-            id: rslider
+            id: rSlider
             width: pvstatus.w
             anchors.horizontalCenter: parent.horizontalCenter
             y: pvstatus.ypos + pvstatus.h + pvstatus.h/10

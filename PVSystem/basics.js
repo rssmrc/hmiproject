@@ -10,7 +10,7 @@ function updateTime(){
 }
 
 function checkBounds(){
-    if(testSlider.value > rslider.first.value && testSlider.value < rslider.second.value){
+    if(testSlider.value > rSlider.first.value && testSlider.value < rSlider.second.value){
         return false
     }
     else{
