@@ -9,5 +9,9 @@
         <file>images/menu.png</file>
         <file>images/settings.png</file>
         <file>basics.js</file>
+        <file>StatusBar.qml</file>
+        <file>PVStatusBar.qml</file>
+        <file>BottomBar.qml</file>
+        <file>Settings.qml</file>
     </qresource>
 </RCC>

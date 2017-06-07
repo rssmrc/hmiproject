@@ -3,7 +3,6 @@ General:
 	- Number of batteries [User Input]
 	- Number of panels [User Input]
 	- Current Time [Measured]
-	- PLoad [Calculated]
 EmonCMS:
 	- API Key [User Input]
 
