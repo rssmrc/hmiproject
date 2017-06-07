@@ -1,5 +1,5 @@
 function testVisible(){
-    if(testSlider.visible == false)
+    if(sliderSwitch.checked == true)
         testSlider.visible = true
     else
         testSlider.visible = false
@@ -21,3 +21,5 @@ function checkBounds(){
 function drawerOpen(){
     drawer.open();
 }
+
+

@@ -72,8 +72,13 @@ Window {
             width: parent.width
             height: parent.height - botBar.h
             edge: Qt.TopEdge
+            background: Rectangle{
+                color: "#202020"
+            }
             Settings{
                 id: settingsPage
+                w: window.width
+                h: window.height
             }
         }
 

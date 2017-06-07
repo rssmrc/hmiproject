@@ -9,7 +9,25 @@ Item {
 
     Rectangle{
         anchors.fill: parent
-        color: "#202020"
+        //disable-enable testing slider
+        Label{
+            id: sliderLabel
+            color: "#FFFFFF"
+            text: "Testing Slider"
+            x: w/2 - width/2
+            y: h/20
+        }
+
+        Switch{
+            id: sliderSwitch
+            x: w/2 - width/2
+            y: h/12
+            checked: true
+
+            onCheckedChanged:{
+                Basics.testVisible()
+            }
+        }
     }
 
 }
