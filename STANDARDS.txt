@@ -1,0 +1,23 @@
+PVSystem source code adopts these standards that will be required in order to submit new code:
+
+::VARIABLES::
+
+Attribute names will need to start with a lowercase letter such as the following example:
+
+dayTime : OK
+DayTime : Wrong
+daytime : Wrong
+DAYTIME : Wrong
+
+::BRACKETS::
+
+Brackets will need to be placed after the definition or statement without pressing return
+
+Refer to the exhibit:
+
+if (a>b){  :  OK
+}
+
+if (a>b)   :  Wrong
+{
+}
