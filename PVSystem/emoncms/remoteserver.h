@@ -18,7 +18,7 @@ class RemoteServer
 
 public:
   RemoteServer();
-  QNetworkReply *sendRequest();
+  QByteArray sendRequest();
   QString output();
 
 };

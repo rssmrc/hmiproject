@@ -19,7 +19,8 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
     RemoteServer s;
-
+    QString a = s.output();
+    qInfo() << a;
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 

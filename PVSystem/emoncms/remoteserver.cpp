@@ -22,23 +22,28 @@ RemoteServer::RemoteServer()
 
 }
 
-QNetworkReply *sendRequest()
+QByteArray RemoteServer::sendRequest()
 {
 
     QEventLoop eventLoop;
     QNetworkAccessManager mgr;
     QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
 
-    QNetworkRequest req( QUrl( QString("http://ip.jsontest.com/")));
+    QNetworkRequest req( QUrl( QString("http://date.jsontest.com/")));
     QNetworkReply *reply = mgr.get(req);
     eventLoop.exec();
 
-    return reply;
+    QByteArray rep = reply->readAll();
+
+
+    return rep;
 }
 
-QString output()
+QString RemoteServer::output()
 {
-    QNetworkReply *reply = sendRequest();
-    return "";
+    QByteArray reply = sendRequest();
+    QString string(reply);
+
+    return string;
 }
 
