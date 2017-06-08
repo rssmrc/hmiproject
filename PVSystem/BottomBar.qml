@@ -47,6 +47,11 @@ Item{
                 height: parent.height/2
                 width: height
             }
+
+            onClicked:{
+                Basics.drawerOpen(1)
+            }
+
         }
 
         //menu button
@@ -103,7 +108,7 @@ Item{
             }
 
             onClicked:{
-                Basics.drawerOpen()
+                Basics.drawerOpen(0)
             }
         }
     }

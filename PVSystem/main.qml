@@ -91,5 +91,20 @@ Window {
             }
         }
 
+       Drawer{
+           id: infoDrawer
+           width: parent.width
+           height: parent.height - botBar.h
+           edge: Qt.TopEdge
+           background: Rectangle{
+               color: "#202020"
+           }
+           Info{
+               id: infoPage
+               w: window.width
+               h: window.height
+           }
+       }
+
     }
 }

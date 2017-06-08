@@ -27,8 +27,13 @@ function checkBounds(){
     }
 }
 
-function drawerOpen(){
-    drawer.open();
+function drawerOpen(i){
+    if(i === 0)
+        drawer.open();
+    else if(i === 1)
+        infoDrawer.open();
 }
+
+
 
 

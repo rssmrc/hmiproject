@@ -40,6 +40,7 @@ Item {
         }
 
         //testing purposes controls
+
         Label{
             id: jsonOutput
             x: w/2 - width/2

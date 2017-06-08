@@ -13,5 +13,6 @@
         <file>PVStatusBar.qml</file>
         <file>BottomBar.qml</file>
         <file>Settings.qml</file>
+        <file>Info.qml</file>
     </qresource>
 </RCC>
