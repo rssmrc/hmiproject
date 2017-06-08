@@ -35,7 +35,16 @@ Item {
 
             onCheckedChanged:{
                 Basics.testVisible()
+                qmlobj.qmlprinttest()
             }
+        }
+
+        Label{
+            id: testLabel
+            color: "#FFFFFF"
+            text: qmlobj.test()
+            x: w/2 - width/2
+            y: h/2
         }
     }
 

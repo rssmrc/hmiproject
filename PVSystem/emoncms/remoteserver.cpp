@@ -70,3 +70,8 @@ QString RemoteServer::output()
     return jp.Parse(reply, "date");
 }
 
+void RemoteServer::qmlprinttest()
+{
+    qDebug("c++ function");
+}
+

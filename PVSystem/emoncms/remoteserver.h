@@ -13,14 +13,16 @@
 #include <QObject>
 #include <QNetworkAccessManager>
 
-class RemoteServer
+class RemoteServer : public QObject
 {
+    Q_OBJECT
 
 public:
     RemoteServer();
     QByteArray getResponse(QUrl url);
-    QString sendRequest();
+    QString sendRequest(QUrl url);
     QString output();
+    void qmlprinttest();
 
 };
 
