@@ -1,3 +1,4 @@
+- replace source code header
 - Info page improvement with relative controls position
 - Settings page creation with API Key input (at the moment a virtual keyboard won't be implemented) + user input parameters
 - QML Timer & C++ Functions code implementation
