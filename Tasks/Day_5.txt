@@ -1,10 +1,12 @@
+note: task not done in this day must be copied into the next day
 
 - replace source code copyright and license header
 - document c++ classes with Doxygen format
+- pay attention on the communication between QML adn C++ using the RemoteServer class: rewrite the class in order to read data from http[s] in async way and make "cached" the API exposed to the QML to minimize the return time. Actual implementation could freeze all controls if http request is served with a long delay (>300ms)
 - Info page improvement with relative controls position
 - Settings page creation with API Key input (at the moment a virtual keyboard won't be implemented) + user input parameters
 - QML Timer & C++ Functions code implementation
 - Sending a GET request to upload data online from a qml text field and returning the input text by decoding json response
-
+- connect signal in C++ class to "slot" on QML control
 
 
