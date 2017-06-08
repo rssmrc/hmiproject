@@ -1,4 +1,6 @@
-- replace source code header
+
+- replace source code copyright and license header
+- document c++ classes with Doxygen format
 - Info page improvement with relative controls position
 - Settings page creation with API Key input (at the moment a virtual keyboard won't be implemented) + user input parameters
 - QML Timer & C++ Functions code implementation
