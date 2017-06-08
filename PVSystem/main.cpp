@@ -18,7 +18,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    RemoteServer *s = new RemoteServer();
+    RemoteServer s;
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

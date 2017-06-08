@@ -10,26 +10,35 @@
 #include "remoteserver.h"
 #include <QNetworkAccessManager>
 #include <QObject>
-
+#include <QCoreApplication>
+#include <QDebug>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QUrl>
+#include <QUrlQuery>
 
 RemoteServer::RemoteServer()
 {
 
 }
 
-QNetworkReply *RemoteServer::sendRequest()
+QNetworkReply *sendRequest()
 {
-    QNetworkAccessManager *manager = new QNetworkAccessManager();
-    QByteArray someData = "q=neriinformatica";
-    QNetworkRequest request(QUrl("http://google.com/search"));
-    QNetworkReply *reply = manager->put(request, someData);
+
+    QEventLoop eventLoop;
+    QNetworkAccessManager mgr;
+    QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+
+    QNetworkRequest req( QUrl( QString("http://ip.jsontest.com/")));
+    QNetworkReply *reply = mgr.get(req);
+    eventLoop.exec();
 
     return reply;
 }
 
 QString output()
 {
-
+    QNetworkReply *reply = sendRequest();
     return "";
 }
 
