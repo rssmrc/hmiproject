@@ -35,16 +35,30 @@ Item {
 
             onCheckedChanged:{
                 Basics.testVisible()
-                qmlobj.qmlprinttest()
+
             }
         }
 
+        //testing purposes controls
         Label{
-            id: testLabel
+            id: jsonOutput
+            x: w/2 - width/2
+            y: h/2 + 50
+            //text property will be the json parsed date in c++
+            text: qmlobj.printJson()
             color: "#FFFFFF"
-            text: qmlobj.test()
+
+        }
+
+        Button{
+            id: testFunction
+            text: "Call C++ Function"
             x: w/2 - width/2
             y: h/2
+
+            onClicked:{
+                qmlobj.qmlprinttest()
+            }
         }
     }
 

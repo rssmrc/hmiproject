@@ -22,8 +22,10 @@ public:
     QByteArray getResponse(QUrl url);
     QString sendRequest(QUrl url);
     QString output();
-    void qmlprinttest();
 
+public slots:
+    void qmlprinttest();
+    QString printJson();
 };
 
 #endif // REMOTESERVER_H

@@ -18,16 +18,18 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+
     //REMOTE SERVER testing
     RemoteServer s;
     QString a = s.output();
     qInfo() << a;
+
     //testing c++ and qml implementation
     QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-
+    //new qmlcontext property linked to the remoteserver object
     engine.rootContext()->setContextProperty("qmlobj", &s);
 
+    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     if (engine.rootObjects().isEmpty())
         return -1;

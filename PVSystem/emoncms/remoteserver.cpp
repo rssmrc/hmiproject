@@ -70,8 +70,13 @@ QString RemoteServer::output()
     return jp.Parse(reply, "date");
 }
 
+QString RemoteServer::printJson()
+{
+    return output();
+}
+
 void RemoteServer::qmlprinttest()
 {
-    qDebug("c++ function");
+    qDebug("C++ Function called!");
 }
 
