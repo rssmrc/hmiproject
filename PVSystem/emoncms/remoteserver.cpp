@@ -8,6 +8,7 @@
  *******************************************************/
 
 #include "remoteserver.h"
+#include "jsonparser.h"
 #include <QNetworkAccessManager>
 #include <QObject>
 #include <QCoreApplication>
@@ -42,41 +43,15 @@ QByteArray RemoteServer::sendRequest()
 
 }
 
-QString RemoteServer::JSONParser(QByteArray r, QString lookfor)
-{
-    //converting the QByteArray to JSON Document
-    QJsonParseError err;
-    QJsonDocument document = QJsonDocument::fromJson(r, &err);
-
-    //if everything went correctly
-    if(document.isObject())
-    {
-        //declaring a new json object
-        QJsonObject obj = document.object();
-        //looking for specified value
-        QJsonObject::iterator itr = obj.find(lookfor);
-
-        if(itr == obj.end())
-        {
-            //empty object
-        }
-        else
-        {
-           //returning its value
-           return itr.value().toString();
-        }
-
-
-    }
-    //if the key doesn't exist then return null
-    return NULL;
-}
 
 QString RemoteServer::output()
 {
+
     //getting reply from the server
     QByteArray reply = sendRequest();
+    //new json parser
+    JsonParser jp;
     //returning the time value from the json document
-    return JSONParser(reply, "time");
+    return jp.Parse(reply, "date");
 }
 
