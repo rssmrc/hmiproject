@@ -17,10 +17,10 @@ class RemoteServer
 {
 
 public:
-  RemoteServer();
-  QByteArray sendRequest();
-  QString output();
-  QString JSONParser(QByteArray r, QString lookfor);
+    RemoteServer();
+    QByteArray getResponse(QUrl url);
+    QString sendRequest();
+    QString output();
 
 };
 

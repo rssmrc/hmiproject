@@ -26,14 +26,14 @@ RemoteServer::RemoteServer()
 
 }
 
-QByteArray RemoteServer::sendRequest()
+QByteArray RemoteServer::getResponse(QUrl url)
 {
 
     QEventLoop eventLoop;
     QNetworkAccessManager mgr;
     QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
 
-    QNetworkRequest req( QUrl( QString("http://date.jsontest.com/")));
+    QNetworkRequest req(url);
     QNetworkReply *reply = mgr.get(req);
     eventLoop.exec();
 
@@ -43,12 +43,27 @@ QByteArray RemoteServer::sendRequest()
 
 }
 
+QString RemoteServer::sendRequest(QUrl url)
+{
+    QEventLoop eventLoop;
+    QNetworkAccessManager mgr;
+    QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+
+    QNetworkRequest req(url);
+    QNetworkReply *reply = mgr.get(req);
+    eventLoop.exec();
+
+    QString rep = reply->readLine();
+
+    return rep;
+}
+
 
 QString RemoteServer::output()
 {
 
     //getting reply from the server
-    QByteArray reply = sendRequest();
+    QByteArray reply = getResponse(QUrl( QString("http://date.jsontest.com/")));
     //new json parser
     JsonParser jp;
     //returning the time value from the json document

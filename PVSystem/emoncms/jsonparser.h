@@ -17,9 +17,8 @@ class JsonParser
 {
 
 public:
-  JsonParser();
-
-  QString Parse(QByteArray r, QString lookfor);
+    JsonParser();
+    QString Parse(QByteArray r, QString lookfor);
 
 };
 
