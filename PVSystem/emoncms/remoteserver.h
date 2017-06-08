@@ -20,6 +20,7 @@ public:
   RemoteServer();
   QByteArray sendRequest();
   QString output();
+  QString JSONParser(QByteArray r, QString lookfor);
 
 };
 

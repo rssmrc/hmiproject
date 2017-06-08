@@ -16,6 +16,9 @@
 #include <QNetworkReply>
 #include <QUrl>
 #include <QUrlQuery>
+#include <QJsonParseError>
+#include <QJsonObject>
+#include <QJsonDocument>
 
 RemoteServer::RemoteServer()
 {
@@ -35,15 +38,45 @@ QByteArray RemoteServer::sendRequest()
 
     QByteArray rep = reply->readAll();
 
-
     return rep;
+
+}
+
+QString RemoteServer::JSONParser(QByteArray r, QString lookfor)
+{
+    //converting the QByteArray to JSON Document
+    QJsonParseError err;
+    QJsonDocument document = QJsonDocument::fromJson(r, &err);
+
+    //if everything went correctly
+    if(document.isObject())
+    {
+        //declaring a new json object
+        QJsonObject obj = document.object();
+        //looking for specified value
+        QJsonObject::iterator itr = obj.find(lookfor);
+
+        if(itr == obj.end())
+        {
+            //empty object
+        }
+        else
+        {
+           //returning its value
+           return itr.value().toString();
+        }
+
+
+    }
+    //if the key doesn't exist then return null
+    return NULL;
 }
 
 QString RemoteServer::output()
 {
+    //getting reply from the server
     QByteArray reply = sendRequest();
-    QString string(reply);
-
-    return string;
+    //returning the time value from the json document
+    return JSONParser(reply, "time");
 }
 
