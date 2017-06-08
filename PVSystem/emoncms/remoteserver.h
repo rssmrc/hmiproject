@@ -26,6 +26,7 @@ public:
 public slots:
     void qmlprinttest();
     QString printJson();
+    QString getFromOnline(QString url, QString p);
 };
 
 #endif // REMOTESERVER_H

@@ -28,7 +28,8 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     //new qmlcontext property linked to the remoteserver object
     engine.rootContext()->setContextProperty("qmlobj", &s);
-
+    //cache disabled
+    qputenv("QML_DISABLE_DISK_CACHE", "true");
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     if (engine.rootObjects().isEmpty())

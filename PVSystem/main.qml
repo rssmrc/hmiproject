@@ -57,7 +57,7 @@ Window {
             width: pvstatus.w - pvstatus.w/2
             y: pvstatus.ypos - pvstatus.h/3
             anchors.horizontalCenter: parent.horizontalCenter
-            value: 0.5
+            value: 0.50
         }
 
         //slider to adjust the acceptable bounds

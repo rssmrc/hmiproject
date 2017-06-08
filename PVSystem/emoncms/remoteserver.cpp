@@ -70,6 +70,16 @@ QString RemoteServer::output()
     return jp.Parse(reply, "date");
 }
 
+QString RemoteServer::getFromOnline(QString url, QString p)
+{
+    QByteArray reply = getResponse(QUrl(url));
+    JsonParser jp;
+    QString o = jp.Parse(reply, p);
+
+    return o;
+
+}
+
 QString RemoteServer::printJson()
 {
     return output();
