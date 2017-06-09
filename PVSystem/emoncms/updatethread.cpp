@@ -41,6 +41,9 @@ updatethread::updatethread()
 
 }
 
+/**
+    instances a new varmanager and updates the vars with it
+*/
 void updatethread::run()
 {
     varmanager v;
