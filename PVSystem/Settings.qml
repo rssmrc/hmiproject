@@ -49,7 +49,6 @@ Item {
 
             onCheckedChanged:{
                 Basics.testVisible()
-
             }
         }
 
@@ -62,7 +61,7 @@ Item {
             height: 30
             font.pixelSize: 12
             placeholderText: qsTr("Panels Amount")
-            onEditingFinished: emonvars.updateLocal(0,objectName,text)
+            onEditingFinished: emonvars.updateLocal(1,panelsAmount.text)
         }
 
         TextField {
@@ -74,7 +73,31 @@ Item {
             height: 30
             font.pixelSize: 12
             placeholderText: qsTr("Tilt Angle")
+            onEditingFinished: emonvars.updateLocal(2,tiltAngle.text)
+        }
 
+        TextField {
+            id: azimuthAngle
+            objectName: "azimuthAngle"
+            x: w/2 - width/2
+            y: tiltAngle.y + tiltAngle.height*1.5
+            width: 144
+            height: 30
+            font.pixelSize: 12
+            placeholderText: qsTr("Azimuth Angle")
+            onEditingFinished: emonvars.updateLocal(3,azimuthAngle.text)
+        }
+
+        TextField {
+            id: wattPeak
+            objectName: "azimuthAngle"
+            x: w/2 - width/2
+            y: azimuthAngle.y + azimuthAngle.height*1.5
+            width: 144
+            height: 30
+            font.pixelSize: 12
+            placeholderText: qsTr("Watt Peak")
+            onEditingFinished: emonvars.updateLocal(3,wattPeak.text)
         }
 
     }

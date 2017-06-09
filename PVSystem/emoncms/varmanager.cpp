@@ -35,6 +35,9 @@
 #include <QObject>
 #include <QQuickView>
 #include <QQuickItem>
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
+
 
 //structure containing all the variables
 struct vars{
@@ -64,9 +67,27 @@ varmanager::varmanager()
     vars.currentEnergy =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173380&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
 }
 
-void varmanager::updateLocal(int i, QString oname, QString val)
+void varmanager::updateLocal(int i, QString val)
 {
-
+    switch(i)
+    {
+    //code 1: panels amount
+    case 1:
+        vars.panelsAmount = val;
+        break;
+    //code 2: tilt angle
+    case 2:
+        vars.tiltAngle = val;
+        break;
+    //code 3: azimuth angle
+    case 3:
+        vars.azimuthAngle = val;
+        break;
+    //code 4: watt peak
+    case 4:
+        vars.wattPeak = val;
+        break;
+    }
 
 }
 
