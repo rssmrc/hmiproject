@@ -5,7 +5,8 @@ CONFIG += c++11
 
 SOURCES += main.cpp \
     emoncms/remoteserver.cpp \
-    emoncms/jsonparser.cpp
+    emoncms/jsonparser.cpp \
+    emoncms/varmanager.cpp
 
 
 RESOURCES += qml.qrc
@@ -40,8 +41,6 @@ DISTFILES += \
 
 HEADERS += \
     emoncms/remoteserver.h \
-    emoncms/jsonparser.h
-
-LIBS += "$$PWD/libs/libeay32.dll"
-LIBS += "$$PWD/libs/ssleay32.dll"
+    emoncms/jsonparser.h \
+    emoncms/varmanager.h
 

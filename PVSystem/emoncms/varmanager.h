@@ -21,52 +21,19 @@
  *
  ****************************************************************************/
 
-import QtQuick 2.0
-import QtQuick.Controls 2.1
-import "basics.js" as Basics
+#ifndef VARMANAGER_H
+#define VARMANAGER_H
 
-Item {
+#import <QObject>
 
-    property int w
-    property int h
-
-    Rectangle{
-        anchors.fill: parent
-
-        Rectangle{
-            width: w
-            height: h/3
-            color: "#101010"
-            anchors.top: parent.top
-
-            Label{
-                font.pixelSize: 25
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: "General"
-                color: "#FFFFFF"
-                y: 10
-            }
-            //current time
-            Label{
-                font.pixelSize: 15
-                text: "EMONCMS Value: "
-                color: "#FFFFFF"
-                y: 46
-                x: 21
-            }
-            Label{
-                font.pixelSize: 15
-                //c++ function in the RemoteServer Object
-                text: ""
-                color: "#FFFFFF"
-                y: 46
-                x: 153
-            }
+class varmanager : public QObject
+{
+    Q_OBJECT
+public:
+    varmanager();
+public slots:
 
 
-        }
-    }
+};
 
-
-
-}
+#endif // VARMANAGER_H

@@ -24,6 +24,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <emoncms/remoteserver.h>
+#include <emoncms/varmanager.h>
 #include <iostream>
 #include <QQmlContext>
 
@@ -35,10 +36,12 @@ int main(int argc, char *argv[])
 
     //REMOTE SERVER
     RemoteServer s;
+    varmanager v;
     //testing c++ and qml implementation
     QQmlApplicationEngine engine;
     //new qmlcontext property linked to the remoteserver object
     engine.rootContext()->setContextProperty("qmlobj", &s);
+    engine.rootContext()->setContextProperty("emonvars", &v);
     //cache disabled
     qputenv("QML_DISABLE_DISK_CACHE", "true");
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
