@@ -31,13 +31,14 @@
 
 #include "varmanager.h"
 #include "remoteserver.h"
+#include "updatethread.h"
+#include <thread>
 #include <QTimer>
 #include <QObject>
 #include <QQuickView>
 #include <QQuickItem>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-
 
 //structure containing all the variables
 struct vars{
@@ -65,10 +66,6 @@ varmanager::varmanager()
     vars.azimuthAngle =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173387&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
     vars.percentage =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173381&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
     vars.currentEnergy =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173380&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
-
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-    timer->start(1000);
 
 }
 
@@ -100,6 +97,16 @@ void varmanager::updateLocal(int i, QString val)
         break;
     }
 
+}
+
+/**
+    Starts the timer
+*/
+void varmanager::startUpdates()
+{
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+    timer->start(1000);
 }
 
 /**
@@ -135,9 +142,13 @@ void varmanager::updateVars()
 
 }
 
+/**
+    Function called every second by the timer that starts and terminates a thread which will update the vars
+*/
 void varmanager::update()
 {
-    updateVars();
+    updatethread a;
+    a.run();
 }
 
 

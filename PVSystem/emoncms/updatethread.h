@@ -21,40 +21,17 @@
  *
  ****************************************************************************/
 
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <emoncms/remoteserver.h>
-#include <emoncms/varmanager.h>
-#include <iostream>
-#include <QQmlContext>
-#include <QTimer>
+#ifndef UPDATETHREAD_H
+#define UPDATETHREAD_H
 
-using namespace std;
+#include <QThread>
 
-int main(int argc, char *argv[])
+class updatethread : public QThread
 {
-    QGuiApplication app(argc, argv);
+    Q_OBJECT
+public:
+    updatethread();
+    void run();
+};
 
-    //REMOTE SERVER
-    RemoteServer s;
-    //initializes the varmanager and starts the timer
-    varmanager v;
-    v.startUpdates();
-    //testing c++ and qml implementation
-    QQmlApplicationEngine engine;
-    //new qmlcontext property linked to the remoteserver object
-    engine.rootContext()->setContextProperty("qmlobj", &s);
-    engine.rootContext()->setContextProperty("emonvars", &v);
-    //cache disabled
-    qputenv("QML_DISABLE_DISK_CACHE", "true");
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-
-
-
-    if (engine.rootObjects().isEmpty())
-        return -1;
-
-    return app.exec();
-}
-
-
+#endif // UPDATETHREAD_H

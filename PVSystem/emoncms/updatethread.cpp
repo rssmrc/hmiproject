@@ -21,40 +21,28 @@
  *
  ****************************************************************************/
 
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <emoncms/remoteserver.h>
-#include <emoncms/varmanager.h>
-#include <iostream>
-#include <QQmlContext>
-#include <QTimer>
 
-using namespace std;
+/**
+    PVSystem, updatethread.cpp
+    Purpose: Thread class that updates the online vars
 
-int main(int argc, char *argv[])
+    @author Marco Rossi
+    @version 1.0 09/05/17
+*/
+
+
+#include "updatethread.h"
+#include "varmanager.h"
+#include <QThread>
+#include <QObject>
+
+updatethread::updatethread()
 {
-    QGuiApplication app(argc, argv);
 
-    //REMOTE SERVER
-    RemoteServer s;
-    //initializes the varmanager and starts the timer
-    varmanager v;
-    v.startUpdates();
-    //testing c++ and qml implementation
-    QQmlApplicationEngine engine;
-    //new qmlcontext property linked to the remoteserver object
-    engine.rootContext()->setContextProperty("qmlobj", &s);
-    engine.rootContext()->setContextProperty("emonvars", &v);
-    //cache disabled
-    qputenv("QML_DISABLE_DISK_CACHE", "true");
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-
-
-
-    if (engine.rootObjects().isEmpty())
-        return -1;
-
-    return app.exec();
 }
 
-
+void updatethread::run()
+{
+    varmanager v;
+    v.updateVars();
+}

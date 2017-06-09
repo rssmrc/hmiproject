@@ -35,6 +35,7 @@ public slots:
     void updateVars();
     void updateLocal(int i, QString val);
     void update();
+    void startUpdates();
 };
 
 #endif // VARMANAGER_H

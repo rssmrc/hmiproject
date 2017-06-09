@@ -6,7 +6,8 @@ CONFIG += c++11
 SOURCES += main.cpp \
     emoncms/remoteserver.cpp \
     emoncms/jsonparser.cpp \
-    emoncms/varmanager.cpp
+    emoncms/varmanager.cpp \
+    emoncms/updatethread.cpp
 
 
 RESOURCES += qml.qrc
@@ -42,5 +43,6 @@ DISTFILES += \
 HEADERS += \
     emoncms/remoteserver.h \
     emoncms/jsonparser.h \
-    emoncms/varmanager.h
+    emoncms/varmanager.h \
+    emoncms/updatethread.h
 
