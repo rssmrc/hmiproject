@@ -53,7 +53,7 @@ QString JsonParser::Parse(QByteArray r, QString lookfor)
     //converting the QByteArray to JSON Document
     QJsonParseError err;
     QJsonDocument document = QJsonDocument::fromJson(r, &err);
-    QJsonObject ret;
+    QString ret;
     //if everything went correctly
     if(document.isObject())
     {
