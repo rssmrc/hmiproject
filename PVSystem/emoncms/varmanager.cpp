@@ -31,7 +31,7 @@
 
 #include "varmanager.h"
 #include "remoteserver.h"
-
+#include <QTimer>
 #include <QObject>
 #include <QQuickView>
 #include <QQuickItem>
@@ -65,6 +65,11 @@ varmanager::varmanager()
     vars.azimuthAngle =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173387&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
     vars.percentage =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173381&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
     vars.currentEnergy =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173380&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
+
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+    timer->start(1000);
+
 }
 
 /**
@@ -128,6 +133,11 @@ void varmanager::updateVars()
         status = r.getResponse(QUrl("https://emoncms.org/input/post?json={peak:" + vars.wattPeak + "}&apikey=1b15eb3ce081a80829e78acb83c5004a"));
     }
 
+}
+
+void varmanager::update()
+{
+    updateVars();
 }
 
 
