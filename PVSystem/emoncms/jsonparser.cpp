@@ -66,7 +66,6 @@ QString JsonParser::Parse(QByteArray r, QString lookfor)
         {
            //returning its value
            ret = itr.value().toString();
-           break;
         }
 
 
