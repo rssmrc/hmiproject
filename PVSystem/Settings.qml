@@ -90,7 +90,7 @@ Item {
 
         TextField {
             id: wattPeak
-            objectName: "azimuthAngle"
+            objectName: "wattPeak"
             x: w/2 - width/2
             y: azimuthAngle.y + azimuthAngle.height*1.5
             width: 144
