@@ -33,8 +33,10 @@
 #include "remoteserver.h"
 
 #include <QObject>
+#include <QQuickView>
+#include <QQuickItem>
 
-
+//structure containing all the variables
 struct vars{
     QString inverterPower;
     QString panelsAmount;
@@ -49,6 +51,7 @@ struct vars{
 
 varmanager::varmanager()
 {
+    //initializing all the vars in the structure
     RemoteServer r;
     vars.inverterPower =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173379&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
     vars.panelsAmount =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173378&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
@@ -59,6 +62,20 @@ varmanager::varmanager()
     vars.azimuthAngle =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173387&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
     vars.percentage =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173381&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
     vars.currentEnergy =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173380&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
+}
+
+void varmanager::updateLocal(int i, QString oname, QString val)
+{
+
+
+}
+
+//thread executed function
+//need to sync local changes and online changes
+void varmanager::updateVars()
+{
+    RemoteServer r;
+
 }
 
 

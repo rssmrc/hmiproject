@@ -53,6 +53,30 @@ Item {
             }
         }
 
+        TextField {
+            id: panelsAmount
+            objectName: "panelsAmount"
+            x: w/2 - width/2
+            y: sliderSwitch.y + sliderSwitch.height*1.5
+            width: 144
+            height: 30
+            font.pixelSize: 12
+            placeholderText: qsTr("Panels Amount")
+            onEditingFinished: emonvars.updateLocal(0,objectName,text)
+        }
+
+        TextField {
+            id: tiltAngle
+            objectName: "tiltAngle"
+            x: w/2 - width/2
+            y: panelsAmount.y + panelsAmount.height*1.5
+            width: 144
+            height: 30
+            font.pixelSize: 12
+            placeholderText: qsTr("Tilt Angle")
+
+        }
+
     }
 
 }
