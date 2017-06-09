@@ -34,12 +34,9 @@ class RemoteServer : public QObject
 public:
     RemoteServer();
     QByteArray getResponse(QUrl url);
-    QString sendRequest(QUrl url);
     QString output();
 
 public slots:
-    void qmlprinttest();
-    QString printJson();
     QString getFromOnline(QString url, QString p);
 };
 

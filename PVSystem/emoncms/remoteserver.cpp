@@ -21,6 +21,15 @@
  *
  ****************************************************************************/
 
+
+/**
+    PVSystem, remoteserver.cpp
+    Purpose: Sends HTTPS GET Requests to remote servers
+
+    @author Marco Rossi
+    @version 1.0 09/05/17
+*/
+
 #include "remoteserver.h"
 #include "jsonparser.h"
 #include <QNetworkAccessManager>
@@ -40,6 +49,12 @@ RemoteServer::RemoteServer()
 
 }
 
+/**
+    Sends a HTTP Get requests to server and returns the response
+
+    @param url Crafted url containing all the parameters.
+    @return QByteArray containing the server JSON reply
+*/
 QByteArray RemoteServer::getResponse(QUrl url)
 {
 
@@ -57,22 +72,11 @@ QByteArray RemoteServer::getResponse(QUrl url)
 
 }
 
-QString RemoteServer::sendRequest(QUrl url)
-{
-    QEventLoop eventLoop;
-    QNetworkAccessManager mgr;
-    QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+/**
+    Temporary testing purposes only function
 
-    QNetworkRequest req(url);
-    QNetworkReply *reply = mgr.get(req);
-    eventLoop.exec();
-
-    QString rep = reply->readLine();
-
-    return rep;
-}
-
-
+    @return JSON Parsed value
+*/
 QString RemoteServer::output()
 {
 
@@ -84,6 +88,13 @@ QString RemoteServer::output()
     return jp.Parse(reply, "date");
 }
 
+/**
+    Sends a HTTP Get request and automatically extracts the required value
+
+    @param url Crafted url containing all the parameters.
+    @param p Key name of the target value.
+    @return JSON Parsed value
+*/
 QString RemoteServer::getFromOnline(QString url, QString p)
 {
     QByteArray reply = getResponse(QUrl(url));
@@ -94,13 +105,4 @@ QString RemoteServer::getFromOnline(QString url, QString p)
 
 }
 
-QString RemoteServer::printJson()
-{
-    return output();
-}
-
-void RemoteServer::qmlprinttest()
-{
-    qDebug("C++ Function called!");
-}
 

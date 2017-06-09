@@ -33,11 +33,8 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    //REMOTE SERVER testing
+    //REMOTE SERVER
     RemoteServer s;
-    QString a = s.output();
-    qInfo() << a;
-
     //testing c++ and qml implementation
     QQmlApplicationEngine engine;
     //new qmlcontext property linked to the remoteserver object

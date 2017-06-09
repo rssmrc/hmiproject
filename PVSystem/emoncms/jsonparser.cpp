@@ -21,6 +21,14 @@
  *
  ****************************************************************************/
 
+/**
+    PVSystem, jsonparser.cpp
+    Purpose: Provides set of functions to operate with JSON outputs
+
+    @author Marco Rossi
+    @version 1.0 09/05/17
+*/
+
 #include "jsonparser.h"
 #include <QObject>
 #include <QJsonParseError>
@@ -33,6 +41,13 @@ JsonParser::JsonParser()
 
 }
 
+/**
+    Parses the JSON Output and returns the user specified value
+
+    @param r The HTTP/HTTPS Response QByteArray containing the JSON Response.
+    @param lookfor Key name of the value to return.
+    @return a QString with the value of the specified key
+*/
 QString JsonParser::Parse(QByteArray r, QString lookfor)
 {
     //converting the QByteArray to JSON Document
