@@ -63,6 +63,9 @@ QByteArray RemoteServer::getResponse(QUrl url)
     QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
 
     QNetworkRequest req(url);
+    QSslConfiguration config = QSslConfiguration::defaultConfiguration();
+    config.setProtocol(QSsl::TlsV1_2);
+    req.setSslConfiguration(config);
     QNetworkReply *reply = mgr.get(req);
     eventLoop.exec();
 

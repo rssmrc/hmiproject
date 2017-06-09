@@ -42,3 +42,6 @@ HEADERS += \
     emoncms/remoteserver.h \
     emoncms/jsonparser.h
 
+LIBS += "$$PWD/libs/libeay32.dll"
+LIBS += "$$PWD/libs/ssleay32.dll"
+
