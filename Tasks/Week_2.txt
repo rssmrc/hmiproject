@@ -1,8 +1,8 @@
 Day 1:
 ###################################################################################################
-- Overview/refresh about classes design methods
-- OOP objects design review
-- HMI design review
+- Overview/refresh about classes design methods (30')
+- OOP objects design review (30')
+- HMI design review (30' - 1h)
 
 Day 2:
 ###################################################################################################
