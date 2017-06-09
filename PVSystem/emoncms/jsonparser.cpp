@@ -62,14 +62,11 @@ QString JsonParser::Parse(QByteArray r, QString lookfor)
         //looking for specified value
         QJsonObject::iterator itr = obj.find(lookfor);
 
-        if(itr == obj.end())
-        {
-            //empty object
-        }
-        else
+        if(itr != obj.end())
         {
            //returning its value
            ret = itr.value().toString();
+           break;
         }
 
 
