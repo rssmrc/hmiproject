@@ -67,6 +67,12 @@ varmanager::varmanager()
     vars.currentEnergy =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173380&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
 }
 
+/**
+    Updates the local vars in the structure from qml textfield content
+
+    @param i Index of the var to edit.
+    @param val Input value
+*/
 void varmanager::updateLocal(int i, QString val)
 {
     switch(i)
@@ -91,11 +97,36 @@ void varmanager::updateLocal(int i, QString val)
 
 }
 
-//thread executed function
-//need to sync local changes and online changes
+/**
+    Synchronizes online and local variables
+    IMPORTANT: Do not call this function outside a thread. GUI might freeze due to slow replies
+*/
 void varmanager::updateVars()
 {
     RemoteServer r;
+    //check for discrepancies between the emoncms DB and the user settings
+    QByteArray status;
+    QString p = r.getFromOnline("https://emoncms.org/feed/aget.json?id=173378&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
+    QString t = r.getFromOnline("https://emoncms.org/feed/aget.json?id=173383&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
+    QString a = r.getFromOnline("https://emoncms.org/feed/aget.json?id=173387&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
+    QString w = r.getFromOnline("https://emoncms.org/feed/aget.json?id=173385&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
+
+    if(p != vars.panelsAmount)
+    {
+        status = r.getResponse(QUrl("https://emoncms.org/input/post?json={panels:" + vars.panelsAmount + "}&apikey=1b15eb3ce081a80829e78acb83c5004a"));
+    }
+    else if(t != vars.tiltAngle)
+    {
+        status = r.getResponse(QUrl("https://emoncms.org/input/post?json={t_angle:" + vars.tiltAngle + "}&apikey=1b15eb3ce081a80829e78acb83c5004a"));
+    }
+    else if(a != vars.azimuthAngle)
+    {
+        status = r.getResponse(QUrl("https://emoncms.org/input/post?json={azimuth:" + vars.azimuthAngle + "}&apikey=1b15eb3ce081a80829e78acb83c5004a"));
+    }
+    else if(w != vars.wattPeak)
+    {
+        status = r.getResponse(QUrl("https://emoncms.org/input/post?json={peak:" + vars.wattPeak + "}&apikey=1b15eb3ce081a80829e78acb83c5004a"));
+    }
 
 }
 

@@ -61,7 +61,9 @@ Item {
             height: 30
             font.pixelSize: 12
             placeholderText: qsTr("Panels Amount")
-            onEditingFinished: emonvars.updateLocal(1,panelsAmount.text)
+            onEditingFinished:{
+                emonvars.updateLocal(1,panelsAmount.text)
+            }
         }
 
         TextField {
