@@ -45,7 +45,11 @@
 QHash<QString, QString> hash_a;
 QHash<QString, QString> hash_b;
 RemoteServer r;
+//mutex 0 = reading mode
+//mutex 1 = writing mode
+int mutex = 0;
 
+//structure containing all the important values
 struct vars{
     QString inverterPower;
     QString panelsAmount;
@@ -69,19 +73,59 @@ void varmanager::run()
     //continuously getting online vars
     while(true)
     {
-        vars.inverterPower = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["power"]);
-        vars.panelsAmount = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["panels"]);
-        vars.wattPeak = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["peak"]);
-        vars.tiltAngle = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["t_angle"]);
-        vars.irradiation = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["irradiation"]);
-        vars.panelYield = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["yield"]);
-        vars.azimuthAngle = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["azimuth"]);
-        vars.percentage = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["percentage"]);
-        vars.currentEnergy = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["energy"]);
+        //if no new values were added thread will stay in reading mode
+        if(mutex == 0)
+        {
+            vars.inverterPower = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["power"]);
+            vars.panelsAmount = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["panels"]);
+            vars.wattPeak = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["peak"]);
+            vars.tiltAngle = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["t_angle"]);
+            vars.irradiation = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["irradiation"]);
+            vars.panelYield = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["yield"]);
+            vars.azimuthAngle = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["azimuth"]);
+            vars.percentage = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["percentage"]);
+            vars.currentEnergy = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["energy"]);
+            qDebug() << vars.panelsAmount << endl;
+        }
+        //if the user values were updated thread will go into writing mode
+        else
+        {
+            QString ret = r.getResponse((QUrl("https://emoncms.org/input/post?json={panels:" + vars.panelsAmount + ",azimuth:" + vars.azimuthAngle + ",t_angle:" + vars.tiltAngle + ",peak:" + vars.wattPeak + "}&apikey=1b15eb3ce081a80829e78acb83c5004a")));
+            mutex = 0;
+        }
 
         sleep(2);
     }
 
+}
+
+/**
+    Notifies the user changes by setting the mutex to 1
+
+    @param id ID of the changed parameter.
+    @param newval New value
+*/
+void varmanager::notifyChange(int id, QString newval)
+{
+    switch(id)
+    {
+        case 0:
+            vars.panelsAmount = newval;
+            break;
+        case 1:
+            vars.tiltAngle = newval;
+            break;
+        case 2:
+            vars.azimuthAngle = newval;
+            break;
+        case 3:
+            vars.wattPeak = newval;
+            break;
+        default:
+            break;
+    }
+
+    mutex = 1;
 }
 
 

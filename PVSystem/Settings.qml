@@ -62,7 +62,7 @@ Item {
             font.pixelSize: 12
             placeholderText: qsTr("Panels Amount")
             onEditingFinished:{
-                emonvars.updateLocal(1,panelsAmount.text)
+                emonvars.notifyChange(0,panelsAmount.text)
             }
         }
 
@@ -75,7 +75,7 @@ Item {
             height: 30
             font.pixelSize: 12
             placeholderText: qsTr("Tilt Angle")
-            onEditingFinished: emonvars.updateLocal(2,tiltAngle.text)
+            onEditingFinished: emonvars.notifyChange(1,tiltAngle.text)
         }
 
         TextField {
@@ -87,7 +87,7 @@ Item {
             height: 30
             font.pixelSize: 12
             placeholderText: qsTr("Azimuth Angle")
-            onEditingFinished: emonvars.updateLocal(3,azimuthAngle.text)
+            onEditingFinished: emonvars.notifyChange(2,azimuthAngle.text)
         }
 
         TextField {
@@ -99,7 +99,7 @@ Item {
             height: 30
             font.pixelSize: 12
             placeholderText: qsTr("Watt Peak")
-            onEditingFinished: emonvars.updateLocal(3,wattPeak.text)
+            onEditingFinished: emonvars.notifyChange(3,wattPeak.text)
         }
 
     }

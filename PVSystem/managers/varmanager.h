@@ -37,7 +37,7 @@ public:
     void run();
 
 public slots:
-
+    void notifyChange(int id, QString newval);
 };
 
 #endif // VARMANAGER_H
