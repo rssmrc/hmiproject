@@ -35,16 +35,20 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    //initializes the varmanager and starts the timer
+
+    //initializes the varmanager and remote server
     varmanager v;
     RemoteServer r;
+
     QQmlApplicationEngine engine;
     //new qmlcontext property linked to the var manager object
     engine.rootContext()->setContextProperty("emonvars", &v);
     //cache disabled
     qputenv("QML_DISABLE_DISK_CACHE", "true");
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    //Starts the variables management thread
     v.start();
+
     if (engine.rootObjects().isEmpty())
         return -1;
 

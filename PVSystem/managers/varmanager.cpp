@@ -40,10 +40,10 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-//structure containing all the variables
-
+//hash tables id->name & name->id
 QHash<QString, QString> hash_a;
 QHash<QString, QString> hash_b;
+
 RemoteServer r;
 //mutex 0 = reading mode
 //mutex 1 = writing mode
@@ -70,7 +70,8 @@ varmanager::varmanager()
 
 void varmanager::run()
 {
-    //continuously getting online vars
+    //reading/writing every 2 seconds
+
     while(true)
     {
         //if no new values were added thread will stay in reading mode
