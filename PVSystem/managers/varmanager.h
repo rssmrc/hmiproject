@@ -25,12 +25,17 @@
 #define VARMANAGER_H
 
 #include <QObject>
+#include <QThread>
 
-class varmanager : public QObject
+class varmanager : public QThread
 {
     Q_OBJECT
+
 public:
+
     varmanager();
+    void run();
+
 public slots:
 
 };

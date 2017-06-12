@@ -41,6 +41,11 @@
 #include <QQmlApplicationEngine>
 
 //structure containing all the variables
+
+QHash<QString, QString> hash_a;
+QHash<QString, QString> hash_b;
+RemoteServer r;
+
 struct vars{
     QString inverterPower;
     QString panelsAmount;
@@ -55,8 +60,32 @@ struct vars{
 
 varmanager::varmanager()
 {
+    hash_a = r.generateHash("http://emoncms.org/feed/list.json?apikey=4ea47aab75a01a5d00dcf609dea72a97", "id", "name");
+    hash_b = r.generateHash("http://emoncms.org/feed/list.json?apikey=4ea47aab75a01a5d00dcf609dea72a97", "name", "id");
+}
+
+void varmanager::run()
+{
+    //continuously getting online vars
+    while(true)
+    {
+        vars.inverterPower = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["power"]);
+        vars.panelsAmount = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["panels"]);
+        vars.wattPeak = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["peak"]);
+        vars.tiltAngle = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["t_angle"]);
+        vars.irradiation = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["irradiation"]);
+        vars.panelYield = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["yield"]);
+        vars.azimuthAngle = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["azimuth"]);
+        vars.percentage = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["percentage"]);
+        vars.currentEnergy = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["energy"]);
+
+        sleep(2);
+    }
 
 }
+
+
+
 
 
 

@@ -38,14 +38,13 @@ int main(int argc, char *argv[])
     //initializes the varmanager and starts the timer
     varmanager v;
     RemoteServer r;
-    updatethread uthread;
     QQmlApplicationEngine engine;
     //new qmlcontext property linked to the var manager object
     engine.rootContext()->setContextProperty("emonvars", &v);
     //cache disabled
     qputenv("QML_DISABLE_DISK_CACHE", "true");
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-    uthread.start();
+    v.start();
     if (engine.rootObjects().isEmpty())
         return -1;
 
