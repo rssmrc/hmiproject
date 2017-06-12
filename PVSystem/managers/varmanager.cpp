@@ -55,86 +55,9 @@ struct vars{
 
 varmanager::varmanager()
 {
-    //initializing all the vars in the structure
-    RemoteServer r;
-
-    vars.inverterPower =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173379&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
-    vars.panelsAmount =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173378&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
-    vars.wattPeak =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173385&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
-    vars.tiltAngle =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173383&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
-    vars.irradiation =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173386&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
-    vars.panelYield =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173382&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
-    vars.azimuthAngle =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173387&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
-    vars.percentage =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173381&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
-    vars.currentEnergy =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173380&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
 
 }
 
-/**
-    Updates the local vars in the structure from qml textfield content
-
-    @param i Index of the var to edit.
-    @param val Input value
-*/
-void varmanager::updateLocal(int i, QString val)
-{
-    switch(i)
-    {
-    //code 1: panels amount
-    case 1:
-        vars.panelsAmount = val;
-        break;
-    //code 2: tilt angle
-    case 2:
-        vars.tiltAngle = val;
-        break;
-    //code 3: azimuth angle
-    case 3:
-        vars.azimuthAngle = val;
-        break;
-    //code 4: watt peak
-    case 4:
-        vars.wattPeak = val;
-        break;
-    }
-
-}
-
-/**
-    Synchronizes online and local variables
-    IMPORTANT: Do not call this function outside a thread. GUI might freeze due to slow replies
-*/
-void varmanager::updateVars()
-{
-    RemoteServer r;
-    //check for discrepancies between the emoncms DB and the user settings
-    QByteArray status;
-
-
-    QString p = r.getFromOnline("https://emoncms.org/feed/aget.json?id=173378&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
-    QString t = r.getFromOnline("https://emoncms.org/feed/aget.json?id=173383&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
-    QString a = r.getFromOnline("https://emoncms.org/feed/aget.json?id=173387&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
-    QString w = r.getFromOnline("https://emoncms.org/feed/aget.json?id=173385&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
-
-
-    if(p != vars.panelsAmount)
-    {
-        status = r.getResponse(QUrl("https://emoncms.org/input/post?json={panels:" + vars.panelsAmount + "}&apikey=1b15eb3ce081a80829e78acb83c5004a"));
-    }
-    else if(t != vars.tiltAngle)
-    {
-        status = r.getResponse(QUrl("https://emoncms.org/input/post?json={t_angle:" + vars.tiltAngle + "}&apikey=1b15eb3ce081a80829e78acb83c5004a"));
-    }
-    else if(a != vars.azimuthAngle)
-    {
-        status = r.getResponse(QUrl("https://emoncms.org/input/post?json={azimuth:" + vars.azimuthAngle + "}&apikey=1b15eb3ce081a80829e78acb83c5004a"));
-    }
-    else if(w != vars.wattPeak)
-    {
-        status = r.getResponse(QUrl("https://emoncms.org/input/post?json={peak:" + vars.wattPeak + "}&apikey=1b15eb3ce081a80829e78acb83c5004a"));
-    }
-
-}
 
 
 

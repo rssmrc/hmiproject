@@ -33,11 +33,22 @@
 
 #include "updatethread.h"
 #include "varmanager.h"
+#include "../protocols/remoteserver.h"
 #include <QThread>
 #include <QObject>
+#include <QtCore>
+#include <QDebug>
+#include <QHash>
+
+QHash<QString, QString> hash_a;
+QHash<QString, QString> hash_b;
 
 updatethread::updatethread()
 {
+    RemoteServer r;
+    //generating hash tables
+    hash_a = r.generateHash("http://emoncms.org/feed/list.json?apikey=4ea47aab75a01a5d00dcf609dea72a97", "id", "name");
+    hash_b = r.generateHash("http://emoncms.org/feed/list.json?apikey=4ea47aab75a01a5d00dcf609dea72a97", "name", "id");
 
 }
 
@@ -46,6 +57,12 @@ updatethread::updatethread()
 */
 void updatethread::run()
 {
-
+    RemoteServer r;
+    //infinite thread loop
+    while(true)
+    {
+        qDebug() << r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["batteries"]) << endl;
+        sleep(2);
+    }
 }
 

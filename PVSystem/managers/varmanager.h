@@ -32,8 +32,7 @@ class varmanager : public QObject
 public:
     varmanager();
 public slots:
-    void updateVars();
-    void updateLocal(int i, QString val);
+
 };
 
 #endif // VARMANAGER_H

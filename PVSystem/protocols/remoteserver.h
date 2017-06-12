@@ -37,6 +37,7 @@ public:
     QByteArray getResponse(QUrl url);
     QString output();
     QHash<QString, QString> generateHash(QString url, QString param1, QString param2);
+    QString getValue(QString apiKey, QString name);
 
 public slots:
     QString getFromOnline(QString url, QString key);

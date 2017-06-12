@@ -97,6 +97,25 @@ QString RemoteServer::getFromOnline(QString url, QString key)
 }
 
 /**
+    Gets the parameter value from emoncms
+
+    @param apiKey Read-Only API Key
+    @param id Parameter's id
+    @return a QString with the value of the specified key
+*/
+
+QString RemoteServer::getValue(QString apiKey, QString id)
+{
+    //getting emoncms response
+    QByteArray reply = getResponse(QUrl("https://emoncms.org/feed/value.json?id=" + id + "&apikey=" + apiKey));
+    //making the returned string compatible
+    reply.replace("\"", "");
+    reply.replace("\"", "");
+    //returning the value
+    return QString(reply);
+}
+
+/**
     Generates a hash table containing all the id and value name correspondences
 
     @param url JSON Response URL

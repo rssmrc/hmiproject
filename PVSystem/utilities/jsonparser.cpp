@@ -72,3 +72,4 @@ QString JsonParser::Parse(QByteArray r, QString lookfor)
     //if the key doesn't exist then return null
     return ret;
 }
+
