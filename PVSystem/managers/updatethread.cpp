@@ -21,21 +21,31 @@
  *
  ****************************************************************************/
 
-#ifndef VARMANAGER_H
-#define VARMANAGER_H
 
-#import <QObject>
+/**
+    PVSystem, updatethread.cpp
+    Purpose: Thread class that updates the online vars
 
-class varmanager : public QObject
+    @author Marco Rossi
+    @version 1.0 09/05/17
+*/
+
+
+#include "updatethread.h"
+#include "varmanager.h"
+#include <QThread>
+#include <QObject>
+
+updatethread::updatethread()
 {
-    Q_OBJECT
-public:
-    varmanager();
-public slots:
-    void updateVars();
-    void updateLocal(int i, QString val);
-    void update();
-    void startUpdates();
-};
 
-#endif // VARMANAGER_H
+}
+
+/**
+    instances a new varmanager and updates the vars with it
+*/
+void updatethread::run()
+{
+
+}
+

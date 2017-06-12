@@ -21,31 +21,25 @@
  *
  ****************************************************************************/
 
+#ifndef REMOTESERVER_H
+#define REMOTESERVER_H
 
-/**
-    PVSystem, updatethread.cpp
-    Purpose: Thread class that updates the online vars
-
-    @author Marco Rossi
-    @version 1.0 09/05/17
-*/
-
-
-#include "updatethread.h"
-#include "varmanager.h"
-#include <QThread>
 #include <QObject>
+#include <QNetworkAccessManager>
 
-updatethread::updatethread()
+class RemoteServer : public QObject
 {
+    Q_OBJECT
 
-}
+public:
 
-/**
-    instances a new varmanager and updates the vars with it
-*/
-void updatethread::run()
-{
-    varmanager v;
-    v.updateVars();
-}
+    RemoteServer();
+    QByteArray getResponse(QUrl url);
+    QString output();
+    QHash<QString, QString> hashTable(QString url);
+
+public slots:
+    QString getFromOnline(QString url, QString key);
+};
+
+#endif // REMOTESERVER_H

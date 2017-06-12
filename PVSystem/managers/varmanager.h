@@ -21,23 +21,19 @@
  *
  ****************************************************************************/
 
-#ifndef REMOTESERVER_H
-#define REMOTESERVER_H
+#ifndef VARMANAGER_H
+#define VARMANAGER_H
 
 #include <QObject>
-#include <QNetworkAccessManager>
 
-class RemoteServer : public QObject
+class varmanager : public QObject
 {
     Q_OBJECT
-
 public:
-    RemoteServer();
-    QByteArray getResponse(QUrl url);
-    QString output();
-
+    varmanager();
 public slots:
-    QString getFromOnline(QString url, QString p);
+    void updateVars();
+    void updateLocal(int i, QString val);
 };
 
-#endif // REMOTESERVER_H
+#endif // VARMANAGER_H

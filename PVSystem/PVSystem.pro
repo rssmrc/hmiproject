@@ -4,10 +4,10 @@ QT += qml quick
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    emoncms/remoteserver.cpp \
-    emoncms/jsonparser.cpp \
-    emoncms/varmanager.cpp \
-    emoncms/updatethread.cpp
+    protocols/remoteserver.cpp \
+    utilities/jsonparser.cpp \
+    managers/varmanager.cpp \
+    managers/updatethread.cpp
 
 
 RESOURCES += qml.qrc
@@ -41,8 +41,8 @@ DISTFILES += \
     images/bar.png
 
 HEADERS += \
-    emoncms/remoteserver.h \
-    emoncms/jsonparser.h \
-    emoncms/varmanager.h \
-    emoncms/updatethread.h
+    managers/updatethread.h \
+    managers/varmanager.h \
+    protocols/remoteserver.h \
+    utilities/jsonparser.h
 

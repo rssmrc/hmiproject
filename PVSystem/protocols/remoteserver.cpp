@@ -31,7 +31,7 @@
 */
 
 #include "remoteserver.h"
-#include "jsonparser.h"
+#include "../utilities/jsonparser.h"
 #include <QNetworkAccessManager>
 #include <QObject>
 #include <QCoreApplication>
@@ -63,9 +63,13 @@ QByteArray RemoteServer::getResponse(QUrl url)
     QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
 
     QNetworkRequest req(url);
-    QSslConfiguration config = QSslConfiguration::defaultConfiguration();
-    config.setProtocol(QSsl::TlsV1_2);
+
+    QSslConfiguration config = req.sslConfiguration();
+    config.setPeerVerifyMode(QSslSocket::VerifyNone);
     req.setSslConfiguration(config);
+
+    req.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
+
     QNetworkReply *reply = mgr.get(req);
     eventLoop.exec();
 
@@ -98,15 +102,44 @@ QString RemoteServer::output()
     @param p Key name of the target value.
     @return JSON Parsed value
 */
-QString RemoteServer::getFromOnline(QString url, QString p)
+QString RemoteServer::getFromOnline(QString url, QString key)
 {
 
     QByteArray reply = getResponse(QUrl(url));
     JsonParser jp;
-    QString o = jp.Parse(reply, p);
+    QString o = jp.Parse(reply, key);
 
     return o;
-
 }
+
+/**
+    Generates a hash table containing all the id and value name correspondences
+JsonParser jp;
+    @return Correspondences hash table
+*/
+QHash<QString, QString> RemoteServer::hashTable(QString url)
+{
+    //hash map and json parser declaration
+    QHash<QString, QString> hashm;
+    JsonParser jp;
+
+    //getting the list response
+    QString reply = getResponse(QUrl(url));
+    reply.replace('[',"");
+    reply.replace(']',"");
+
+    //generates a list containing all the lines
+    QStringList list_1 = reply.split('{');
+    //QList list_2;
+
+
+    //hash table filling through a for loop
+    for(int i = 0; i<list_1.count(); i++)
+    {
+        //hashm.insert(jp.Parse(list_1[i], "id"), jp.Parse(list_1[i], "name"));
+    }
+    return hashm;
+}
+
 
 

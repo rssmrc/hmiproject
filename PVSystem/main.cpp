@@ -23,8 +23,8 @@
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <emoncms/remoteserver.h>
-#include <emoncms/varmanager.h>
+#include <protocols/remoteserver.h>
+#include <managers/varmanager.h>
 #include <iostream>
 #include <QQmlContext>
 #include <QTimer>
@@ -34,22 +34,17 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-
-    //REMOTE SERVER
-    RemoteServer s;
     //initializes the varmanager and starts the timer
     varmanager v;
-    v.startUpdates();
+    RemoteServer r;
+    r.hashTable("http://nerinformatica.it/feed/list.json?apikey=4ea47aab75a01a5d00dcf609dea72a97");
     //testing c++ and qml implementation
     QQmlApplicationEngine engine;
     //new qmlcontext property linked to the remoteserver object
-    engine.rootContext()->setContextProperty("qmlobj", &s);
     engine.rootContext()->setContextProperty("emonvars", &v);
     //cache disabled
     qputenv("QML_DISABLE_DISK_CACHE", "true");
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-
-
 
     if (engine.rootObjects().isEmpty())
         return -1;

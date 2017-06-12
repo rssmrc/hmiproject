@@ -57,7 +57,7 @@ Item {
             Label{
                 font.pixelSize: 15
                 //c++ function in the RemoteServer Object
-                text: qmlobj.getFromOnline("https://emoncms.org/feed/aget.json?id=173378&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value")
+                text: "..."
                 color: "#FFFFFF"
                 y: 46
                 x: 153
