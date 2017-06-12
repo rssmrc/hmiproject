@@ -80,22 +80,6 @@ QByteArray RemoteServer::getResponse(QUrl url)
 }
 
 /**
-    Temporary testing purposes only function
-
-    @return JSON Parsed value
-*/
-QString RemoteServer::output()
-{
-
-    //getting reply from the server
-    QByteArray reply = getResponse(QUrl( QString("http://date.jsontest.com/")));
-    //new json parser
-    JsonParser jp;
-    //returning the time value from the json document
-    return jp.Parse(reply, "date");
-}
-
-/**
     Sends a HTTP Get request and automatically extracts the required value
 
     @param url Crafted url containing all the parameters.
@@ -114,14 +98,20 @@ QString RemoteServer::getFromOnline(QString url, QString key)
 
 /**
     Generates a hash table containing all the id and value name correspondences
-JsonParser jp;
+
+    @param url JSON Response URL
+    @param param1 key name
+    @param param2 value to associate
+
     @return Correspondences hash table
 */
-QHash<QString, QString> RemoteServer::hashTable(QString url)
+
+QHash<QString, QString> RemoteServer::generateHash(QString url, QString param1, QString param2)
 {
     //hash map and json parser declaration
     QHash<QString, QString> hashm;
     JsonParser jp;
+    int i;
 
     //getting the list response
     QString reply = getResponse(QUrl(url));
@@ -129,15 +119,22 @@ QHash<QString, QString> RemoteServer::hashTable(QString url)
     reply.replace(']',"");
 
     //generates a list containing all the lines
-    QStringList list_1 = reply.split('{');
-    //QList list_2;
+    QStringList list_1 = reply.split("},");
 
-
-    //hash table filling through a for loop
-    for(int i = 0; i<list_1.count(); i++)
+    //encoding in JSON format
+    for(i = 0; i<list_1.count(); i++)
     {
-        //hashm.insert(jp.Parse(list_1[i], "id"), jp.Parse(list_1[i], "name"));
+        list_1[i].insert(list_1[i].length(), "}");
     }
+    //removing end extra bracket
+    list_1[list_1.count()-1].chop(1);
+
+    //generating hash table
+    for(i = 0; i<list_1.count(); i++)
+    {
+        hashm.insert(jp.Parse(list_1[i].toUtf8(), param1), jp.Parse(list_1[i].toUtf8(), param2));
+    }
+
     return hashm;
 }
 

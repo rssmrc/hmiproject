@@ -36,7 +36,7 @@ public:
     RemoteServer();
     QByteArray getResponse(QUrl url);
     QString output();
-    QHash<QString, QString> hashTable(QString url);
+    QHash<QString, QString> generateHash(QString url, QString param1, QString param2);
 
 public slots:
     QString getFromOnline(QString url, QString key);

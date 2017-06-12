@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
     //initializes the varmanager and starts the timer
     varmanager v;
     RemoteServer r;
-    r.hashTable("http://nerinformatica.it/feed/list.json?apikey=4ea47aab75a01a5d00dcf609dea72a97");
+    r.generateHash("http://emoncms.org/feed/list.json?apikey=4ea47aab75a01a5d00dcf609dea72a97", "id", "name");
     //testing c++ and qml implementation
     QQmlApplicationEngine engine;
     //new qmlcontext property linked to the remoteserver object

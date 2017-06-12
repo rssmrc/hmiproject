@@ -57,7 +57,7 @@ varmanager::varmanager()
 {
     //initializing all the vars in the structure
     RemoteServer r;
-#if 0
+
     vars.inverterPower =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173379&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
     vars.panelsAmount =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173378&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
     vars.wattPeak =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173385&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
@@ -67,7 +67,7 @@ varmanager::varmanager()
     vars.azimuthAngle =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173387&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
     vars.percentage =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173381&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
     vars.currentEnergy =  r.getFromOnline("https://emoncms.org/feed/aget.json?id=173380&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
-#endif
+
 }
 
 /**
@@ -110,7 +110,7 @@ void varmanager::updateVars()
     //check for discrepancies between the emoncms DB and the user settings
     QByteArray status;
 
-#if 0
+
     QString p = r.getFromOnline("https://emoncms.org/feed/aget.json?id=173378&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
     QString t = r.getFromOnline("https://emoncms.org/feed/aget.json?id=173383&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
     QString a = r.getFromOnline("https://emoncms.org/feed/aget.json?id=173387&apikey=4ea47aab75a01a5d00dcf609dea72a97", "value");
@@ -133,7 +133,7 @@ void varmanager::updateVars()
     {
         status = r.getResponse(QUrl("https://emoncms.org/input/post?json={peak:" + vars.wattPeak + "}&apikey=1b15eb3ce081a80829e78acb83c5004a"));
     }
-#endif
+
 }
 
 
