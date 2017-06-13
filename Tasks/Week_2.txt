@@ -7,12 +7,15 @@ Day 1:
 Day 2:
 ###################################################################################################
 
-
+Skip ....
 
 
 Day 3:
 ###################################################################################################
-
+- design classes to follow the guideline show in day 1 (define interfaces, api, etc..)
+- use QThread to make communication API async
+- create class "parameters" to let QML able to read and write parameters (i.e. ip address, server address, etc..)
+- 
 
 Day 4:
 ###################################################################################################
