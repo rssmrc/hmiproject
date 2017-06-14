@@ -25,7 +25,6 @@
 #include <QQmlApplicationEngine>
 #include <protocols/remoteserver.h>
 #include <managers/varmanager.h>
-#include <managers/updatethread.h>
 #include <managers/parameters.h>
 #include <iostream>
 #include <QQmlContext>
