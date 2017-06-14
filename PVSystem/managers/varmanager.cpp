@@ -51,6 +51,7 @@ int mutex = 0;
 
 //structure containing all the important values
 struct vars{
+    QString apiKey;
     QString inverterPower;
     QString panelsAmount;
     QString wattPeak;
@@ -64,8 +65,7 @@ struct vars{
 
 varmanager::varmanager()
 {
-    hash_a = r.generateHash("http://emoncms.org/feed/list.json?apikey=4ea47aab75a01a5d00dcf609dea72a97", "id", "name");
-    hash_b = r.generateHash("http://emoncms.org/feed/list.json?apikey=4ea47aab75a01a5d00dcf609dea72a97", "name", "id");
+
 }
 
 void varmanager::run()
@@ -74,28 +74,37 @@ void varmanager::run()
 
     while(true)
     {
-        //if no new values were added thread will stay in reading mode
-        if(mutex == 0)
+        if(vars.apiKey.isEmpty() == false)
         {
-            vars.inverterPower = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["power"]);
-            vars.panelsAmount = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["panels"]);
-            vars.wattPeak = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["peak"]);
-            vars.tiltAngle = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["t_angle"]);
-            vars.irradiation = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["irradiation"]);
-            vars.panelYield = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["yield"]);
-            vars.azimuthAngle = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["azimuth"]);
-            vars.percentage = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["percentage"]);
-            vars.currentEnergy = r.getValue("4ea47aab75a01a5d00dcf609dea72a97", hash_b["energy"]);
-            qDebug() << vars.panelsAmount << endl;
+            //if no new values were added thread will stay in reading mode
+            if(mutex == 0)
+            {
+                vars.inverterPower = r.getValue(vars.apiKey, hash_b["power"]);
+                vars.panelsAmount = r.getValue(vars.apiKey, hash_b["panels"]);
+                vars.wattPeak = r.getValue(vars.apiKey, hash_b["peak"]);
+                vars.tiltAngle = r.getValue(vars.apiKey, hash_b["t_angle"]);
+                vars.irradiation = r.getValue(vars.apiKey, hash_b["irradiation"]);
+                vars.panelYield = r.getValue(vars.apiKey, hash_b["yield"]);
+                vars.azimuthAngle = r.getValue(vars.apiKey, hash_b["azimuth"]);
+                vars.percentage = r.getValue(vars.apiKey, hash_b["percentage"]);
+                vars.currentEnergy = r.getValue(vars.apiKey, hash_b["energy"]);
+                qDebug() << vars.panelsAmount << endl;
+            }
+            //if the user values were updated thread will go into writing mode
+            else
+            {
+                QString url = "https://emoncms.org/input/post?json={panels:" + vars.panelsAmount + ",azimuth:" + vars.azimuthAngle + ",t_angle:" + vars.tiltAngle + ",peak:" + vars.wattPeak + "}&apikey=" + vars.apiKey;
+                QString ret = r.getResponse(QUrl(url));
+                qDebug() << ret << endl;
+                mutex = 0;
+            }
         }
-        //if the user values were updated thread will go into writing mode
         else
         {
-            QString ret = r.getResponse((QUrl("https://emoncms.org/input/post?json={panels:" + vars.panelsAmount + ",azimuth:" + vars.azimuthAngle + ",t_angle:" + vars.tiltAngle + ",peak:" + vars.wattPeak + "}&apikey=1b15eb3ce081a80829e78acb83c5004a")));
-            mutex = 0;
+            qDebug() << "API Key not found" << endl;
         }
 
-        sleep(2);
+        sleep(1);
     }
 
 }
@@ -122,11 +131,26 @@ void varmanager::notifyChange(int id, QString newval)
         case 3:
             vars.wattPeak = newval;
             break;
+        case 4:
+            vars.apiKey = newval;
+            break;
         default:
             break;
     }
 
     mutex = 1;
+}
+
+/**
+    Builds the hash tables
+
+    @param api Read/Write API Key.
+*/
+void varmanager::buildHash(QString api)
+{
+    hash_a = r.generateHash("http://emoncms.org/feed/list.json?apikey=" + api, "id", "name");
+    hash_b = r.generateHash("http://emoncms.org/feed/list.json?apikey=" + api, "name", "id");
+    vars.apiKey = api;
 }
 
 

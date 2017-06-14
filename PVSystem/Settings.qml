@@ -33,22 +33,18 @@ Item {
     Rectangle{
         anchors.fill: parent
         //disable-enable testing slider
-        Label{
-            id: sliderLabel
-            color: "#FFFFFF"
-            text: "Testing Slider"
+        TextField {
+            id: apiKey
+            objectName: "apiKey"
             x: w/2 - width/2
-            y: h/20
-        }
-
-        Switch{
-            id: sliderSwitch
-            x: w/2 - width/2
-            y: h/12
-            checked: true
-
-            onCheckedChanged:{
-                Basics.testVisible()
+            y: height*0.5
+            horizontalAlignment: parent.horizontalCenter
+            width: window.width - window.width*0.1
+            height: window.height*0.1
+            font.pixelSize: 12
+            placeholderText: "API Key"
+            onEditingFinished:{
+                emonvars.buildHash(text);
             }
         }
 
@@ -56,9 +52,10 @@ Item {
             id: panelsAmount
             objectName: "panelsAmount"
             x: w/2 - width/2
-            y: sliderSwitch.y + sliderSwitch.height*1.5
-            width: 144
-            height: 30
+            y: apiKey.y + apiKey.height*1.5
+            horizontalAlignment: parent.horizontalCenter
+            width: window.width - window.width*0.1
+            height: window.height*0.1
             font.pixelSize: 12
             placeholderText: qsTr("Panels Amount")
             onEditingFinished:{
@@ -71,8 +68,9 @@ Item {
             objectName: "tiltAngle"
             x: w/2 - width/2
             y: panelsAmount.y + panelsAmount.height*1.5
-            width: 144
-            height: 30
+            horizontalAlignment: parent.horizontalCenter
+            width: window.width - window.width*0.1
+            height: window.height*0.1
             font.pixelSize: 12
             placeholderText: qsTr("Tilt Angle")
             onEditingFinished: emonvars.notifyChange(1,tiltAngle.text)
@@ -83,8 +81,9 @@ Item {
             objectName: "azimuthAngle"
             x: w/2 - width/2
             y: tiltAngle.y + tiltAngle.height*1.5
-            width: 144
-            height: 30
+            horizontalAlignment: parent.horizontalCenter
+            width: window.width - window.width*0.1
+            height: window.height*0.1
             font.pixelSize: 12
             placeholderText: qsTr("Azimuth Angle")
             onEditingFinished: emonvars.notifyChange(2,azimuthAngle.text)
@@ -95,8 +94,9 @@ Item {
             objectName: "wattPeak"
             x: w/2 - width/2
             y: azimuthAngle.y + azimuthAngle.height*1.5
-            width: 144
-            height: 30
+            horizontalAlignment: parent.horizontalCenter
+            width: window.width - window.width*0.1
+            height: window.height*0.1
             font.pixelSize: 12
             placeholderText: qsTr("Watt Peak")
             onEditingFinished: emonvars.notifyChange(3,wattPeak.text)

@@ -38,6 +38,7 @@ public:
 
 public slots:
     void notifyChange(int id, QString newval);
+    void buildHash(QString api);
 };
 
 #endif // VARMANAGER_H
