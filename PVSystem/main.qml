@@ -61,8 +61,19 @@ Window {
             w: window.width - (window.width/10)*2
             h: window.height/2 - (window.height/15)*2
             indicatorw: w/7
-            indicatorpos: pvstatus.w * testSlider.value - pvstatus.indicatorw/2
+            indicatorpos: pvstatus.w * 0.5 - pvstatus.indicatorw/2
             anchors.horizontalCenter: parent.horizontalCenter
+
+            Timer{
+                id: updatebar
+                repeat: true
+                interval: 500
+                running: true
+
+                onTriggered:{
+                    parent.indicatorpos = pvstatus.w * emonvars.getPosition() - pvstatus.indicatorw/2
+                }
+            }
         }
 
         //slider to test moving indicator

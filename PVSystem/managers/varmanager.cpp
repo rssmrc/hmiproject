@@ -65,7 +65,15 @@ struct vars{
 
 varmanager::varmanager()
 {
-
+    vars.inverterPower = r.getValue(vars.apiKey, hash_b["power"]);
+    vars.panelsAmount = r.getValue(vars.apiKey, hash_b["panels"]);
+    vars.wattPeak = r.getValue(vars.apiKey, hash_b["peak"]);
+    vars.tiltAngle = r.getValue(vars.apiKey, hash_b["t_angle"]);
+    vars.irradiation = r.getValue(vars.apiKey, hash_b["irradiation"]);
+    vars.panelYield = r.getValue(vars.apiKey, hash_b["yield"]);
+    vars.azimuthAngle = r.getValue(vars.apiKey, hash_b["azimuth"]);
+    vars.percentage = r.getValue(vars.apiKey, hash_b["percentage"]);
+    vars.currentEnergy = r.getValue(vars.apiKey, hash_b["energy"]);
 }
 
 void varmanager::run()
@@ -88,13 +96,14 @@ void varmanager::run()
                 vars.azimuthAngle = r.getValue(vars.apiKey, hash_b["azimuth"]);
                 vars.percentage = r.getValue(vars.apiKey, hash_b["percentage"]);
                 vars.currentEnergy = r.getValue(vars.apiKey, hash_b["energy"]);
-                qDebug() << vars.panelsAmount << endl;
+                qDebug() << vars.inverterPower << endl;
             }
             //if the user values were updated thread will go into writing mode
             else
             {
                 QString url = "https://emoncms.org/input/post?json={panels:" + vars.panelsAmount + ",azimuth:" + vars.azimuthAngle + ",t_angle:" + vars.tiltAngle + ",peak:" + vars.wattPeak + "}&apikey=" + vars.apiKey;
                 QString ret = r.getResponse(url);
+                qDebug() << "Send request " << url << endl << " Reply: " << ret << endl;
                 mutex = 0;
             }
         }
@@ -150,6 +159,18 @@ void varmanager::buildHash(QString api)
     hash_a = r.generateHash("http://emoncms.org/feed/list.json?apikey=" + api, "id", "name");
     hash_b = r.generateHash("http://emoncms.org/feed/list.json?apikey=" + api, "name", "id");
     vars.apiKey = api;
+}
+
+/**
+    Gets the required value
+
+    @return Test
+*/
+
+float varmanager::getPosition()
+{
+    float retval = vars.inverterPower.toFloat() / vars.wattPeak.toFloat();
+    return retval;
 }
 
 
