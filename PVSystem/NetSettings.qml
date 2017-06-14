@@ -34,72 +34,66 @@ Item {
         anchors.fill: parent
 
         TextField {
-            id: apiKey
-            objectName: "apiKey"
+            id: serverAddress
+            objectName: "sAddress"
             x: w/2 - width/2
             y: height*0.5
 
             width: window.width - window.width*0.1
             height: window.height*0.1
             font.pixelSize: 12
-            placeholderText: "API Key"
+            text: networkvars.get(1)
             onEditingFinished:{
-                emonvars.buildHash(text);
+                networkvars.set(1, text)
             }
         }
 
         TextField {
-            id: panelsAmount
-            objectName: "panelsAmount"
+            id: ipAddress
+            objectName: "ipAddress"
             x: w/2 - width/2
-            y: apiKey.y + apiKey.height*1.5
+            y: serverAddress.y + serverAddress.height*1.5
 
             width: window.width - window.width*0.1
             height: window.height*0.1
             font.pixelSize: 12
-            placeholderText: qsTr("Panels Amount")
+            text: networkvars.get(0)
             onEditingFinished:{
-                emonvars.notifyChange(0,panelsAmount.text)
+                networkvars.set(0, text)
             }
         }
 
         TextField {
-            id: tiltAngle
-            objectName: "tiltAngle"
+            id: defaultGateway
+            objectName: "dGateway"
             x: w/2 - width/2
-            y: panelsAmount.y + panelsAmount.height*1.5
+            y: ipAddress.y + ipAddress.height*1.5
 
             width: window.width - window.width*0.1
             height: window.height*0.1
             font.pixelSize: 12
-            placeholderText: qsTr("Tilt Angle")
-            onEditingFinished: emonvars.notifyChange(1,tiltAngle.text)
+            text: networkvars.get(2)
+            onEditingFinished:{
+                networkvars.set(2,text)
+            }
+
         }
 
         TextField {
-            id: azimuthAngle
-            objectName: "azimuthAngle"
+            id: subnetMask
+            objectName: "sMask"
             x: w/2 - width/2
-            y: tiltAngle.y + tiltAngle.height*1.5
+            y: defaultGateway.y + defaultGateway.height*1.5
 
             width: window.width - window.width*0.1
             height: window.height*0.1
             font.pixelSize: 12
-            placeholderText: qsTr("Azimuth Angle")
-            onEditingFinished: emonvars.notifyChange(2,azimuthAngle.text)
-        }
+            text: networkvars.get(3)
+            onEditingFinished:{
+                networkvars.set(3,text)
+            }
 
-        TextField {
-            id: wattPeak
-            objectName: "wattPeak"
-            x: w/2 - width/2
-            y: azimuthAngle.y + azimuthAngle.height*1.5
 
-            width: window.width - window.width*0.1
-            height: window.height*0.1
-            font.pixelSize: 12
-            placeholderText: qsTr("Watt Peak")
-            onEditingFinished: emonvars.notifyChange(3,wattPeak.text)
         }
 
     }

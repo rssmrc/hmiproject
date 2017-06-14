@@ -93,6 +93,10 @@ Item{
                 height: parent.height/2
                 width: height
             }
+
+            onClicked:{
+                Basics.drawerOpen(2)
+            }
         }
 
         //settings button that will open the settings drawer

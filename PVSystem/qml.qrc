@@ -14,5 +14,6 @@
         <file>BottomBar.qml</file>
         <file>Settings.qml</file>
         <file>Info.qml</file>
+        <file>NetSettings.qml</file>
     </qresource>
 </RCC>

@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     //new qmlcontext property linked to the var manager object
     engine.rootContext()->setContextProperty("emonvars", &v);
+    engine.rootContext()->setContextProperty("networkvars", &p);
     //cache disabled
     qputenv("QML_DISABLE_DISK_CACHE", "true");
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

@@ -120,5 +120,20 @@ Window {
            }
        }
 
+       Drawer{
+           id: netDrawer
+           width: parent.width
+           height: parent.height - botBar.h
+           edge: Qt.TopEdge
+           background: Rectangle{
+               color: "#202020"
+           }
+           NetSettings{
+               id: netPage
+               w: window.width
+               h: window.height
+           }
+       }
+
     }
 }
