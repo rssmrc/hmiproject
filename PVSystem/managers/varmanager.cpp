@@ -94,8 +94,7 @@ void varmanager::run()
             else
             {
                 QString url = "https://emoncms.org/input/post?json={panels:" + vars.panelsAmount + ",azimuth:" + vars.azimuthAngle + ",t_angle:" + vars.tiltAngle + ",peak:" + vars.wattPeak + "}&apikey=" + vars.apiKey;
-                QString ret = r.getResponse(QUrl(url));
-                qDebug() << ret << endl;
+                QString ret = r.getResponse(url);
                 mutex = 0;
             }
         }

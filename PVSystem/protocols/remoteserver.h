@@ -34,7 +34,7 @@ class RemoteServer : public QObject
 public:
 
     RemoteServer();
-    QByteArray getResponse(QUrl url);
+    QByteArray getResponse(QString url);
     QString output();
     QHash<QString, QString> generateHash(QString url, QString param1, QString param2);
     QString getValue(QString apiKey, QString name);

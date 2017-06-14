@@ -55,7 +55,7 @@ RemoteServer::RemoteServer()
     @param url Crafted url containing all the parameters.
     @return QByteArray containing the server JSON reply
 */
-QByteArray RemoteServer::getResponse(QUrl url)
+QByteArray RemoteServer::getResponse(QString url)
 {
 
     QEventLoop eventLoop;
@@ -89,7 +89,7 @@ QByteArray RemoteServer::getResponse(QUrl url)
 QString RemoteServer::getFromOnline(QString url, QString key)
 {
 
-    QByteArray reply = getResponse(QUrl(url));
+    QByteArray reply = getResponse(url);
     JsonParser jp;
     QString o = jp.Parse(reply, key);
 
@@ -107,7 +107,7 @@ QString RemoteServer::getFromOnline(QString url, QString key)
 QString RemoteServer::getValue(QString apiKey, QString id)
 {
     //getting emoncms response
-    QByteArray reply = getResponse(QUrl("https://emoncms.org/feed/value.json?id=" + id + "&apikey=" + apiKey));
+    QByteArray reply = getResponse("https://emoncms.org/feed/value.json?id=" + id + "&apikey=" + apiKey);
     //making the returned string compatible
     reply.replace("\"", "");
     reply.replace("\"", "");
@@ -133,7 +133,7 @@ QHash<QString, QString> RemoteServer::generateHash(QString url, QString param1, 
     int i;
 
     //getting the list response
-    QString reply = getResponse(QUrl(url));
+    QString reply = getResponse(url);
     reply.replace('[',"");
     reply.replace(']',"");
 
