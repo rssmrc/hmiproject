@@ -21,40 +21,23 @@
  *
  ****************************************************************************/
 
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <protocols/remoteserver.h>
-#include <managers/varmanager.h>
-#include <managers/updatethread.h>
-#include <managers/parameters.h>
-#include <iostream>
-#include <QQmlContext>
-#include <QTimer>
+#ifndef PARAMETERS_H
+#define PARAMETERS_H
 
-using namespace std;
+#include <QObject>
+#include <QThread>
 
-int main(int argc, char *argv[])
+class parameters : public QObject
 {
-    QGuiApplication app(argc, argv);
+    Q_OBJECT
 
-    //initializes the varmanager, parameters manager and remote server
-    varmanager v;
-    parameters p;
-    RemoteServer r;
+public:
 
-    QQmlApplicationEngine engine;
-    //new qmlcontext property linked to the var manager object
-    engine.rootContext()->setContextProperty("emonvars", &v);
-    //cache disabled
-    qputenv("QML_DISABLE_DISK_CACHE", "true");
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    parameters();
 
-    //Starts the variables management thread
-    v.start();
-    if (engine.rootObjects().isEmpty())
-        return -1;
+public slots:
+    QString get(int id);
+    void set(int id, QString val);
+};
 
-    return app.exec();
-}
-
-
+#endif

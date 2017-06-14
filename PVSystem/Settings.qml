@@ -38,7 +38,7 @@ Item {
             objectName: "apiKey"
             x: w/2 - width/2
             y: height*0.5
-            horizontalAlignment: parent.horizontalCenter
+
             width: window.width - window.width*0.1
             height: window.height*0.1
             font.pixelSize: 12
@@ -53,7 +53,7 @@ Item {
             objectName: "panelsAmount"
             x: w/2 - width/2
             y: apiKey.y + apiKey.height*1.5
-            horizontalAlignment: parent.horizontalCenter
+
             width: window.width - window.width*0.1
             height: window.height*0.1
             font.pixelSize: 12
@@ -68,7 +68,7 @@ Item {
             objectName: "tiltAngle"
             x: w/2 - width/2
             y: panelsAmount.y + panelsAmount.height*1.5
-            horizontalAlignment: parent.horizontalCenter
+
             width: window.width - window.width*0.1
             height: window.height*0.1
             font.pixelSize: 12
@@ -81,7 +81,7 @@ Item {
             objectName: "azimuthAngle"
             x: w/2 - width/2
             y: tiltAngle.y + tiltAngle.height*1.5
-            horizontalAlignment: parent.horizontalCenter
+
             width: window.width - window.width*0.1
             height: window.height*0.1
             font.pixelSize: 12
@@ -94,7 +94,7 @@ Item {
             objectName: "wattPeak"
             x: w/2 - width/2
             y: azimuthAngle.y + azimuthAngle.height*1.5
-            horizontalAlignment: parent.horizontalCenter
+
             width: window.width - window.width*0.1
             height: window.height*0.1
             font.pixelSize: 12

@@ -6,7 +6,8 @@ CONFIG += c++11
 SOURCES += main.cpp \
     protocols/remoteserver.cpp \
     utilities/jsonparser.cpp \
-    managers/varmanager.cpp
+    managers/varmanager.cpp \
+    managers/parameters.cpp
 
 
 RESOURCES += qml.qrc
@@ -42,5 +43,6 @@ DISTFILES += \
 HEADERS += \
     managers/varmanager.h \
     protocols/remoteserver.h \
-    utilities/jsonparser.h
+    utilities/jsonparser.h \
+    managers/parameters.h
 
