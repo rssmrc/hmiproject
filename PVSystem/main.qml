@@ -66,7 +66,7 @@ Window {
             indicatorpos: pvstatus.w * 0.5 - pvstatus.indicatorw/2
 
             anchors.horizontalCenter: parent.horizontalCenter
-
+            state: "a"
             //updating the indicator every 0.5 seconds
             Timer{
                 id: updatebar
@@ -76,9 +76,8 @@ Window {
                 //will get the past position and new position
                 onTriggered:{
                     parent.pastpos = parent.indicatorpos
-                    parent.newpos = pvstatus.w * emonvars.getPosition() - pvstatus.indicatorw/2
-                    //UPDATING POSITION
-                    parent.indicatorpos = parent.newpos
+                    parent.indicatorpos = pvstatus.w * emonvars.getPosition() - pvstatus.indicatorw/2
+
                 }
             }
         }

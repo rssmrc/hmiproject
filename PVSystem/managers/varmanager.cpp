@@ -31,7 +31,6 @@
 
 #include "varmanager.h"
 #include "../protocols/remoteserver.h"
-#include "updatethread.h"
 #include <thread>
 #include <QTimer>
 #include <QObject>
@@ -128,9 +127,11 @@ void varmanager::run()
 */
 void varmanager::notifyChange(int id, QString newval)
 {
-    if(mutex == 0)
+    mutex = 1;
+
+    if(mutex == 1)
     {
-        mutex = 1;
+
 
         switch(id)
         {

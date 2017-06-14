@@ -22,9 +22,10 @@
  ****************************************************************************/
 
 import QtQuick 2.0
+import "basics.js" as Basics
 
 Item {
-
+    id: pvsystem
     property int xpos
     property int ypos
     property int w
@@ -43,6 +44,7 @@ Item {
         color: "#282828"
         //load the gradient bar
         Image{
+            id: bar
             source: "images/bar.png"
             anchors.fill: parent
             //load indicator on gradient bar
@@ -51,8 +53,43 @@ Item {
                 source: "images/indicator.png"
                 width: indicatorw
                 height: width - width/15
+
                 anchors.bottom: parent.bottom
-                x: indicatorpos
+
+                state: "a"
+
+                states: [
+                    State {
+                        name: "a"
+                        PropertyChanges { target: indicator; x: pastpos }
+
+                    },
+                    State {
+                        name: "b"
+                        PropertyChanges { target: indicator; x: indicatorpos }
+                    }
+
+                ]
+
+                transitions: Transition {
+                    NumberAnimation { properties: "x"; easing.type: Easing.InOutQuad; duration: 200 }
+                }
+
+                //timer constantly updating status
+                Timer{
+                    id: updatez
+                    repeat: true
+                    interval: 500
+                    running: true
+                    //will get the past position and new position
+                    onTriggered:{
+                        if(parent.state == "a")
+                            parent.state =  "b"
+                        else
+                            parent.state = "a"
+
+                    }
+                }
             }
         }
     }

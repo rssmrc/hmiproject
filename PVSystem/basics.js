@@ -50,12 +50,7 @@ function drawerOpen(i){
         netDrawer.open();
 }
 
-function slideIndicator(a, b){
-
-    var i;
-
-    i = b;
-    pvstatus.indicatorpos = i;
+function slideIndicator(){
 
 }
 
