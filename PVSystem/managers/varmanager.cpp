@@ -51,7 +51,7 @@ int mutex = 0;
 
 //structure containing all the important values
 struct vars{
-    QString apiKey;
+    QString apiKey = "1b15eb3ce081a80829e78acb83c5004a";
     QString inverterPower;
     QString panelsAmount;
     QString wattPeak;
@@ -65,6 +65,9 @@ struct vars{
 
 varmanager::varmanager()
 {
+    //building hashes
+    buildHash(vars.apiKey);
+    //initilization of struct vars
     vars.inverterPower = r.getValue(vars.apiKey, hash_b["power"]);
     vars.panelsAmount = r.getValue(vars.apiKey, hash_b["panels"]);
     vars.wattPeak = r.getValue(vars.apiKey, hash_b["peak"]);
@@ -96,7 +99,7 @@ void varmanager::run()
                 vars.azimuthAngle = r.getValue(vars.apiKey, hash_b["azimuth"]);
                 vars.percentage = r.getValue(vars.apiKey, hash_b["percentage"]);
                 vars.currentEnergy = r.getValue(vars.apiKey, hash_b["energy"]);
-                qDebug() << vars.inverterPower << endl;
+                qDebug() << vars.wattPeak << endl;
             }
             //if the user values were updated thread will go into writing mode
             else
@@ -125,28 +128,32 @@ void varmanager::run()
 */
 void varmanager::notifyChange(int id, QString newval)
 {
-    switch(id)
+    if(mutex == 0)
     {
-        case 0:
-            vars.panelsAmount = newval;
-            break;
-        case 1:
-            vars.tiltAngle = newval;
-            break;
-        case 2:
-            vars.azimuthAngle = newval;
-            break;
-        case 3:
-            vars.wattPeak = newval;
-            break;
-        case 4:
-            vars.apiKey = newval;
-            break;
-        default:
-            break;
+        mutex = 1;
+
+        switch(id)
+        {
+            case 0:
+                vars.panelsAmount = newval;
+                break;
+            case 1:
+                vars.tiltAngle = newval;
+                break;
+            case 2:
+                vars.azimuthAngle = newval;
+                break;
+            case 3:
+                vars.wattPeak = newval;
+                break;
+            case 4:
+                vars.apiKey = newval;
+                break;
+            default:
+                break;
+        }
     }
 
-    mutex = 1;
 }
 
 /**
@@ -158,7 +165,6 @@ void varmanager::buildHash(QString api)
 {
     hash_a = r.generateHash("http://emoncms.org/feed/list.json?apikey=" + api, "id", "name");
     hash_b = r.generateHash("http://emoncms.org/feed/list.json?apikey=" + api, "name", "id");
-    vars.apiKey = api;
 }
 
 /**

@@ -46,8 +46,17 @@ function drawerOpen(i){
         drawer.open();
     else if(i === 1)
         infoDrawer.open();
-    else if(i == 2)
+    else if(i === 2)
         netDrawer.open();
+}
+
+function slideIndicator(a, b){
+
+    var i;
+
+    i = b;
+    pvstatus.indicatorpos = i;
+
 }
 
 

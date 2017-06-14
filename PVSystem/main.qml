@@ -61,17 +61,24 @@ Window {
             w: window.width - (window.width/10)*2
             h: window.height/2 - (window.height/15)*2
             indicatorw: w/7
+            pastpos: 0
+            //standard position
             indicatorpos: pvstatus.w * 0.5 - pvstatus.indicatorw/2
+
             anchors.horizontalCenter: parent.horizontalCenter
 
+            //updating the indicator every 0.5 seconds
             Timer{
                 id: updatebar
                 repeat: true
                 interval: 500
                 running: true
-
+                //will get the past position and new position
                 onTriggered:{
-                    parent.indicatorpos = pvstatus.w * emonvars.getPosition() - pvstatus.indicatorw/2
+                    parent.pastpos = parent.indicatorpos
+                    parent.newpos = pvstatus.w * emonvars.getPosition() - pvstatus.indicatorw/2
+                    //UPDATING POSITION
+                    parent.indicatorpos = parent.newpos
                 }
             }
         }

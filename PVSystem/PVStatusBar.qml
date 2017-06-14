@@ -30,6 +30,8 @@ Item {
     property int w
     property int h
     property int indicatorpos
+    property int pastpos
+    property int newpos
     property int indicatorw
 
     Rectangle{
