@@ -26,7 +26,7 @@ function updateTime(){
 }
 
 function checkBounds(){
-    if(testSlider.value > rSlider.first.value && testSlider.value < rSlider.second.value){
+    if(emonvars.getPosition() > rSlider.first.value && emonvars.getPosition() < rSlider.second.value){
         return false
     }
     else{

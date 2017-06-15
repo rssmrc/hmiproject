@@ -41,6 +41,12 @@ Keyboard::Keyboard(QObject *o)
     root = o;
 }
 
+/**
+    Simulates a key press
+
+    @param k Key pressed
+    @param name TextField id
+*/
 void Keyboard::press(QString k, QString name)
 {
     QObject *qmlObject = root->findChild<QObject*>(name);
@@ -48,6 +54,11 @@ void Keyboard::press(QString k, QString name)
     qmlObject->setProperty("text",input);
 }
 
+/**
+    Simulates the deletion of a char
+
+    @param name TextField id
+*/
 void Keyboard::deletechar(QString name)
 {
     QObject *qmlObject = root->findChild<QObject*>(name);
