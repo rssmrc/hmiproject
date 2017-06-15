@@ -13,6 +13,9 @@ Item {
         text: "1"
         width: w/12
         height: h/4
+        onClicked:{
+            vkboard.press();
+        }
     }
     Button{
         id: n2

@@ -30,6 +30,7 @@
 #include <iostream>
 #include <QQmlContext>
 #include <QTimer>
+#include <QQuickItem>
 
 using namespace std;
 
@@ -41,18 +42,24 @@ int main(int argc, char *argv[])
     varmanager v;
     parameters p;
     RemoteServer r;
-    //new keyboard object
-    Keyboard kboard;
 
     QQmlApplicationEngine engine;
     //new qmlcontext property linked to the var manager object
     engine.rootContext()->setContextProperty("emonvars", &v);
     engine.rootContext()->setContextProperty("networkvars", &p);
-    engine.rootContext()->setContextProperty("vkboard", &kboard);
+
 
     //cache disabled
     qputenv("QML_DISABLE_DISK_CACHE", "true");
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+
+    QObject *rootObject = engine.rootObjects().first();
+
+    //new keyboard object
+    Keyboard kboard(rootObject);
+    engine.rootContext()->setContextProperty("vkboard", &kboard);
+
+
 
     //Starts the variables management thread
     v.start();

@@ -25,14 +25,15 @@
 #define KEYBOARD_H
 
 #include <QObject>
-
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
 class Keyboard : public QObject
 {
     Q_OBJECT
 
 public:
 
-    Keyboard();
+    Keyboard(QObject *o);
 
 public slots:
     void press();

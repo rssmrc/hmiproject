@@ -31,13 +31,18 @@
 
 #include "keyboard.h"
 #include <QObject>
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
 
-Keyboard::Keyboard()
+QObject *root;
+
+Keyboard::Keyboard(QObject *o)
 {
-
+    root = o;
 }
 
-void press()
+void Keyboard::press()
 {
-
+    QObject *qmlObject = root->findChild<QObject*>("apiKey");
+    qmlObject->setProperty("text","test");
 }
