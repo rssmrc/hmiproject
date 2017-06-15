@@ -75,10 +75,8 @@ Window {
                 running: true
                 //will get the past position and new position
                 onTriggered:{
-                    console.debug("Pastpos: " + parent.pastpos)
-                    console.debug("Indicatorpos: " + parent.indicatorpos)
 
-                    parent.pastpos = parent.indicatorpos
+                    parent.pastpos = pvstatus.indicatorpos
                     parent.indicatorpos = pvstatus.w * emonvars.getPosition() - pvstatus.indicatorw/2
 
                 }

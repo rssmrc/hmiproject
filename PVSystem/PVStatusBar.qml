@@ -35,7 +35,6 @@ Item {
     property int indicatorw
     property int initpos
     property int newpos
-    property bool first: false
 
     Rectangle{
         id: currentPV
@@ -80,7 +79,7 @@ Item {
                 ]
 
                 transitions: Transition {
-                    NumberAnimation { properties: "x"; easing.type: Easing.InOutQuad; duration: 100 }
+                    NumberAnimation { properties: "x"; easing.type: Easing.OutCirc; duration: 100 }
                 }
 
                 //timer constantly updating status
@@ -95,14 +94,6 @@ Item {
                         //if indicator is on its initial state
                         if(indicator.state == "init")
                             indicator.state = "current"
-                        if(first == true){
-                            if(indicatorpos != pastpos)
-                                indicator.state = "new"
-                        }
-
-                        first = true
-
-                        console.debug("State: " + parent.state)
 
                     }
                 }
