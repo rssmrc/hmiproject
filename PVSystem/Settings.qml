@@ -89,6 +89,13 @@ Item {
             font.pixelSize: 12
             placeholderText: qsTr("Tilt Angle")
             onAccepted: emonvars.notifyChange(1,tiltAngle.text)
+            MouseArea{
+                anchors.fill: parent
+                onClicked:{
+                    tiltAngle.focus = true
+                    Basics.keyboardToggle(parent.objectName)
+                }
+            }
         }
 
         TextField {
@@ -103,10 +110,10 @@ Item {
             placeholderText: qsTr("Azimuth Angle")
             onAccepted: emonvars.notifyChange(2,azimuthAngle.text)
             MouseArea{
-                anchors.fill: parent
+                anchors.fill: azimuthAngle
                 onClicked:{
-                    azimuthAngle.focus = true
-                    Basics.keyboardToggle()
+                    panelsAmount.focus = true
+                    Basics.keyboardToggle(parent.objectName)
                 }
             }
         }
@@ -122,6 +129,13 @@ Item {
             font.pixelSize: 12
             placeholderText: qsTr("Watt Peak")
             onAccepted: emonvars.notifyChange(3,wattPeak.text)
+            MouseArea{
+                anchors.fill: parent
+                onClicked:{
+                    wattPeak.focus = true
+                    Basics.keyboardToggle(parent.objectName)
+                }
+            }
         }
 
     }

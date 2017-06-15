@@ -46,6 +46,13 @@ Item {
             onEditingFinished:{
                 networkvars.set(1, text)
             }
+            MouseArea{
+                anchors.fill: parent
+                onClicked:{
+                    serverAddress.focus = true
+                    Basics.keyboardToggle(parent.objectName)
+                }
+            }
         }
 
         TextField {
@@ -60,6 +67,13 @@ Item {
             text: networkvars.get(0)
             onEditingFinished:{
                 networkvars.set(0, text)
+            }
+            MouseArea{
+                anchors.fill: parent
+                onClicked:{
+                    ipAddress.focus = true
+                    Basics.keyboardToggle(parent.objectName)
+                }
             }
         }
 
@@ -76,6 +90,13 @@ Item {
             onEditingFinished:{
                 networkvars.set(2,text)
             }
+            MouseArea{
+                anchors.fill: parent
+                onClicked:{
+                    defaultGateway.focus = true
+                    Basics.keyboardToggle(parent.objectName)
+                }
+            }
 
         }
 
@@ -91,6 +112,13 @@ Item {
             text: networkvars.get(3)
             onEditingFinished:{
                 networkvars.set(3,text)
+            }
+            MouseArea{
+                anchors.fill: parent
+                onClicked:{
+                    subnetMask.focus = true
+                    Basics.keyboardToggle(parent.objectName)
+                }
             }
 
 
