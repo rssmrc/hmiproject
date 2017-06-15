@@ -153,6 +153,7 @@ Window {
                color: "#202020"
            }
            Keyboard{
+               id: vkeyboard
                w: window.width
                h: window.height
            }

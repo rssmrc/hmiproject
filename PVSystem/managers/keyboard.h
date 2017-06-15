@@ -36,7 +36,7 @@ public:
     Keyboard(QObject *o);
 
 public slots:
-    void press();
+    void press(QString k, QString name);
 };
 
 #endif

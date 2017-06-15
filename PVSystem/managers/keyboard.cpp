@@ -41,8 +41,9 @@ Keyboard::Keyboard(QObject *o)
     root = o;
 }
 
-void Keyboard::press()
+void Keyboard::press(QString k, QString name)
 {
-    QObject *qmlObject = root->findChild<QObject*>("apiKey");
-    qmlObject->setProperty("text","test");
+    QObject *qmlObject = root->findChild<QObject*>(name);
+    QString input = qmlObject->property("text").toString() + k;
+    qmlObject->setProperty("text",input);
 }

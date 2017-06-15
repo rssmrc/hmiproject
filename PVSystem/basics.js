@@ -43,7 +43,8 @@ function drawerOpen(i){
         netDrawer.open();
 }
 
-function keyboardToggle(){
+function keyboardToggle(name){
+    vkeyboard.form = name;
     keyboard.open();
 }
 

@@ -50,7 +50,7 @@ Item {
                 anchors.fill: parent
                 onClicked:{
                     apiKey.focus = true
-                    Basics.keyboardToggle()
+                    Basics.keyboardToggle(parent.objectName)
                 }
             }
         }
@@ -68,6 +68,13 @@ Item {
             onAccepted:{
                 emonvars.notifyChange(0,panelsAmount.text)
 
+            }
+            MouseArea{
+                anchors.fill: parent
+                onClicked:{
+                    panelsAmount.focus = true
+                    Basics.keyboardToggle(parent.objectName)
+                }
             }
         }
 
