@@ -47,6 +47,7 @@ RemoteServer r;
 //mutex 0 = reading mode
 //mutex 1 = writing mode
 int mutex = 0;
+int loaded = 0;
 
 //structure containing all the important values
 struct vars{
@@ -76,6 +77,8 @@ varmanager::varmanager()
     vars.azimuthAngle = r.getValue(vars.apiKey, hash_b["azimuth"]);
     vars.percentage = r.getValue(vars.apiKey, hash_b["percentage"]);
     vars.currentEnergy = r.getValue(vars.apiKey, hash_b["energy"]);
+    //notify the other methods that the vars have been loaded
+    loaded = 1;
 }
 
 void varmanager::run()
@@ -176,8 +179,16 @@ void varmanager::buildHash(QString api)
 
 float varmanager::getPosition()
 {
-    float retval = vars.inverterPower.toFloat() / vars.wattPeak.toFloat();
-    return retval;
+    if(loaded = 1)
+    {
+        float retval = vars.inverterPower.toFloat() / vars.wattPeak.toFloat();
+        return retval;
+    }
+    else
+    {
+        return 0.5;
+    }
+
 }
 
 /**

@@ -34,6 +34,7 @@ Item {
     property int pastpos
     property int newpos
     property int indicatorw
+    property int initpos
 
     Rectangle{
         id: currentPV
@@ -56,37 +57,44 @@ Item {
 
                 anchors.bottom: parent.bottom
 
-                state: "a"
+                state: "init"
 
                 states: [
                     State {
-                        name: "a"
+                        name: "current"
                         PropertyChanges { target: indicator; x: pastpos }
 
                     },
                     State {
-                        name: "b"
+                        name: "new"
                         PropertyChanges { target: indicator; x: indicatorpos }
+                    },
+                    State {
+                        name: "init"
+                        PropertyChanges { target: indicator; x: initpos }
                     }
 
                 ]
 
                 transitions: Transition {
-                    NumberAnimation { properties: "x"; easing.type: Easing.InOutQuad; duration: 200 }
+                    NumberAnimation { properties: "x"; easing.type: Easing.InOutQuad; duration: 500 }
                 }
 
                 //timer constantly updating status
                 Timer{
-                    id: updatez
+                    id: update
                     repeat: true
                     interval: 500
                     running: true
                     //will get the past position and new position
                     onTriggered:{
-                        if(parent.state == "a")
-                            parent.state =  "b"
-                        else
-                            parent.state = "a"
+                        //if indicator is on its initial state
+                        if(indicator.state == "init")
+                            indicator.state = "pastpos"
+                        if(indicator.state == "pastpos" && pastpos !== indicatorpos)
+                            indicator.state = "new"
+                        if(indicator.state == "new" && pastpos == indicatorpos)
+                            indicator.state = "current"
 
                     }
                 }

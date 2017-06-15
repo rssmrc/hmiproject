@@ -43,7 +43,7 @@ Item {
             height: window.height*0.1
             font.pixelSize: 12
             placeholderText: "API Key"
-            onEditingFinished:{
+            onAccepted:{
                 emonvars.buildHash(text);
             }
         }
@@ -58,7 +58,7 @@ Item {
             height: window.height*0.1
             font.pixelSize: 12
             placeholderText: qsTr("Panels Amount")
-            onEditingFinished:{
+            onAccepted:{
                 emonvars.notifyChange(0,panelsAmount.text)
             }
         }
@@ -73,7 +73,7 @@ Item {
             height: window.height*0.1
             font.pixelSize: 12
             placeholderText: qsTr("Tilt Angle")
-            onEditingFinished: emonvars.notifyChange(1,tiltAngle.text)
+            onAccepted: emonvars.notifyChange(1,tiltAngle.text)
         }
 
         TextField {
@@ -86,7 +86,7 @@ Item {
             height: window.height*0.1
             font.pixelSize: 12
             placeholderText: qsTr("Azimuth Angle")
-            onEditingFinished: emonvars.notifyChange(2,azimuthAngle.text)
+            onAccepted: emonvars.notifyChange(2,azimuthAngle.text)
         }
 
         TextField {
@@ -99,7 +99,7 @@ Item {
             height: window.height*0.1
             font.pixelSize: 12
             placeholderText: qsTr("Watt Peak")
-            onEditingFinished: emonvars.notifyChange(3,wattPeak.text)
+            onAccepted: emonvars.notifyChange(3,wattPeak.text)
         }
 
     }

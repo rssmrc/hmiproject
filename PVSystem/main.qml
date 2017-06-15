@@ -61,12 +61,12 @@ Window {
             w: window.width - (window.width/10)*2
             h: window.height/2 - (window.height/15)*2
             indicatorw: w/7
-            pastpos: 0
             //standard position
-            indicatorpos: pvstatus.w * 0.5 - pvstatus.indicatorw/2
-
+            initpos: pvstatus.w * 0.5 - pvstatus.indicatorw/2
+            pastpos: initpos
+            indicatorpos: initpos
             anchors.horizontalCenter: parent.horizontalCenter
-            state: "a"
+
             //updating the indicator every 0.5 seconds
             Timer{
                 id: updatebar
@@ -77,7 +77,7 @@ Window {
                 onTriggered:{
                     parent.pastpos = parent.indicatorpos
                     parent.indicatorpos = pvstatus.w * emonvars.getPosition() - pvstatus.indicatorw/2
-
+                    console.debug("PASTPOS: " + parent.pastpos + " INITPOS: " + parent.initpos + " INDICATORPOS: " + parent.indicatorpos)
                 }
             }
         }
