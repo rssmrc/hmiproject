@@ -87,6 +87,12 @@ Item {
             font.pixelSize: 12
             placeholderText: qsTr("Azimuth Angle")
             onAccepted: emonvars.notifyChange(2,azimuthAngle.text)
+            MouseArea{
+                anchors.fill: parent
+                onClicked:{
+                    Basics.keyboardToggle()
+                }
+            }
         }
 
         TextField {

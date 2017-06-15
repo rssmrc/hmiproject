@@ -15,5 +15,6 @@
         <file>Settings.qml</file>
         <file>Info.qml</file>
         <file>NetSettings.qml</file>
+        <file>Keyboard.qml</file>
     </qresource>
 </RCC>

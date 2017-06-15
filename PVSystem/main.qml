@@ -144,5 +144,19 @@ Window {
            }
        }
 
+       Drawer{
+           id: keyboard
+           width: parent.width
+           height: parent.height/2
+           edge: Qt.BottomEdge
+           background: Rectangle{
+               color: "#202020"
+           }
+           Keyboard{
+               w: window.width
+               h: window.height
+           }
+       }
+
     }
 }

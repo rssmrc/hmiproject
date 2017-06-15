@@ -43,8 +43,8 @@ function drawerOpen(i){
         netDrawer.open();
 }
 
-function slideIndicator(){
-
+function keyboardToggle(){
+    keyboard.open();
 }
 
 
