@@ -19,7 +19,9 @@ Day 3:
 
 Day 4:
 ###################################################################################################
-
+- Information tab rework
+- API Communication improvement
+- Virtual Keyboard implementation
 
 
 Day 5:
