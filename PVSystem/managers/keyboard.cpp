@@ -47,3 +47,11 @@ void Keyboard::press(QString k, QString name)
     QString input = qmlObject->property("text").toString() + k;
     qmlObject->setProperty("text",input);
 }
+
+void Keyboard::deletechar(QString name)
+{
+    QObject *qmlObject = root->findChild<QObject*>(name);
+    QString input = qmlObject->property("text").toString();
+    QString output = input.mid(0, input.length()-1);
+    qmlObject->setProperty("text",output);
+}

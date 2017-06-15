@@ -37,6 +37,7 @@ public:
 
 public slots:
     void press(QString k, QString name);
+    void deletechar(QString name);
 };
 
 #endif
