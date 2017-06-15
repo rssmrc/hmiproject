@@ -7,7 +7,8 @@ SOURCES += main.cpp \
     protocols/remoteserver.cpp \
     utilities/jsonparser.cpp \
     managers/varmanager.cpp \
-    managers/parameters.cpp
+    managers/parameters.cpp \
+    managers/keyboard.cpp
 
 
 RESOURCES += qml.qrc
@@ -44,5 +45,6 @@ HEADERS += \
     managers/varmanager.h \
     protocols/remoteserver.h \
     utilities/jsonparser.h \
-    managers/parameters.h
+    managers/parameters.h \
+    managers/keyboard.h
 

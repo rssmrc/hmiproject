@@ -21,45 +21,23 @@
  *
  ****************************************************************************/
 
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <protocols/remoteserver.h>
-#include <managers/varmanager.h>
-#include <managers/parameters.h>
-#include <managers/keyboard.h>
-#include <iostream>
-#include <QQmlContext>
-#include <QTimer>
+/**
+    PVSystem, keyboard.cpp
+    Purpose: On-Screen Keyboard handler
 
-using namespace std;
+    @author Marco Rossi
+    @version 1.0 15/06/17
+*/
 
-int main(int argc, char *argv[])
+#include "keyboard.h"
+#include <QObject>
+
+Keyboard::Keyboard()
 {
-    QGuiApplication app(argc, argv);
 
-    //initializes the varmanager, parameters manager and remote server
-    varmanager v;
-    parameters p;
-    RemoteServer r;
-    //new keyboard object
-    Keyboard kboard;
-
-    QQmlApplicationEngine engine;
-    //new qmlcontext property linked to the var manager object
-    engine.rootContext()->setContextProperty("emonvars", &v);
-    engine.rootContext()->setContextProperty("networkvars", &p);
-    engine.rootContext()->setContextProperty("vkboard", &kboard);
-
-    //cache disabled
-    qputenv("QML_DISABLE_DISK_CACHE", "true");
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-
-    //Starts the variables management thread
-    v.start();
-    if (engine.rootObjects().isEmpty())
-        return -1;
-
-    return app.exec();
 }
 
+void press()
+{
 
+}

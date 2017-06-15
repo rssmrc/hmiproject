@@ -46,6 +46,13 @@ Item {
             onAccepted:{
                 emonvars.buildHash(text);
             }
+            MouseArea{
+                anchors.fill: parent
+                onClicked:{
+                    apiKey.focus = true
+                    Basics.keyboardToggle()
+                }
+            }
         }
 
         TextField {
@@ -60,6 +67,7 @@ Item {
             placeholderText: qsTr("Panels Amount")
             onAccepted:{
                 emonvars.notifyChange(0,panelsAmount.text)
+
             }
         }
 
@@ -90,6 +98,7 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked:{
+                    azimuthAngle.focus = true
                     Basics.keyboardToggle()
                 }
             }

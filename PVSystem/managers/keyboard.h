@@ -21,45 +21,21 @@
  *
  ****************************************************************************/
 
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <protocols/remoteserver.h>
-#include <managers/varmanager.h>
-#include <managers/parameters.h>
-#include <managers/keyboard.h>
-#include <iostream>
-#include <QQmlContext>
-#include <QTimer>
+#ifndef KEYBOARD_H
+#define KEYBOARD_H
 
-using namespace std;
+#include <QObject>
 
-int main(int argc, char *argv[])
+class Keyboard : public QObject
 {
-    QGuiApplication app(argc, argv);
+    Q_OBJECT
 
-    //initializes the varmanager, parameters manager and remote server
-    varmanager v;
-    parameters p;
-    RemoteServer r;
-    //new keyboard object
-    Keyboard kboard;
+public:
 
-    QQmlApplicationEngine engine;
-    //new qmlcontext property linked to the var manager object
-    engine.rootContext()->setContextProperty("emonvars", &v);
-    engine.rootContext()->setContextProperty("networkvars", &p);
-    engine.rootContext()->setContextProperty("vkboard", &kboard);
+    Keyboard();
 
-    //cache disabled
-    qputenv("QML_DISABLE_DISK_CACHE", "true");
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+public slots:
+    void press();
+};
 
-    //Starts the variables management thread
-    v.start();
-    if (engine.rootObjects().isEmpty())
-        return -1;
-
-    return app.exec();
-}
-
-
+#endif
