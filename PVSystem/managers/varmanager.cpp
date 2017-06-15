@@ -171,13 +171,56 @@ void varmanager::buildHash(QString api)
 /**
     Gets the required value
 
-    @return Test
+    @return POSITION
 */
 
 float varmanager::getPosition()
 {
     float retval = vars.inverterPower.toFloat() / vars.wattPeak.toFloat();
     return retval;
+}
+
+/**
+    Gets the required value
+
+    @return required value
+*/
+QString varmanager::getValue(int id)
+{
+    switch(id)
+    {
+    case 0:
+        return vars.azimuthAngle;
+        break;
+    case 1:
+        return vars.currentEnergy;
+        break;
+    case 2:
+        return vars.inverterPower;
+        break;
+    case 3:
+        return vars.irradiation;
+        break;
+    case 4:
+        return vars.panelsAmount;
+        break;
+    case 5:
+        return vars.panelYield;
+        break;
+    case 6:
+        return vars.percentage;
+        break;
+    case 7:
+        return vars.tiltAngle;
+        break;
+    case 8:
+        return vars.wattPeak;
+        break;
+    default:
+        return "";
+        break;
+
+    }
 }
 
 

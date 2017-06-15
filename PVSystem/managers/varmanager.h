@@ -40,6 +40,7 @@ public slots:
     void notifyChange(int id, QString newval);
     void buildHash(QString api);
     float getPosition();
+    QString getValue(int id);
 };
 
 #endif // VARMANAGER_H

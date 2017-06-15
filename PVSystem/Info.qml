@@ -34,8 +34,12 @@ Item {
         anchors.fill: parent
 
         Rectangle{
+
+            function updateValues(){
+                irradiation.text = emonvars.getValue(3)
+            }
+
             width: w
-            height: h/3
             color: "#101010"
             anchors.top: parent.top
 
@@ -49,18 +53,152 @@ Item {
             //current time
             Label{
                 font.pixelSize: 15
-                text: "EMONCMS Value: "
+                text: "Irradiation: "
                 color: "#FFFFFF"
                 y: 46
                 x: 21
             }
             Label{
+                id: irradiation
                 font.pixelSize: 15
-                //c++ function in the RemoteServer Object
-                text: "..."
+                text: emonvars.getValue(3)
                 color: "#FFFFFF"
                 y: 46
-                x: 153
+                x: 177
+            }
+            Label{
+                font.pixelSize: 15
+                text: "Watt Peak: "
+                color: "#FFFFFF"
+                y: 80
+                x: 21
+            }
+            Label{
+                id: wattpeak
+                font.pixelSize: 15
+                text: emonvars.getValue(8)
+                color: "#FFFFFF"
+                y: 80
+                x: 177
+            }
+
+            Label {
+                x: 21
+                y: 113
+                color: "#ffffff"
+                text: "Tilt Angle: "
+                font.pixelSize: 15
+            }
+
+            Label {
+                id: tilt
+                x: 177
+                y: 113
+                color: "#ffffff"
+                text: emonvars.getValue(7)
+                font.pixelSize: 15
+            }
+
+            Label {
+                x: 21
+                y: 145
+                color: "#ffffff"
+                text: "Azimuth Angle: "
+                font.pixelSize: 15
+            }
+
+            Label {
+                id: azimuth
+                x: 177
+                y: 145
+                color: "#ffffff"
+                text: emonvars.getValue(0)
+                font.pixelSize: 15
+            }
+
+            Label {
+                x: 21
+                y: 179
+                color: "#ffffff"
+                text: "Current Energy: "
+                font.pixelSize: 15
+            }
+
+            Label {
+                id: energy
+                x: 177
+                y: 179
+                color: "#ffffff"
+                text: emonvars.getValue(1)
+                font.pixelSize: 15
+            }
+
+            Label {
+                x: 21
+                y: 212
+                color: "#ffffff"
+                text: "Inverter Power: "
+                font.pixelSize: 15
+            }
+
+            Label {
+                id: power
+                x: 177
+                y: 212
+                color: "#ffffff"
+                text: emonvars.getValue(2)
+                font.pixelSize: 15
+            }
+
+            Label {
+                x: 22
+                y: 243
+                color: "#ffffff"
+                text: "Battery Percentage: "
+                font.pixelSize: 15
+            }
+
+            Label {
+                id: battery
+                x: 177
+                y: 243
+                color: "#ffffff"
+                text: emonvars.getValue(6) + "%"
+                font.pixelSize: 15
+            }
+
+            Label {
+                x: 22
+                y: 277
+                color: "#ffffff"
+                text: "Panels Amount: "
+                font.pixelSize: 15
+            }
+
+            Label {
+                id: panels
+                x: 177
+                y: 277
+                color: "#ffffff"
+                text: emonvars.getValue(4)
+                font.pixelSize: 15
+            }
+
+            Label {
+                x: 22
+                y: 310
+                color: "#ffffff"
+                text: "Panels Yield: "
+                font.pixelSize: 15
+            }
+
+            Label {
+                id: yield
+                x: 177
+                y: 310
+                color: "#ffffff"
+                text: emonvars.getValue(5)
+                font.pixelSize: 15
             }
 
 
@@ -70,3 +208,6 @@ Item {
 
 
 }
+
+
+
