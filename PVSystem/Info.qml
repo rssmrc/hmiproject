@@ -30,14 +30,24 @@ Item {
     property int w
     property int h
 
+    function updateValues(){
+        irradiation.text = emonvars.getValue(3)
+        wattpeak.text = emonvars.getValue(8)
+        tilt.text = emonvars.getValue(7)
+        azimuth.text = emonvars.getValue(0)
+        energy.text = emonvars.getValue(1)
+        power.text = emonvars.getValue(2)
+        battery.text = emonvars.getValue(6)
+        panels.text = emonvars.getValue(4)
+        yield.text = emonvars.getValue(5)
+    }
+
     Rectangle{
         anchors.fill: parent
 
         Rectangle{
 
-            function updateValues(){
-                irradiation.text = emonvars.getValue(3)
-            }
+
 
             width: w
             color: "#101010"
