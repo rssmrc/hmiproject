@@ -31,7 +31,6 @@ Item {
     property int h
     property int xpos
     property int ypos
-    property bool visibleAlert: Basics.checkBounds()
 
     Timer{
         id: clock
@@ -67,7 +66,7 @@ Item {
                 source: "images/danger.png"
                 height: parent.height
                 width: height
-                visible: visibleAlert
+                visible: Basics.checkBounds()
             }
         }
 

@@ -113,7 +113,7 @@ Item {
     Button{id: comma_key;y:height*3;text: ",";width: w/12;height: h/8;x:m_key.x + width;onClicked:{vkboard.press(",", form, caps);}background:Rectangle{color:{if(comma_key.down){"#aaaaaa"}else{"#eeeeee"}}border.width: 1;border.color: "#909090"}}
     Button{id: dot_key;y:height*3;text: ".";width: w/12;height: h/8;x:comma_key.x + width;onClicked:{vkboard.press(".", form, caps);}background:Rectangle{color:{if(dot_key.down){"#aaaaaa"}else{"#eeeeee"}}border.width: 1;border.color: "#909090"}}
     Button{id: score_key;y:height*3;text: "_";width: w/12;height: h/8;x:dot_key.x + width;onClicked:{vkboard.press("_", form, caps);}background:Rectangle{color:{if(score_key.down){"#aaaaaa"}else{"#eeeeee"}}border.width: 1;border.color: "#909090"}}
-    Button{id: hash_key;y:height*3;text: "#";width: w/12;height: h/8;x:score_key.x + width;onClicked:{vkboard.press("#", form, caps);}background:Rectangle{color:{if(hash_key.down){"#aaaaaa"}else{"#eeeeee"}}border.width: 1;border.color: "#909090"}}
-    Button{id: ddots_key;y:height*3;text: ":";width: w/12;height: h/8;x:hash_key.x + width;onClicked:{vkboard.press(":", form, caps);}background:Rectangle{color:{if(ddots_key.down){"#aaaaaa"}else{"#eeeeee"}}border.width: 1;border.color: "#909090"}}
+    Button{id: done_key;y:height*3;text: "DONE";width: w/12;height: h/8;x:ddots_key.x + width;onClicked:{vkboard.confirm(form);}background:Rectangle{color:{if(done_key.down){"#29a329"}else{"#33cc33"}}border.width: 1;border.color: "#909090"}}
+    Button{id: ddots_key;y:height*3;text: ":";width: w/12;height: h/8;x:score_key.x + width;onClicked:{vkboard.press(":", form, caps);}background:Rectangle{color:{if(ddots_key.down){"#aaaaaa"}else{"#eeeeee"}}border.width: 1;border.color: "#909090"}}
 
 }

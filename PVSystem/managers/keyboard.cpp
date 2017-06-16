@@ -30,9 +30,11 @@
 */
 
 #include "keyboard.h"
+#include "varmanager.h"
 #include <QObject>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QDebug>
 
 QObject *root;
 
@@ -75,4 +77,23 @@ void Keyboard::deletechar(QString name)
     QString input = qmlObject->property("text").toString();
     QString output = input.mid(0, input.length()-1);
     qmlObject->setProperty("text",output);
+}
+
+void Keyboard::confirm(QString name)
+{
+    varmanager mgr;
+
+    QObject *qmlObject = root->findChild<QObject*>(name);
+    QString input = qmlObject->property("text").toString();
+
+    if(name == "wattPeak")
+    {
+        qDebug() << "Current text in wattPeak form: " << input << endl;
+    }
+
+
+
+
+    //TOWORK ON
+
 }

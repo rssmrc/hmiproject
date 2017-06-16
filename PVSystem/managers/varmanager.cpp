@@ -44,9 +44,8 @@ QHash<QString, QString> hash_a;
 QHash<QString, QString> hash_b;
 
 RemoteServer r;
-//mutex 0 = reading mode
-//mutex 1 = writing mode
-int mutex = 0;
+RemoteServer up;
+
 int loaded = 0;
 
 //structure containing all the important values
@@ -89,9 +88,7 @@ void varmanager::run()
     {
         if(vars.apiKey.isEmpty() == false)
         {
-            //if no new values were added thread will stay in reading mode
-            if(mutex == 0)
-            {
+
                 vars.inverterPower = r.getValue(vars.apiKey, hash_b["power"]);
                 vars.panelsAmount = r.getValue(vars.apiKey, hash_b["panels"]);
                 vars.wattPeak = r.getValue(vars.apiKey, hash_b["peak"]);
@@ -102,15 +99,8 @@ void varmanager::run()
                 vars.percentage = r.getValue(vars.apiKey, hash_b["percentage"]);
                 vars.currentEnergy = r.getValue(vars.apiKey, hash_b["energy"]);
                 qDebug() << vars.wattPeak << endl;
-            }
-            //if the user values were updated thread will go into writing mode
-            else
-            {
-                QString url = "https://emoncms.org/input/post?json={panels:" + vars.panelsAmount + ",azimuth:" + vars.azimuthAngle + ",t_angle:" + vars.tiltAngle + ",peak:" + vars.wattPeak + "}&apikey=" + vars.apiKey;
-                QString ret = r.getResponse(url);
-                qDebug() << "Send request " << url << endl << " Reply: " << ret << endl;
-                mutex = 0;
-            }
+
+
         }
         else
         {
@@ -130,33 +120,32 @@ void varmanager::run()
 */
 void varmanager::notifyChange(int id, QString newval)
 {
-    mutex = 1;
 
-    if(mutex == 1)
-    {
-
+        QString url = "https://emoncms.org/input/post?json={peak:" + newval+ "}&apikey=" + vars.apiKey;
+        QString ret;
 
         switch(id)
         {
             case 0:
-                vars.panelsAmount = newval;
+
                 break;
             case 1:
-                vars.tiltAngle = newval;
+
                 break;
             case 2:
-                vars.azimuthAngle = newval;
+
                 break;
             case 3:
-                vars.wattPeak = newval;
+                ret = r.getResponse(url);
                 break;
+
             case 4:
-                vars.apiKey = newval;
+
                 break;
             default:
                 break;
         }
-    }
+
 
 }
 

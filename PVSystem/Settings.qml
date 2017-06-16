@@ -128,7 +128,7 @@ Item {
             height: window.height*0.1
             font.pixelSize: 12
             placeholderText: qsTr("Watt Peak")
-            onAccepted: emonvars.notifyChange(3,wattPeak.text)
+            onEditingFinished: emonvars.notifyChange(3,wattPeak.text)
             MouseArea{
                 anchors.fill: parent
                 onClicked:{

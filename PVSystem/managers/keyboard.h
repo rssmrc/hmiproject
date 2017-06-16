@@ -38,6 +38,7 @@ public:
 public slots:
     void press(QString k, QString name, int caps);
     void deletechar(QString name);
+    void confirm(QString name);
 };
 
 #endif
