@@ -26,7 +26,7 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 2.0
 import "basics.js" as Basics
 
-Window {
+ApplicationWindow {
 
     id: window
     visible: true
@@ -34,6 +34,11 @@ Window {
     height: 480
     title: qsTr("PVSystem")
     color: "#585858"
+
+    onClosing:{
+        //terminating the varmanager thread before closing the main window
+        emonvars.terminate()
+    }
 
     //top black status bar
     StatusBar{
