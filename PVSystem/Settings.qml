@@ -42,6 +42,7 @@ Item {
             width: window.width - window.width*0.1
             height: window.height*0.1
             font.pixelSize: 12
+            text: emonvars.getValue(9)
             placeholderText: "API Key"
             onAccepted:{
                 emonvars.buildHash(text);

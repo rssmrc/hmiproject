@@ -219,6 +219,9 @@ QString varmanager::getValue(int id)
     case 8:
         return vars.wattPeak;
         break;
+    case 9:
+        return vars.apiKey;
+        break;
     default:
         return "";
         break;
