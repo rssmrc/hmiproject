@@ -185,7 +185,7 @@ float varmanager::getPosition()
 
 /**
     Gets the required value
-
+    @param id Item id
     @return required value
 */
 QString varmanager::getValue(int id)

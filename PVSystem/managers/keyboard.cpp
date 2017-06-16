@@ -79,6 +79,11 @@ void Keyboard::deletechar(QString name)
     qmlObject->setProperty("text",output);
 }
 
+/**
+    Confirms the input and notifies the var manager that it needs to update online vars
+
+    @param name TextField id
+*/
 void Keyboard::confirm(QString name)
 {
     varmanager mgr;
