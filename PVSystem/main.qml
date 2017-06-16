@@ -151,6 +151,7 @@ ApplicationWindow {
        }
 
        Drawer{
+           interactive: false
            id: keyboard
            width: parent.width
            height: parent.height/2

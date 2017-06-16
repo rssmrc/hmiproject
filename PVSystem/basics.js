@@ -48,6 +48,11 @@ function keyboardToggle(name){
     keyboard.open();
 }
 
+function keyboardClose(){
+
+    keyboard.close();
+}
+
 
 
 
