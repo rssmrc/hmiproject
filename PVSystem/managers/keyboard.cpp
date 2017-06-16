@@ -47,10 +47,20 @@ Keyboard::Keyboard(QObject *o)
     @param k Key pressed
     @param name TextField id
 */
-void Keyboard::press(QString k, QString name)
+void Keyboard::press(QString k, QString name, int caps)
 {
     QObject *qmlObject = root->findChild<QObject*>(name);
-    QString input = qmlObject->property("text").toString() + k;
+    QString input;
+
+    if(caps == 1)
+    {
+        input = qmlObject->property("text").toString() + k.toUpper();
+    }
+    else
+    {
+        input = qmlObject->property("text").toString() + k;
+    }
+
     qmlObject->setProperty("text",input);
 }
 

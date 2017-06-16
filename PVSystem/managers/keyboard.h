@@ -36,7 +36,7 @@ public:
     Keyboard(QObject *o);
 
 public slots:
-    void press(QString k, QString name);
+    void press(QString k, QString name, int caps);
     void deletechar(QString name);
 };
 
