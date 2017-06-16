@@ -121,26 +121,29 @@ void varmanager::run()
 void varmanager::notifyChange(int id, QString newval)
 {
 
-        QString url = "https://emoncms.org/input/post?json={peak:" + newval+ "}&apikey=" + vars.apiKey;
+        QString url;
         QString ret;
 
         switch(id)
         {
             case 0:
-
+                vars.apiKey = newval;
                 break;
             case 1:
-
+                url = "https://emoncms.org/input/post?json={panels:" + newval+ "}&apikey=" + vars.apiKey;
+                ret = up.getResponse(url);
                 break;
             case 2:
-
+                url = "https://emoncms.org/input/post?json={t_angle:" + newval+ "}&apikey=" + vars.apiKey;
+                ret = up.getResponse(url);
                 break;
             case 3:
-                ret = r.getResponse(url);
+                url = "https://emoncms.org/input/post?json={peak:" + newval+ "}&apikey=" + vars.apiKey;
+                ret = up.getResponse(url);
                 break;
-
             case 4:
-
+                url = "https://emoncms.org/input/post?json={azimuth:" + newval+ "}&apikey=" + vars.apiKey;
+                ret = up.getResponse(url);
                 break;
             default:
                 break;

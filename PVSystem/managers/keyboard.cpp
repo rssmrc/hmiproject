@@ -87,13 +87,15 @@ void Keyboard::confirm(QString name)
     QString input = qmlObject->property("text").toString();
 
     if(name == "wattPeak")
-    {
-        qDebug() << "Current text in wattPeak form: " << input << endl;
-    }
+        mgr.notifyChange(3,input);
+    else if(name == "apiKey")
+        mgr.notifyChange(0,input);
+    else if(name == "panelsAmount")
+        mgr.notifyChange(1,input);
+    else if(name == "tiltAngle")
+        mgr.notifyChange(2,input);
+    else if(name == "azimuthAngle")
+        mgr.notifyChange(4,input);
 
-
-
-
-    //TOWORK ON
 
 }
