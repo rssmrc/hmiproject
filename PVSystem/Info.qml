@@ -213,6 +213,19 @@ Item {
 
 
         }
+
+        Rectangle{
+            id: graph
+            color: "#101010"
+            height: window.height/2
+            width: window.width/6 * 3
+            y: 80
+            x: window.width/2 - window.width/10
+            border.width: 1
+            border.color: "#2d2d2d"
+
+
+        }
     }
 
 
