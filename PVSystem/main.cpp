@@ -27,6 +27,7 @@
 #include <managers/varmanager.h>
 #include <managers/parameters.h>
 #include <managers/keyboard.h>
+#include <managers/varstorage.h>
 #include <iostream>
 #include <QQmlContext>
 #include <QTimer>
@@ -42,12 +43,13 @@ int main(int argc, char *argv[])
     varmanager v;
     parameters p;
     RemoteServer r;
+    VarStorage s;
 
     QQmlApplicationEngine engine;
     //new qmlcontext property linked to the var manager object
     engine.rootContext()->setContextProperty("emonvars", &v);
     engine.rootContext()->setContextProperty("networkvars", &p);
-
+    engine.rootContext()->setContextProperty("storage", &s);
 
     //cache disabled
     qputenv("QML_DISABLE_DISK_CACHE", "true");

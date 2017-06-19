@@ -83,7 +83,9 @@ ApplicationWindow {
 
                     parent.pastpos = pvstatus.indicatorpos
                     parent.indicatorpos = pvstatus.w * emonvars.getPosition() - pvstatus.indicatorw/2
+                    //updating info values and graph
                     infoPage.updateValues()
+                    infoPage.updateGraph()
 
                 }
             }

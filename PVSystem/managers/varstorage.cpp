@@ -46,7 +46,13 @@ void VarStorage::addValue(int value)
     index = (index+1)%10;
 }
 
-void VarStorage::getValue(int pos)
+int VarStorage::getValue(int pos)
 {
     return values[pos];
+}
+
+float VarStorage::relativeHeight(int pos, int max)
+{
+    float percentage = values[pos]/max;
+    return percentage;
 }

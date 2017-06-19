@@ -40,7 +40,22 @@ Item {
         battery.text = emonvars.getValue(6)
         panels.text = emonvars.getValue(4)
         yield.text = emonvars.getValue(5)
+        storage.addValue(parseInt(power.text))
     }
+
+    function updateGraph(){
+        col1.height = graph.height*(storage.getValue(0)/emonvars.getValue(8))
+        col2.height = graph.height*(storage.getValue(1)/emonvars.getValue(8))
+        col3.height = graph.height*(storage.getValue(2)/emonvars.getValue(8))
+        col4.height = graph.height*(storage.getValue(3)/emonvars.getValue(8))
+        col5.height = graph.height*(storage.getValue(4)/emonvars.getValue(8))
+        col6.height = graph.height*(storage.getValue(5)/emonvars.getValue(8))
+        col7.height = graph.height*(storage.getValue(6)/emonvars.getValue(8))
+        col8.height = graph.height*(storage.getValue(7)/emonvars.getValue(8))
+        col9.height = graph.height*(storage.getValue(8)/emonvars.getValue(8))
+        col10.height = graph.height*(storage.getValue(9)/emonvars.getValue(8))
+    }
+
 
     Rectangle{
         anchors.fill: parent
@@ -224,7 +239,85 @@ Item {
             border.width: 1
             border.color: "#2d2d2d"
 
-
+            Rectangle{
+                id: col1
+                color: "green"
+                anchors.bottom: parent.bottom
+                width: parent.width/10
+                height: 0
+            }
+            Rectangle{
+                id: col2
+                color: "green"
+                anchors.bottom: parent.bottom
+                width: parent.width/10
+                height: 0
+                x: col1.x + width
+            }
+            Rectangle{
+                id: col3
+                color: "green"
+                anchors.bottom: parent.bottom
+                width: parent.width/10
+                height: 0
+                x: col2.x + width
+            }
+            Rectangle{
+                id: col4
+                color: "green"
+                anchors.bottom: parent.bottom
+                width: parent.width/10
+                height: 0
+                x: col3.x + width
+            }
+            Rectangle{
+                id: col5
+                color: "green"
+                anchors.bottom: parent.bottom
+                width: parent.width/10
+                height: 0
+                x: col4.x + width
+            }
+            Rectangle{
+                id: col6
+                color: "green"
+                anchors.bottom: parent.bottom
+                width: parent.width/10
+                height: 0
+                x: col5.x + width
+            }
+            Rectangle{
+                id: col7
+                color: "green"
+                anchors.bottom: parent.bottom
+                width: parent.width/10
+                height: 0
+                x: col6.x + width
+            }
+            Rectangle{
+                id: col8
+                color: "green"
+                anchors.bottom: parent.bottom
+                width: parent.width/10
+                height: 0
+                x: col7.x + width
+            }
+            Rectangle{
+                id: col9
+                color: "green"
+                anchors.bottom: parent.bottom
+                width: parent.width/10
+                height: 0
+                x: col8.x + width
+            }
+            Rectangle{
+                id: col10
+                color: "green"
+                anchors.bottom: parent.bottom
+                width: parent.width/10
+                height: 0
+                x: col9.x + width
+            }
         }
     }
 

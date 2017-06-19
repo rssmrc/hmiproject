@@ -35,7 +35,8 @@ public:
     VarStorage();
 public slots:
     void addValue(int value);
-    void getValue(int pos);
+    int getValue(int pos);
+    float relativeHeight(int pos, int max);
 
 };
 
