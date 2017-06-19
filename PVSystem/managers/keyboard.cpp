@@ -91,16 +91,21 @@ void Keyboard::confirm(QString name)
     QObject *qmlObject = root->findChild<QObject*>(name);
     QString input = qmlObject->property("text").toString();
 
-    if(name == "wattPeak")
-        mgr.notifyChange(3,input);
-    else if(name == "apiKey")
-        mgr.notifyChange(0,input);
-    else if(name == "panelsAmount")
-        mgr.notifyChange(1,input);
-    else if(name == "tiltAngle")
-        mgr.notifyChange(2,input);
-    else if(name == "azimuthAngle")
-        mgr.notifyChange(4,input);
+    if(input != "")
+    {
+        if(name == "wattPeak")
+            mgr.notifyChange(3,input);
+        else if(name == "apiKey")
+            mgr.notifyChange(0,input);
+        else if(name == "panelsAmount")
+            mgr.notifyChange(1,input);
+        else if(name == "tiltAngle")
+            mgr.notifyChange(2,input);
+        else if(name == "azimuthAngle")
+            mgr.notifyChange(4,input);
+    }
+
+
 
 
 }

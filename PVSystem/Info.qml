@@ -245,82 +245,103 @@ Item {
             //graph's columns
             Rectangle{
                 id: col1
-                color: "green"
+                color: "#599b52"
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
+                border.color: "#42723c"
+                border.width: 1
             }
             Rectangle{
                 id: col2
-                color: "green"
+                color: "#599b52"
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
                 x: col1.x + width
+                border.color: "#42723c"
+                border.width: 1
             }
             Rectangle{
                 id: col3
-                color: "green"
+                color: "#599b52"
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
                 x: col2.x + width
+                border.color: "#42723c"
+                border.width: 1
             }
             Rectangle{
                 id: col4
-                color: "green"
+                color: "#599b52"
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
                 x: col3.x + width
+                border.color: "#42723c"
+                border.width: 1
             }
             Rectangle{
                 id: col5
-                color: "green"
+                color: "#599b52"
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
                 x: col4.x + width
+                border.color: "#42723c"
+                border.width: 1
             }
             Rectangle{
                 id: col6
-                color: "green"
+                color: "#599b52"
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
                 x: col5.x + width
+                border.color: "#42723c"
+                border.width: 1
             }
             Rectangle{
                 id: col7
-                color: "green"
+                color: "#599b52"
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
                 x: col6.x + width
+                border.color: "#42723c"
+                border.width: 1
             }
             Rectangle{
                 id: col8
-                color: "green"
+                color: "#599b52"
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
                 x: col7.x + width
+                border.color: "#42723c"
+                border.width: 1
             }
             Rectangle{
                 id: col9
-                color: "green"
+                color: "#599b52"
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
                 x: col8.x + width
+                border.color: "#42723c"
+                border.width: 1
             }
             Rectangle{
                 id: col10
-                color: "green"
+                color: "#599b52"
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
                 x: col9.x + width
+                border.color: "#42723c"
+                border.width: 1
+
             }
         }
     }
