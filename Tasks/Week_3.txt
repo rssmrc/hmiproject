@@ -1,0 +1,9 @@
+Day 1:
+- New information graph on Info tab
+	- Temporary storage of latest values
+	- Graph design
+	- Updating the graph
+
+- Irradiance 
+	- Localization
+	- Irradiance calculation from website/api
