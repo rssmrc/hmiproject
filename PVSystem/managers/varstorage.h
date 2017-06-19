@@ -36,7 +36,6 @@ public:
 public slots:
     void addValue(int value);
     int getValue(int pos);
-    float relativeHeight(int pos, int max);
 
 };
 

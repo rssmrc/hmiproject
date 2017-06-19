@@ -31,6 +31,7 @@ Item {
     property int h
 
     function updateValues(){
+        //polling update of the infopage values
         irradiation.text = emonvars.getValue(3)
         wattpeak.text = emonvars.getValue(8)
         tilt.text = emonvars.getValue(7)
@@ -44,6 +45,7 @@ Item {
     }
 
     function updateGraph(){
+        //polling update of the graph's columns
         col1.height = graph.height*(storage.getValue(0)/emonvars.getValue(8))
         col2.height = graph.height*(storage.getValue(1)/emonvars.getValue(8))
         col3.height = graph.height*(storage.getValue(2)/emonvars.getValue(8))
@@ -60,6 +62,7 @@ Item {
     Rectangle{
         anchors.fill: parent
 
+        //labels with information
         Rectangle{
 
 
@@ -75,7 +78,6 @@ Item {
                 color: "#FFFFFF"
                 y: 10
             }
-            //current time
             Label{
                 font.pixelSize: 15
                 text: "Irradiation: "
@@ -230,6 +232,7 @@ Item {
         }
 
         Rectangle{
+            //graph background attributes
             id: graph
             color: "#101010"
             height: window.height/2
@@ -239,6 +242,7 @@ Item {
             border.width: 1
             border.color: "#2d2d2d"
 
+            //graph's columns
             Rectangle{
                 id: col1
                 color: "green"

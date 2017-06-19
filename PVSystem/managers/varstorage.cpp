@@ -40,19 +40,34 @@ VarStorage::VarStorage()
 
 }
 
+/**
+    Adds the power value to the array
+
+    @param value New power value
+*/
 void VarStorage::addValue(int value)
 {
+    //cleaning up the array
+    if(index == 0)
+    {
+        int i;
+        for(i = 0; i<10; i++)
+        {
+            values[i] = 0;
+        }
+    }
+    //adding the requested value
     values[index] =  value;
     index = (index+1)%10;
 }
 
+/**
+    Returns the value at the 'pos' position
+
+    @return Value at requested position
+*/
 int VarStorage::getValue(int pos)
 {
     return values[pos];
 }
 
-float VarStorage::relativeHeight(int pos, int max)
-{
-    float percentage = values[pos]/max;
-    return percentage;
-}
