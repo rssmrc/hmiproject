@@ -36,8 +36,9 @@ ApplicationWindow {
     color: "#585858"
 
     onClosing:{
-        //terminating the varmanager thread before closing the main window
+        //terminating the varmanager and emu thread before closing the main window
         emonvars.terminate()
+        pvemu.terminate()
     }
 
     //top black status bar

@@ -28,6 +28,7 @@
 #include <managers/parameters.h>
 #include <managers/keyboard.h>
 #include <managers/varstorage.h>
+#include "pvemu.h"
 #include <iostream>
 #include <QQmlContext>
 #include <QTimer>
@@ -44,12 +45,15 @@ int main(int argc, char *argv[])
     parameters p;
     RemoteServer r;
     VarStorage s;
+    //emulator
+    PVEmu pvemu;
 
     QQmlApplicationEngine engine;
     //new qmlcontext property linked to the var manager object
     engine.rootContext()->setContextProperty("emonvars", &v);
     engine.rootContext()->setContextProperty("networkvars", &p);
     engine.rootContext()->setContextProperty("storage", &s);
+    engine.rootContext()->setContextProperty("pvemu", &pvemu);
 
     //cache disabled
     qputenv("QML_DISABLE_DISK_CACHE", "true");
@@ -65,6 +69,9 @@ int main(int argc, char *argv[])
 
     //Starts the variables management thread
     v.start();
+    //Starts the emulator
+    pvemu.start();
+
     if (engine.rootObjects().isEmpty())
         return -1;
 

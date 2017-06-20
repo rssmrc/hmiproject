@@ -21,25 +21,22 @@
  *
  ****************************************************************************/
 
-#ifndef REMOTESERVER_H
-#define REMOTESERVER_H
-
 #include <QObject>
-#include <QNetworkAccessManager>
+#include <QThread>
 
-class RemoteServer : public QObject
+#ifndef PVEMU_H
+#define PVEMU_H
+
+
+class PVEmu : public QThread
 {
     Q_OBJECT
-
 public:
-
-    RemoteServer();
-    QByteArray getResponse(QString url);
-    QHash<QString, QString> generateHash(QString url, QString param1, QString param2);
-    QString getValue(QString apiKey, QString name);
-
+    PVEmu();
+    void run();
 public slots:
-    QString getFromOnline(QString url, QString key);
+
+
 };
 
-#endif // REMOTESERVER_H
+#endif // PVEMU_H

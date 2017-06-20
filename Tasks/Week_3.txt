@@ -7,3 +7,17 @@ Day 1:
 - Irradiance 
 	- Localization
 	- Irradiance calculation from website/api
+
+Day 2:
+	
+- Graph monitor enhancements
+	- Switch between power and energy
+- Emulate EMONCMS connected PV System
+	- Write a simple Java application that will emulate value changes
+
+- Design improvement
+	
+- Add localization settings on menu page
+
+- Use Lat/Lon to get Irradiance
+	

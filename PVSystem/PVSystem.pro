@@ -9,7 +9,8 @@ SOURCES += main.cpp \
     managers/varmanager.cpp \
     managers/parameters.cpp \
     managers/keyboard.cpp \
-    managers/varstorage.cpp
+    managers/varstorage.cpp \
+    pvemu.cpp
 
 
 RESOURCES += qml.qrc
@@ -48,5 +49,6 @@ HEADERS += \
     utilities/jsonparser.h \
     managers/parameters.h \
     managers/keyboard.h \
-    managers/varstorage.h
+    managers/varstorage.h \
+    pvemu.h
 
