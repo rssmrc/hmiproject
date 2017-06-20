@@ -123,6 +123,53 @@ Item {
 
 
         }
+        TextField {
+            id: latitude
+            objectName: "latitude"
+            x: subnetMask.x
+            y: subnetMask.y + subnetMask.height*1.5
+
+            width: subnetMask.width/2
+            height: window.height*0.1
+            font.pixelSize: 12
+            placeholderText: "Latitude"
+            onEditingFinished:{
+                networkvars.set(4,text)
+            }
+            MouseArea{
+                anchors.fill: parent
+                onClicked:{
+                    subnetMask.focus = true
+                    Basics.keyboardToggle(parent.objectName)
+                }
+            }
+
+
+        }
+
+        TextField {
+            id: longitude
+            objectName: "longitude"
+            x: latitude.x + latitude.width
+            y: subnetMask.y + subnetMask.height*1.5
+
+            width: subnetMask.width/2
+            height: window.height*0.1
+            font.pixelSize: 12
+            placeholderText: "Latitude"
+            onEditingFinished:{
+                networkvars.set(5,text)
+            }
+            MouseArea{
+                anchors.fill: parent
+                onClicked:{
+                    subnetMask.focus = true
+                    Basics.keyboardToggle(parent.objectName)
+                }
+            }
+
+
+        }
 
     }
 

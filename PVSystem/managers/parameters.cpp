@@ -37,6 +37,8 @@ struct params{
     QString server;
     QString d_gateway;
     QString subnet;
+    QString lat;
+    QString lon;
 }params;
 
 parameters::parameters()
@@ -45,6 +47,8 @@ parameters::parameters()
     params.server = "https://emoncms.org";
     params.d_gateway = "0.0.0.0";
     params.subnet = "0.0.0.0";
+    params.lat = "0";
+    params.lon = "0";
 }
 
 /**
@@ -68,6 +72,12 @@ QString parameters::get(int id)
         break;
     case 3:
         return params.subnet;
+        break;
+    case 4:
+        return params.lat;
+        break;
+    case 5:
+        return params.lon;
         break;
     default:
         return "";
@@ -97,6 +107,12 @@ void parameters::set(int id, QString val)
         break;
     case 3:
         params.subnet = val;
+        break;
+    case 4:
+        params.lat = val;
+        break;
+    case 5:
+        params.lon = val;
         break;
     default:
         break;
