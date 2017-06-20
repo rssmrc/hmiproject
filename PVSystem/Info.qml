@@ -29,6 +29,7 @@ Item {
 
     property int w
     property int h
+    property string g_color: "#599b52"
 
     function updateValues(){
         //polling update of the infopage values
@@ -41,43 +42,52 @@ Item {
         battery.text = emonvars.getValue(6)
         panels.text = emonvars.getValue(4)
         yield.text = emonvars.getValue(5)
-        storage.addValue(parseInt(power.text))
+        storage.addValue(parseInt(power.text), parseInt(energy.text))
     }
 
     function updateGraph(){
         //polling update of the graph's columns
-        col1.height = graph.height*(storage.getValue(0)/emonvars.getValue(8))
-        col2.height = graph.height*(storage.getValue(1)/emonvars.getValue(8))
-        col3.height = graph.height*(storage.getValue(2)/emonvars.getValue(8))
-        col4.height = graph.height*(storage.getValue(3)/emonvars.getValue(8))
-        col5.height = graph.height*(storage.getValue(4)/emonvars.getValue(8))
-        col6.height = graph.height*(storage.getValue(5)/emonvars.getValue(8))
-        col7.height = graph.height*(storage.getValue(6)/emonvars.getValue(8))
-        col8.height = graph.height*(storage.getValue(7)/emonvars.getValue(8))
-        col9.height = graph.height*(storage.getValue(8)/emonvars.getValue(8))
-        col10.height = graph.height*(storage.getValue(9)/emonvars.getValue(8))
+        if(swtch.checked == false){
+            col1.height = graph.height*(storage.getPower(0)/emonvars.getValue(8))
+            col2.height = graph.height*(storage.getPower(1)/emonvars.getValue(8))
+            col3.height = graph.height*(storage.getPower(2)/emonvars.getValue(8))
+            col4.height = graph.height*(storage.getPower(3)/emonvars.getValue(8))
+            col5.height = graph.height*(storage.getPower(4)/emonvars.getValue(8))
+            col6.height = graph.height*(storage.getPower(5)/emonvars.getValue(8))
+            col7.height = graph.height*(storage.getPower(6)/emonvars.getValue(8))
+            col8.height = graph.height*(storage.getPower(7)/emonvars.getValue(8))
+            col9.height = graph.height*(storage.getPower(8)/emonvars.getValue(8))
+            col10.height = graph.height*(storage.getPower(9)/emonvars.getValue(8))
+        }
+        else{
+            col1.height = graph.height*(storage.getEnergy(0)/emonvars.getValue(10))
+            col2.height = graph.height*(storage.getEnergy(1)/emonvars.getValue(10))
+            col3.height = graph.height*(storage.getEnergy(2)/emonvars.getValue(10))
+            col4.height = graph.height*(storage.getEnergy(3)/emonvars.getValue(10))
+            col5.height = graph.height*(storage.getEnergy(4)/emonvars.getValue(10))
+            col6.height = graph.height*(storage.getEnergy(5)/emonvars.getValue(10))
+            col7.height = graph.height*(storage.getEnergy(6)/emonvars.getValue(10))
+            col8.height = graph.height*(storage.getEnergy(7)/emonvars.getValue(10))
+            col9.height = graph.height*(storage.getEnergy(8)/emonvars.getValue(10))
+            col10.height = graph.height*(storage.getEnergy(9)/emonvars.getValue(10))
+        }
+
+
     }
 
 
     Rectangle{
+
         anchors.fill: parent
 
         //labels with information
         Rectangle{
 
-
-
             width: w
             color: "#101010"
             anchors.top: parent.top
 
-            Label{
-                font.pixelSize: 25
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: "General"
-                color: "#FFFFFF"
-                y: 10
-            }
+
             Label{
                 font.pixelSize: 15
                 text: "Irradiation: "
@@ -245,7 +255,7 @@ Item {
             //graph's columns
             Rectangle{
                 id: col1
-                color: "#599b52"
+                color: g_color
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
@@ -254,7 +264,7 @@ Item {
             }
             Rectangle{
                 id: col2
-                color: "#599b52"
+                color: g_color
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
@@ -264,7 +274,7 @@ Item {
             }
             Rectangle{
                 id: col3
-                color: "#599b52"
+                color: g_color
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
@@ -274,7 +284,7 @@ Item {
             }
             Rectangle{
                 id: col4
-                color: "#599b52"
+                color: g_color
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
@@ -284,7 +294,7 @@ Item {
             }
             Rectangle{
                 id: col5
-                color: "#599b52"
+                color: g_color
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
@@ -294,7 +304,7 @@ Item {
             }
             Rectangle{
                 id: col6
-                color: "#599b52"
+                color: g_color
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
@@ -304,7 +314,7 @@ Item {
             }
             Rectangle{
                 id: col7
-                color: "#599b52"
+                color: g_color
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
@@ -314,7 +324,7 @@ Item {
             }
             Rectangle{
                 id: col8
-                color: "#599b52"
+                color: g_color
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
@@ -324,7 +334,7 @@ Item {
             }
             Rectangle{
                 id: col9
-                color: "#599b52"
+                color: g_color
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
@@ -334,7 +344,7 @@ Item {
             }
             Rectangle{
                 id: col10
-                color: "#599b52"
+                color: g_color
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
@@ -343,6 +353,30 @@ Item {
                 border.width: 1
 
             }
+        }
+
+        //monitor mode switch
+
+        Switch{
+            id: swtch
+            y: 25
+            x: graph.x
+            onCheckedChanged: {
+                if(swtch.checked == true){
+                    g_color = "#87b5ff"
+                }
+                else{
+                    g_color = "#599b52";
+                }
+            }
+        }
+
+        Label{
+            color: "white"
+            y: 35
+            x: swtch.x + swtch.width*1.5
+            font.pixelSize: 18
+            text: "Power/Energy Monitor Switch"
         }
     }
 

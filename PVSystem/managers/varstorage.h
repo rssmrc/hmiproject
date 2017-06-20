@@ -34,9 +34,9 @@ class VarStorage : public QObject
 public:
     VarStorage();
 public slots:
-    void addValue(int value);
-    int getValue(int pos);
-
+    void addValue(int p, int e);
+    int getPower(int pos);
+    int getEnergy(int pos);
 };
 
 #endif // VARSTORAGE_H

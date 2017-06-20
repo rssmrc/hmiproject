@@ -60,6 +60,7 @@ struct vars{
     QString azimuthAngle;
     QString percentage;
     QString currentEnergy;
+    QString maxEnergy = "1000";
 }vars;
 
 varmanager::varmanager()
@@ -221,6 +222,9 @@ QString varmanager::getValue(int id)
         break;
     case 9:
         return vars.apiKey;
+        break;
+    case 10:
+        return vars.maxEnergy;
         break;
     default:
         return "";

@@ -32,7 +32,9 @@
 
 #include "varstorage.h"
 
-int values[10];
+int power[10];
+int energy[10];
+
 int index = 0;
 
 VarStorage::VarStorage()
@@ -43,9 +45,10 @@ VarStorage::VarStorage()
 /**
     Adds the power value to the array
 
-    @param value New power value
+    @param p New power value
+    @param e New power value
 */
-void VarStorage::addValue(int value)
+void VarStorage::addValue(int p, int e)
 {
     //cleaning up the array
     if(index == 0)
@@ -53,11 +56,14 @@ void VarStorage::addValue(int value)
         int i;
         for(i = 0; i<10; i++)
         {
-            values[i] = 0;
+            power[i] = 0;
+            energy[i] = 0;
         }
     }
     //adding the requested value
-    values[index] =  value;
+    power[index] =  p;
+    energy[index] = e;
+
     index = (index+1)%10;
 }
 
@@ -66,8 +72,18 @@ void VarStorage::addValue(int value)
 
     @return Value at requested position
 */
-int VarStorage::getValue(int pos)
+int VarStorage::getPower(int pos)
 {
-    return values[pos];
+    return power[pos];
+}
+
+/**
+    Returns the value at the 'pos' position
+
+    @return Value at requested position
+*/
+int VarStorage::getEnergy(int pos)
+{
+    return energy[pos];
 }
 
