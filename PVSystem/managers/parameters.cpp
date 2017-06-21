@@ -31,24 +31,32 @@
 
 #include "parameters.h"
 #include <QObject>
+#include <protocols/remoteserver.h>
+
+RemoteServer remote;
 
 struct params{
     QString ipaddr;
     QString server;
     QString d_gateway;
     QString subnet;
-    QString lat;
-    QString lon;
+    QString region;
+
 }params;
 
 parameters::parameters()
 {
+    //gets current ip address
+    QString ip = remote.getFromOnline("http://ip.jsontest.com/", "ip");
+    //get position based on the IP
+    QString url = "http://freegeoip.net/json/" + ip;
+    QString region = remote.getFromOnline(url, "region_name");
+
     params.ipaddr = "0.0.0.0";
     params.server = "https://emoncms.org";
     params.d_gateway = "0.0.0.0";
     params.subnet = "0.0.0.0";
-    params.lat = "0";
-    params.lon = "0";
+    params.region = region;
 }
 
 /**
@@ -74,11 +82,9 @@ QString parameters::get(int id)
         return params.subnet;
         break;
     case 4:
-        return params.lat;
+        return params.region;
         break;
-    case 5:
-        return params.lon;
-        break;
+
     default:
         return "";
         break;
@@ -109,10 +115,7 @@ void parameters::set(int id, QString val)
         params.subnet = val;
         break;
     case 4:
-        params.lat = val;
-        break;
-    case 5:
-        params.lon = val;
+        params.region = val;
         break;
     default:
         break;

@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
     parameters p;
     RemoteServer r;
     VarStorage s;
+    JsonParser jp;
     //emulator
     PVEmu pvemu;
 
