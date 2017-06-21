@@ -47,9 +47,14 @@ Item {
             onAccepted:{
                 emonvars.buildHash(text);
             }
+            onTextChanged:{
+                tempInput.text = text
+            }
+
             MouseArea{
                 anchors.fill: parent
                 onClicked:{
+                    tempInput.text = parent.text
                     apiKey.focus = true
                     Basics.keyboardToggle(parent.objectName)
                 }
@@ -70,9 +75,14 @@ Item {
                 emonvars.notifyChange(0,panelsAmount.text)
 
             }
+            onTextChanged:{
+                tempInput.text = text
+            }
+
             MouseArea{
                 anchors.fill: parent
                 onClicked:{
+                    tempInput.text = parent.text
                     panelsAmount.focus = true
                     Basics.keyboardToggle(parent.objectName)
                 }
@@ -90,9 +100,14 @@ Item {
             font.pixelSize: 12
             placeholderText: qsTr("Tilt Angle")
             onAccepted: emonvars.notifyChange(1,tiltAngle.text)
+            onTextChanged:{
+                tempInput.text = text
+            }
+
             MouseArea{
                 anchors.fill: parent
                 onClicked:{
+                    tempInput.text = parent.text
                     tiltAngle.focus = true
                     Basics.keyboardToggle(parent.objectName)
                 }
@@ -110,9 +125,14 @@ Item {
             font.pixelSize: 12
             placeholderText: qsTr("Azimuth Angle")
             onAccepted: emonvars.notifyChange(2,azimuthAngle.text)
+            onTextChanged:{
+                tempInput.text = text
+            }
+
             MouseArea{
                 anchors.fill: azimuthAngle
                 onClicked:{
+                    tempInput.text = parent.text
                     panelsAmount.focus = true
                     Basics.keyboardToggle(parent.objectName)
                 }
@@ -128,11 +148,16 @@ Item {
             width: window.width - window.width*0.1
             height: window.height*0.1
             font.pixelSize: 12
-            placeholderText: qsTr("Watt Peak")
+            placeholderText: qsTr("Watt Peak/m^2")
             onEditingFinished: emonvars.notifyChange(3,wattPeak.text)
+            onTextChanged:{
+                tempInput.text = text
+            }
+
             MouseArea{
                 anchors.fill: parent
                 onClicked:{
+                    tempInput.text = parent.text
                     wattPeak.focus = true
                     Basics.keyboardToggle(parent.objectName)
                 }

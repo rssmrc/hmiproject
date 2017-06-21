@@ -53,6 +53,10 @@ function keyboardClose(){
     keyboard.close();
 }
 
+function clearLabel(){
+    tempInput.text = "";
+}
+
 
 
 

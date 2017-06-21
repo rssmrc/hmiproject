@@ -28,6 +28,7 @@
 #include <managers/parameters.h>
 #include <managers/keyboard.h>
 #include <managers/varstorage.h>
+#include <utilities/jsonparser.h>
 #include "pvemu.h"
 #include <iostream>
 #include <QQmlContext>

@@ -46,9 +46,14 @@ Item {
             onEditingFinished:{
                 networkvars.set(1, text)
             }
+            onTextChanged:{
+                tempInput.text = text
+            }
+
             MouseArea{
                 anchors.fill: parent
                 onClicked:{
+                    tempInput.text = parent.text
                     serverAddress.focus = true
                     Basics.keyboardToggle(parent.objectName)
                 }
@@ -68,9 +73,14 @@ Item {
             onEditingFinished:{
                 networkvars.set(0, text)
             }
+            onTextChanged:{
+                tempInput.text = text
+            }
+
             MouseArea{
                 anchors.fill: parent
                 onClicked:{
+                    tempInput.text = parent.text
                     ipAddress.focus = true
                     Basics.keyboardToggle(parent.objectName)
                 }
@@ -90,9 +100,14 @@ Item {
             onEditingFinished:{
                 networkvars.set(2,text)
             }
+            onTextChanged:{
+                tempInput.text = text
+            }
+
             MouseArea{
                 anchors.fill: parent
                 onClicked:{
+                    tempInput.text = parent.text
                     defaultGateway.focus = true
                     Basics.keyboardToggle(parent.objectName)
                 }
@@ -113,9 +128,14 @@ Item {
             onEditingFinished:{
                 networkvars.set(3,text)
             }
+            onTextChanged:{
+                tempInput.text = text
+            }
+
             MouseArea{
                 anchors.fill: parent
                 onClicked:{
+                    tempInput.text = parent.text
                     subnetMask.focus = true
                     Basics.keyboardToggle(parent.objectName)
                 }
@@ -136,9 +156,14 @@ Item {
             onEditingFinished:{
                 networkvars.set(4,text)
             }
+            onTextChanged:{
+                tempInput.text = text
+            }
+
             MouseArea{
                 anchors.fill: parent
                 onClicked:{
+                    tempInput.text = parent.text
                     subnetMask.focus = true
                     Basics.keyboardToggle(parent.objectName)
                 }
@@ -160,9 +185,14 @@ Item {
             onEditingFinished:{
                 networkvars.set(5,text)
             }
+            onTextChanged:{
+                tempInput.text = text
+            }
+
             MouseArea{
                 anchors.fill: parent
                 onClicked:{
+                    tempInput.text = parent.text
                     subnetMask.focus = true
                     Basics.keyboardToggle(parent.objectName)
                 }

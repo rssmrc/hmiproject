@@ -119,3 +119,5 @@ void parameters::set(int id, QString val)
 
     }
 }
+
+

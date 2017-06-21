@@ -52,6 +52,7 @@ Keyboard::Keyboard(QObject *o)
 void Keyboard::press(QString k, QString name, int caps)
 {
     QObject *qmlObject = root->findChild<QObject*>(name);
+
     QString input;
 
     if(caps == 1)
@@ -62,7 +63,6 @@ void Keyboard::press(QString k, QString name, int caps)
     {
         input = qmlObject->property("text").toString() + k;
     }
-
     qmlObject->setProperty("text",input);
 }
 
@@ -94,15 +94,19 @@ void Keyboard::confirm(QString name)
     if(input != "")
     {
         if(name == "wattPeak")
-            mgr.notifyChange(3,input);
+            mgr.notifyChange(3, input);
         else if(name == "apiKey")
-            mgr.notifyChange(0,input);
+            mgr.notifyChange(0, input);
         else if(name == "panelsAmount")
-            mgr.notifyChange(1,input);
+            mgr.notifyChange(1, input);
         else if(name == "tiltAngle")
-            mgr.notifyChange(2,input);
+            mgr.notifyChange(2, input);
         else if(name == "azimuthAngle")
-            mgr.notifyChange(4,input);
+            mgr.notifyChange(4, input);
+        else if(name == "latitude")
+            mgr.notifyChange(5, input);
+        else if(name == "longitude")
+            mgr.notifyChange(6, input);
     }
 
 

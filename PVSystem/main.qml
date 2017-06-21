@@ -50,6 +50,8 @@ ApplicationWindow {
         h: window.height / 16
     }
 
+
+
     //rectangle container containing all the items
     Rectangle{
         id: controlsContainer
@@ -154,15 +156,28 @@ ApplicationWindow {
        }
 
        Drawer{
+           property int pHeight: parent.height/8
+
            interactive: false
            id: keyboard
            width: parent.width
-           height: parent.height/2
+           height: parent.height/2 + parent.height/8
            edge: Qt.BottomEdge
            background: Rectangle{
                color: "#202020"
            }
+           Label{
+               id: tempInput
+               font.pixelSize: 20
+               color: "white"
+               text: ""
+               y: height
+               anchors.horizontalCenter: parent.horizontalCenter
+
+           }
+
            Keyboard{
+               span: parent.pHeight
                id: vkeyboard
                w: window.width
                h: window.height
