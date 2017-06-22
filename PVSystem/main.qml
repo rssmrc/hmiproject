@@ -74,7 +74,7 @@ ApplicationWindow {
         PVStatusBar{
             id: pvstatus
             xpos: 0
-            ypos: window.height/5
+            ypos: window.height/4
             w: window.width - (window.width/10)*2
             h: window.height/2 - (window.height/15)*2
             indicatorw: w/7
@@ -84,11 +84,11 @@ ApplicationWindow {
             indicatorpos: initpos
             anchors.horizontalCenter: parent.horizontalCenter
 
-            //updating the indicator every 0.5 seconds
+            //updating the indicator every 2 seconds
             Timer{
                 id: updatebar
                 repeat: true
-                interval: 1000
+                interval: 2000
                 running: true
                 //will get the past position and new position
                 onTriggered:{

@@ -42,6 +42,7 @@ public slots:
     float getPosition();
     QString getValue(int id);
     float getConsumePosition(int consume);
+    void setIrradiance(QString region);
 };
 
 #endif // VARMANAGER_H

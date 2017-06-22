@@ -34,6 +34,7 @@ class JsonParser
 public:
     JsonParser();
     QString Parse(QByteArray r, QString lookfor);
+    QString ParseLocal(QString file, QString lookfor);
 
 };
 

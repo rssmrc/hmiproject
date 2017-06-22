@@ -68,7 +68,6 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("vkboard", &kboard);
 
 
-
     //Starts the variables management thread
     v.start();
     //Starts the emulator

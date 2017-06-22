@@ -34,6 +34,8 @@
 #include <QJsonParseError>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QFile>
+#include <QTextStream>
 
 JsonParser::JsonParser()
 {
@@ -53,6 +55,42 @@ QString JsonParser::Parse(QByteArray r, QString lookfor)
     //converting the QByteArray to JSON Document
     QJsonParseError err;
     QJsonDocument document = QJsonDocument::fromJson(r, &err);
+    QString ret;
+    //if everything went correctly
+    if(document.isObject())
+    {
+        //declaring a new json object
+        QJsonObject obj = document.object();
+        //looking for specified value
+        QJsonObject::iterator itr = obj.find(lookfor);
+
+        if(itr != obj.end())
+        {
+           //returning its value
+           ret = itr.value().toString();
+        }
+
+    }
+    //if the key doesn't exist then return null
+    return ret;
+}
+
+QString JsonParser::ParseLocal(QString file, QString lookfor)
+{
+    //reading local json file and storing content in a qbytearray
+    QFile toread(file);
+    QByteArray jsoncontent;
+    if (toread.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QTextStream in(&toread);
+        while (!in.atEnd()) {
+            jsoncontent += in.readLine();
+        }
+    }
+
+    //converting the QByteArray to JSON Document
+    QJsonParseError err;
+    QJsonDocument document = QJsonDocument::fromJson(jsoncontent, &err);
     QString ret;
     //if everything went correctly
     if(document.isObject())

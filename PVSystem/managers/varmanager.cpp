@@ -263,8 +263,13 @@ QString varmanager::getValue(int id)
         break;
 
     }
+
 }
 
+void varmanager::setIrradiance(QString region)
+{
+
+}
 
 
 
