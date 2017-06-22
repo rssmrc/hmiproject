@@ -117,13 +117,7 @@ ApplicationWindow {
             y: pvstatus.ypos + pvstatus.h + pvstatus.h/10
         }
 
-        //bottom bar with button controls
-        BottomBar{
-            id: botBar
-            w: window.width
-            h: parent.height/5
-            anchors.bottom: parent.bottom
-        }
+
 
         Drawer{
             id: drawer
@@ -196,6 +190,20 @@ ApplicationWindow {
                id: vkeyboard
                w: window.width
                h: window.height
+           }
+       }
+
+       Drawer{
+           id: bottomBarMenu
+           width: parent.width
+           height: controlsContainer.height/5
+           edge: Qt.BottomEdge
+           //bottom bar with button controls
+           BottomBar{
+               id: botBar
+               w: window.width
+               h: controlsContainer.height/5
+               anchors.bottom: parent.bottom
            }
        }
 
