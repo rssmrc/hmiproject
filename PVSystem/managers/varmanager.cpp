@@ -31,6 +31,7 @@
 
 #include "varmanager.h"
 #include "../protocols/remoteserver.h"
+#include <utilities/jsonparser.h>
 #include <thread>
 #include <QTimer>
 #include <QObject>
@@ -266,9 +267,23 @@ QString varmanager::getValue(int id)
 
 }
 
+/**
+    Sets and updates the local irradiance
+
+    @param region Local region
+*/
 void varmanager::setIrradiance(QString region)
 {
-
+    JsonParser jp;
+    //parsing annual irradiation
+    float raw = jp.ParseLocal("C:/Users/Marco/Desktop/ASLProject/PVSystem/italy.json", region.toLower()).toFloat();
+    //calculating daily irradiation
+    float daily = raw/365;
+    //converting value to QString
+    QString n_irr = QString::number(daily);
+    //sending request to EmonCMS
+    QString url = "https://emoncms.org/input/post?json={irradiation:" + n_irr + "}&apikey=" + vars.apiKey;
+    QString ret = up.getResponse(url);
 }
 
 

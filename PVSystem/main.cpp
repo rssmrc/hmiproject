@@ -41,29 +41,33 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    //initializes the varmanager, parameters manager and remote server
+    //initializes the varmanager containing all PV System values
     varmanager v;
+    //initializes parameters manager containing all system and local vars
     parameters p;
+    //initializes RemoteServer that contains all the methods to connect to emonCMS
     RemoteServer r;
+    //initializes last values storage which will be used by the graph to display the latest power/energy latest values
     VarStorage s;
+    //initializes a json parser
     JsonParser jp;
-    //emulator
+    //initializes a connected PVSystem emulator (this can be removed)
     PVEmu pvemu;
 
     QQmlApplicationEngine engine;
-    //new qmlcontext property linked to the var manager object
+    //new qmlcontext properties linked to existing objects
     engine.rootContext()->setContextProperty("emonvars", &v);
     engine.rootContext()->setContextProperty("networkvars", &p);
     engine.rootContext()->setContextProperty("storage", &s);
     engine.rootContext()->setContextProperty("pvemu", &pvemu);
 
-    //cache disabled
+    //disabling the cache
     qputenv("QML_DISABLE_DISK_CACHE", "true");
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     QObject *rootObject = engine.rootObjects().first();
 
-    //new keyboard object
+    //instance of a keyboard object
     Keyboard kboard(rootObject);
     engine.rootContext()->setContextProperty("vkboard", &kboard);
 
@@ -72,6 +76,10 @@ int main(int argc, char *argv[])
     v.start();
     //Starts the emulator
     pvemu.start();
+    //setting irradiance
+    v.setIrradiance(p.get(4));
+
+    //GOOD TO GO!
 
     if (engine.rootObjects().isEmpty())
         return -1;
