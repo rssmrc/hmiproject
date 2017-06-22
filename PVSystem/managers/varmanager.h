@@ -41,6 +41,7 @@ public slots:
     void buildHash(QString api);
     float getPosition();
     QString getValue(int id);
+    float getConsumePosition(int consume);
 };
 
 #endif // VARMANAGER_H

@@ -81,3 +81,15 @@ void PVEmu::run()
     }
 
 }
+
+/**
+    Emulates power consume
+
+    @return generated value
+
+*/
+int PVEmu::generateCurrentPower()
+{
+    int current = p_min + (rand() % static_cast<int>(p_max - p_min + 1));
+    return current;
+}

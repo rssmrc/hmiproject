@@ -185,6 +185,38 @@ float varmanager::getPosition()
 }
 
 /**
+    Gets the relative position of the indicator based on the consume
+
+    @param consume Consumed energy
+    @return indicator position 0.0 - 1
+*/
+
+float varmanager::getConsumePosition(int consume)
+{
+    if(loaded = 1)
+    {
+        int remenergy = vars.inverterPower.toInt() - consume;
+        if(remenergy > 0){
+            float retval = 0.5 + remenergy / vars.wattPeak.toFloat();
+            return retval;
+        }
+        else if(remenergy < 0){
+
+            float retval = 0.5 - (remenergy*-1) / vars.wattPeak.toFloat();
+            return retval;
+        }
+        else{
+            return 0.5;
+        }
+    }
+    else
+    {
+        return 0.5;
+    }
+
+}
+
+/**
     Gets the required value
     @param id Item id
     @return required value

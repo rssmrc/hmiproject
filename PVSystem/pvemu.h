@@ -35,6 +35,7 @@ public:
     PVEmu();
     void run();
 public slots:
+    int generateCurrentPower();
 
 
 };

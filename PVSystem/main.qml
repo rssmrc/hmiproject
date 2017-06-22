@@ -52,6 +52,7 @@ ApplicationWindow {
 
 
 
+
     //rectangle container containing all the items
     Rectangle{
         id: controlsContainer
@@ -60,6 +61,14 @@ ApplicationWindow {
         width: window.width
         height: window.height - statBar.h
         color: "#282828"
+
+        ComboBox{
+            id: indicatorMode
+            anchors.horizontalCenter: parent.horizontalCenter
+            y: 40
+            width: window.width/3
+            model:["Current Inverter Power", "Consume Status"]
+        }
 
         //gradient status bar indicating current PV status
         PVStatusBar{
@@ -83,9 +92,15 @@ ApplicationWindow {
                 running: true
                 //will get the past position and new position
                 onTriggered:{
+                    if(indicatorMode.currentText == "Current Inverter Power"){
+                        parent.pastpos = pvstatus.indicatorpos
+                        parent.indicatorpos = pvstatus.w * emonvars.getPosition() - pvstatus.indicatorw/2
+                    }
+                    else if(indicatorMode.currentText == "Consume Status"){
+                        parent.pastpos = 0
+                        parent.indicatorpos = pvstatus.w * emonvars.getConsumePosition(pvemu.generateCurrentPower()) - pvstatus.indicatorw/2
+                    }
 
-                    parent.pastpos = pvstatus.indicatorpos
-                    parent.indicatorpos = pvstatus.w * emonvars.getPosition() - pvstatus.indicatorw/2
                     //updating info values and graph
                     infoPage.updateValues()
                     infoPage.updateGraph()
