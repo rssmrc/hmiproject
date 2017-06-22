@@ -49,8 +49,6 @@ int main(int argc, char *argv[])
     RemoteServer r;
     //initializes last values storage which will be used by the graph to display the latest power/energy latest values
     VarStorage s;
-    //initializes a json parser
-    JsonParser jp;
     //initializes a connected PVSystem emulator (this can be removed)
     PVEmu pvemu;
 

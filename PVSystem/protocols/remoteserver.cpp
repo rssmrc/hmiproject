@@ -88,9 +88,10 @@ QByteArray RemoteServer::getResponse(QString url)
 */
 QString RemoteServer::getFromOnline(QString url, QString key)
 {
-
+    //geting url response
     QByteArray reply = getResponse(url);
     JsonParser jp;
+    //parsing required value
     QString o = jp.Parse(reply, key);
 
     return o;

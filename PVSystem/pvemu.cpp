@@ -90,6 +90,7 @@ void PVEmu::run()
 */
 int PVEmu::generateCurrentPower()
 {
+    //random power consumed
     int current = p_min + (rand() % static_cast<int>(p_max - p_min + 1));
     return current;
 }

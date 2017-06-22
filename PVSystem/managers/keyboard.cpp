@@ -51,18 +51,23 @@ Keyboard::Keyboard(QObject *o)
 */
 void Keyboard::press(QString k, QString name, int caps)
 {
+    //looking for specific object in the qml layout
     QObject *qmlObject = root->findChild<QObject*>(name);
 
+    //current input
     QString input;
-
+    //if caps is set to true
     if(caps == 1)
     {
+        //updates input with the pressed key
         input = qmlObject->property("text").toString() + k.toUpper();
     }
     else
     {
+        //updates input with the pressed key
         input = qmlObject->property("text").toString() + k;
     }
+    //updating item content
     qmlObject->setProperty("text",input);
 }
 
@@ -73,9 +78,13 @@ void Keyboard::press(QString k, QString name, int caps)
 */
 void Keyboard::deletechar(QString name)
 {
+    //getting the child object
     QObject *qmlObject = root->findChild<QObject*>(name);
+    //what text does it contain?
     QString input = qmlObject->property("text").toString();
+    //trim the last char
     QString output = input.mid(0, input.length()-1);
+    //putting the text back in
     qmlObject->setProperty("text",output);
 }
 
@@ -87,10 +96,11 @@ void Keyboard::deletechar(QString name)
 void Keyboard::confirm(QString name)
 {
     varmanager mgr;
-
+    //getting the child object
     QObject *qmlObject = root->findChild<QObject*>(name);
+    //what does it contain
     QString input = qmlObject->property("text").toString();
-
+    //if something was added/removed then look for the textfield name and update the values
     if(input != "")
     {
         if(name == "wattPeak")
