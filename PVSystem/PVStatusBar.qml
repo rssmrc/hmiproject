@@ -46,12 +46,12 @@ Item {
         //load the gradient bar
         Image{
             id: bar
-            source: "images/bar.png"
+            source: "images/bar_dark.png"
             anchors.fill: parent
             //load indicator on gradient bar
             Image{
                 id: indicator
-                source: "images/indicator.png"
+                source: "images/indicator_dark.png"
                 width: indicatorw
                 height: width - width/15
 

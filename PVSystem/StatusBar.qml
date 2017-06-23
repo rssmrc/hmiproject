@@ -60,14 +60,6 @@ Item {
                 font.pixelSize: parent.height - 5*2
             }
 
-            Image{
-
-                id: alertIcon
-                source: "images/danger.png"
-                height: parent.height
-                width: height
-                visible: Basics.checkBounds()
-            }
         }
 
 }

@@ -68,6 +68,7 @@ ApplicationWindow {
             y: 40
             width: window.width/3
             model:["Current Inverter Power", "Consume Status"]
+
         }
 
         //gradient status bar indicating current PV status
@@ -108,16 +109,6 @@ ApplicationWindow {
                 }
             }
         }
-
-        //slider to adjust the acceptable bounds
-        RangeSlider{
-            id: rSlider
-            width: pvstatus.w
-            anchors.horizontalCenter: parent.horizontalCenter
-            y: pvstatus.ypos + pvstatus.h + pvstatus.h/10
-        }
-
-
 
         Drawer{
             id: drawer

@@ -16,5 +16,7 @@
         <file>Info.qml</file>
         <file>NetSettings.qml</file>
         <file>Keyboard.qml</file>
+        <file>images/bar_dark.png</file>
+        <file>images/indicator_dark.png</file>
     </qresource>
 </RCC>
