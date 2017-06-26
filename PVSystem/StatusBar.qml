@@ -50,7 +50,7 @@ Item {
             y: ypos
             width: w
             height: h
-            color: "black"
+            color: "#636265"
 
             Label{
                 id: currentTime

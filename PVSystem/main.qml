@@ -33,7 +33,7 @@ ApplicationWindow {
     width: 800
     height: 480
     title: qsTr("PVSystem")
-    color: "#585858"
+    color: "#e8e8e8"
 
     onClosing:{
         //terminating the varmanager and emu thread before closing the main window
@@ -60,7 +60,7 @@ ApplicationWindow {
         y: statBar.h
         width: window.width
         height: window.height - statBar.h
-        color: "#282828"
+        color: "#f4f4f4"
 
         ComboBox{
             id: indicatorMode
@@ -116,7 +116,7 @@ ApplicationWindow {
             height: parent.height - botBar.h
             edge: Qt.TopEdge
             background: Rectangle{
-                color: "#202020"
+                color: "#f4f4f4"
             }
             Settings{
                 id: settingsPage
@@ -131,7 +131,7 @@ ApplicationWindow {
            height: parent.height - botBar.h
            edge: Qt.TopEdge
            background: Rectangle{
-               color: "#202020"
+               color: "#f4f4f4"
            }
            Info{
                id: infoPage
@@ -146,7 +146,7 @@ ApplicationWindow {
            height: parent.height - botBar.h
            edge: Qt.TopEdge
            background: Rectangle{
-               color: "#202020"
+               color: "#f4f4f4"
            }
            NetSettings{
                id: netPage
@@ -164,7 +164,7 @@ ApplicationWindow {
            height: parent.height/2 + parent.height/8
            edge: Qt.BottomEdge
            background: Rectangle{
-               color: "#202020"
+               color: "#f4f4f4"
            }
            Label{
                id: tempInput
