@@ -41,6 +41,7 @@ struct params{
     QString d_gateway;
     QString subnet;
     QString region;
+    QString publicip;
 
 }params;
 
@@ -48,6 +49,7 @@ parameters::parameters()
 {
     //gets current ip address
     QString ip = remote.getFromOnline("http://ip.jsontest.com/", "ip");
+    params.publicip = ip;
     //get position based on the IP
     QString url = "http://freegeoip.net/json/" + ip;
     QString region = remote.getFromOnline(url, "region_name");
@@ -121,6 +123,11 @@ void parameters::set(int id, QString val)
         break;
 
     }
+}
+
+QString parameters::getIP()
+{
+    return params.publicip;
 }
 
 

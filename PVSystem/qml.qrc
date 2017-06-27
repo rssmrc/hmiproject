@@ -18,5 +18,7 @@
         <file>Keyboard.qml</file>
         <file>images/bar_dark.png</file>
         <file>images/indicator_dark.png</file>
+        <file>images/error.png</file>
+        <file>images/ok.png</file>
     </qresource>
 </RCC>

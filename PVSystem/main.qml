@@ -62,6 +62,67 @@ ApplicationWindow {
         height: window.height - statBar.h
         color: "#f4f4f4"
 
+        //left quick status view
+        Rectangle{
+            id: leftStatus
+            y: 45
+            anchors.margins: 30
+            anchors.left: parent.left
+            color: "#fcfcfc"
+            anchors.leftMargin: 20
+            width: centerStatus.width/2
+            height: 108
+            Image{
+                height: parent.height/1.3
+                width: height
+                anchors.centerIn: parent
+                source:{
+
+                    if(networkvars.getIP() === ""){
+                        "images/error.png"
+                    }
+                    else{
+                        "images/ok.png"
+                    }
+
+                }
+
+            }
+        }
+
+        //general information tab
+        Rectangle{
+            id: mainInfoTab
+            y: 171
+            anchors.margins: 30
+            anchors.left: parent.left
+            color: "#fcfcfc"
+            anchors.leftMargin: 20
+            width: centerStatus.width/2
+            height: 234
+        }
+        //weekyl yield tab
+        Rectangle{
+            id: weeklyYield
+            y: 45
+            anchors.margins: 30
+            anchors.right: parent.right
+            color: "#fcfcfc"
+            anchors.rightMargin: 20
+            width: centerStatus.width/2
+            height: 360
+        }
+
+        //main indicator
+        Rectangle{
+            id: centerStatus
+            anchors.centerIn: parent
+            color: "#fcfcfc"
+            width: parent.width/2 * 0.9
+            height: width
+        }
+
+        /*
         ComboBox{
             id: indicatorMode
             anchors.horizontalCenter: parent.horizontalCenter
@@ -109,6 +170,7 @@ ApplicationWindow {
                 }
             }
         }
+        */
 
         Drawer{
             id: drawer

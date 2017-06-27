@@ -38,6 +38,7 @@ public:
 public slots:
     QString get(int id);
     void set(int id, QString val);
+    QString getIP();
 };
 
 #endif
