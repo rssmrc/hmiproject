@@ -120,6 +120,15 @@ ApplicationWindow {
             color: "#fcfcfc"
             width: parent.width/2 * 0.9
             height: width
+            Image{
+                anchors.centerIn: parent
+                source: "images/indicator_slide.png"
+
+                Indicator{
+                    posx: centerStatus.width/2
+                    posy: centerStatus.height/2
+                }
+            }
         }
 
         /*
