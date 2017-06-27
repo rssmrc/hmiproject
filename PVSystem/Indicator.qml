@@ -32,26 +32,26 @@ Item {
     property int posx
     property int posy
     property int posangle: 0
+    property int watts: 0
 
-    Timer{
-        repeat: true
-        interval: 100
-        running: true
-        //will get the past position and new position
-        onTriggered:{
-
-            posangle = posangle+3
-
-        }
-    }
 
     Image{
+        id: ppointer
         source: "images/pointer.png"
         x: posx
         y: posy
-        transform: Rotation{origin.x: 13; origin.y: 30; angle: posangle}
+        transform: Rotation{origin.x: 11; origin.y: 55; angle: posangle}
+    }
 
-
+    Label{
+        id: pointerLabel
+        text: watts + " W"
+        color: "#636265"
+        anchors.horizontalCenter: centerStatus.horizontalCenter
+        y: posy*1.85
+        x: posx - width/2
+        font.pixelSize: 25
+        font.bold: true
     }
 
 }

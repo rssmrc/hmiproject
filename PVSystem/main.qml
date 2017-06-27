@@ -125,9 +125,28 @@ ApplicationWindow {
                 source: "images/indicator_slide.png"
 
                 Indicator{
+                    id: spinningIndicator
                     posx: centerStatus.width/2
-                    posy: centerStatus.height/2
+                    posy: centerStatus.height/4 + 50
                 }
+
+                Timer{
+                    id: updatebar
+                    repeat: true
+                    interval: 1500
+                    running: true
+                    //will get the past position and new position
+                    onTriggered:{
+
+                        spinningIndicator.posangle = 360 * emonvars.getPosition()
+                        spinningIndicator.watts = emonvars.getValue(2)
+                        //updating info values and graph
+                        infoPage.updateValues()
+                        infoPage.updateGraph()
+
+                    }
+                }
+
             }
         }
 
@@ -139,45 +158,6 @@ ApplicationWindow {
             width: window.width/3
             model:["Current Inverter Power", "Consume Status"]
 
-        }
-
-        //gradient status bar indicating current PV status
-        PVStatusBar{
-            id: pvstatus
-            xpos: 0
-            ypos: window.height/4
-            w: window.width - (window.width/10)*2
-            h: window.height/2 - (window.height/15)*2
-            indicatorw: w/7
-            //standard position
-            initpos: pvstatus.w * 0.5 - pvstatus.indicatorw/2
-            pastpos: initpos
-            indicatorpos: initpos
-            anchors.horizontalCenter: parent.horizontalCenter
-
-            //updating the indicator every 2 seconds
-            Timer{
-                id: updatebar
-                repeat: true
-                interval: 2000
-                running: true
-                //will get the past position and new position
-                onTriggered:{
-                    if(indicatorMode.currentText == "Current Inverter Power"){
-                        parent.pastpos = pvstatus.indicatorpos
-                        parent.indicatorpos = pvstatus.w * emonvars.getPosition() - pvstatus.indicatorw/2
-                    }
-                    else if(indicatorMode.currentText == "Consume Status"){
-                        parent.pastpos = 0
-                        parent.indicatorpos = pvstatus.w * emonvars.getConsumePosition(pvemu.generateCurrentPower()) - pvstatus.indicatorw/2
-                    }
-
-                    //updating info values and graph
-                    infoPage.updateValues()
-                    infoPage.updateGraph()
-
-                }
-            }
         }
         */
 

@@ -52,13 +52,32 @@ Item {
             height: h
             color: "#636265"
 
+            Image{
+                id: wifi
+                source:"images/wifi.png"
+                height: statBar.height - 5
+                width: height
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                anchors.margins: 10
+                visible:{
+                    if(networkvars.getIP() === "")
+                        false
+                    else
+                        true
+                }
+            }
+
+
             Label{
                 id: currentTime
-                anchors.centerIn: parent
+                anchors.verticalCenter: parent.verticalCenter
+                x: wifi.x - width - 10
                 text: Qt.formatDateTime(new Date(), "HH:mm:ss a")
                 color: "white"
-                font.pixelSize: parent.height - 5*2
+                font.pixelSize: parent.height/2
             }
+
 
         }
 

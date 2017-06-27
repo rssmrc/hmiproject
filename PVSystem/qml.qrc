@@ -20,8 +20,9 @@
         <file>images/indicator_dark.png</file>
         <file>images/error.png</file>
         <file>images/ok.png</file>
-        <file>images/indicator_slide.png</file>
         <file>Indicator.qml</file>
+        <file>images/indicator_slide.png</file>
         <file>images/pointer.png</file>
+        <file>images/wifi.png</file>
     </qresource>
 </RCC>
