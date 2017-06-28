@@ -68,7 +68,7 @@ ApplicationWindow {
             y: 45
             anchors.margins: 30
             anchors.left: parent.left
-            color: "#fcfcfc"
+            color: "white"
             anchors.leftMargin: 20
             width: centerStatus.width/2
             height: 108
@@ -96,12 +96,57 @@ ApplicationWindow {
             y: 171
             anchors.margins: 30
             anchors.left: parent.left
-            color: "#fcfcfc"
+            color: "white"
             anchors.leftMargin: 20
             width: centerStatus.width/2
             height: 234
+            Label{
+                id: powerLabel
+                y: 20
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.pixelSize: 20
+                font.bold: true
+                text: "Power: " + emonvars.getValue(2) + "W"
+                color: "#636265"
+            }
+            Label{
+                id: energyLabel
+                y: powerLabel.y+powerLabel.height + 20
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.pixelSize: 20
+                font.bold: true
+                text: "Energy: " + emonvars.getValue(1) + "A"
+                color: "#636265"
+            }
+            Image{
+                y: energyLabel.y + energyLabel.height + 20
+                anchors.horizontalCenter: parent.horizontalCenter
+                source:{
+
+                    if(networkvars.get(4) === "Veneto"){"images/regions/veneto.png"}
+                    if(networkvars.get(4) === "Toscana"){"images/regions/toscana.png"}
+                    if(networkvars.get(4) === "Lazio"){"images/regions/lazio.png"}
+                    if(networkvars.get(4) === "Umbria"){"images/regions/umbria.png"}
+                    if(networkvars.get(4) === "Sardegna"){"images/regions/sardegna.png"}
+                    if(networkvars.get(4) === "Campania"){"images/regions/campania.png"}
+                    if(networkvars.get(4) === "Abbruzzo"){"images/regions/abbruzzo.png"}
+                    if(networkvars.get(4) === "Calabria"){"images/regions/calabria.png"}
+                    if(networkvars.get(4) === "Molise"){"images/regions/molise.png"}
+                    if(networkvars.get(4) === "Basilicata"){"images/regions/basilicata.png"}
+                    if(networkvars.get(4) === "Lombardia"){"images/regions/lombardia.png"}
+                    if(networkvars.get(4) === "Sicilia"){"images/regions/sicilia.png"}
+                    if(networkvars.get(4) === "Emilia Romagna"){"images/regions/emilia.png"}
+                    if(networkvars.get(4) === "Marche"){"images/regions/marche.png"}
+                    if(networkvars.get(4) === "Val D'Aosta"){"images/regions/aosta.png"}
+                    if(networkvars.get(4) === "Friuli Venezia Giulia"){"images/regions/friuli.png"}
+                    if(networkvars.get(4) === "Liguria"){"images/regions/liguria.png"}
+                    if(networkvars.get(4) === "Piemonte"){"images/regions/piemonte.png"}
+                    if(networkvars.get(4) === "Trentino"){"images/regions/trentino.png"}
+
+                }
+            }
         }
-        //weekyl yield tab
+        //indicator controls tab
         Rectangle{
             id: indicatorControls
             y: 45

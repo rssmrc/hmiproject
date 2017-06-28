@@ -30,5 +30,39 @@
         <file>images/power_pressed.png</file>
         <file>images/refresh.png</file>
         <file>IndicatorControl.qml</file>
+        <file>images/regions/abbruzzo.png</file>
+        <file>images/regions/aosta.png</file>
+        <file>images/regions/basilicata.png</file>
+        <file>images/regions/calabria.png</file>
+        <file>images/regions/campania.png</file>
+        <file>images/regions/emilia.png</file>
+        <file>images/regions/friuli.png</file>
+        <file>images/regions/lazio.png</file>
+        <file>images/regions/liguria.png</file>
+        <file>images/regions/lombardia.png</file>
+        <file>images/regions/marche.png</file>
+        <file>images/regions/molise.png</file>
+        <file>images/regions/piemonte.png</file>
+        <file>images/regions/puglia.png</file>
+        <file>images/regions/sardegna.png</file>
+        <file>images/regions/sicilia.png</file>
+        <file>images/regions/toscana.png</file>
+        <file>images/regions/trentino.png</file>
+        <file>images/regions/umbri.png</file>
+        <file>images/regions/veneto.png</file>
+        <file>managers/keyboard.cpp</file>
+        <file>managers/keyboard.h</file>
+        <file>managers/parameters.cpp</file>
+        <file>managers/parameters.h</file>
+        <file>managers/varmanager.cpp</file>
+        <file>managers/varmanager.h</file>
+        <file>managers/varstorage.cpp</file>
+        <file>managers/varstorage.h</file>
+        <file>protocols/remoteserver.cpp</file>
+        <file>protocols/remoteserver.h</file>
+        <file>utilities/jsonparser.cpp</file>
+        <file>utilities/jsonparser.h</file>
+        <file>pvemu.cpp</file>
+        <file>pvemu.h</file>
     </qresource>
 </RCC>
