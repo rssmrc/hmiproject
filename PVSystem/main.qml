@@ -103,7 +103,7 @@ ApplicationWindow {
         }
         //weekyl yield tab
         Rectangle{
-            id: weeklyYield
+            id: indicatorControls
             y: 45
             anchors.margins: 30
             anchors.right: parent.right
@@ -111,6 +111,10 @@ ApplicationWindow {
             anchors.rightMargin: 20
             width: centerStatus.width/2
             height: 360
+            IndicatorControl{
+                id: iControl
+                w: parent.width/1.5
+            }
         }
 
         //main indicator
@@ -133,13 +137,19 @@ ApplicationWindow {
                 Timer{
                     id: updatebar
                     repeat: true
-                    interval: 1500
+                    interval: 2000
                     running: true
                     //will get the past position and new position
                     onTriggered:{
 
-                        spinningIndicator.posangle = 360 * emonvars.getPosition()
-                        spinningIndicator.watts = emonvars.getValue(2)
+                        if(iControl.mode == 0){
+                            spinningIndicator.posangle = 360 * emonvars.getPosition()
+                            spinningIndicator.watts = emonvars.getValue(2)
+                        }
+                        else{
+                            spinningIndicator.posangle = 360 * emonvars.getConsumePosition(emonvars.getValue(1))
+                        }
+
                         //updating info values and graph
                         infoPage.updateValues()
                         infoPage.updateGraph()

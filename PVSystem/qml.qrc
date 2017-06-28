@@ -18,11 +18,17 @@
         <file>Keyboard.qml</file>
         <file>images/bar_dark.png</file>
         <file>images/indicator_dark.png</file>
-        <file>images/error.png</file>
-        <file>images/ok.png</file>
         <file>Indicator.qml</file>
-        <file>images/indicator_slide.png</file>
         <file>images/pointer.png</file>
         <file>images/wifi.png</file>
+        <file>images/error.png</file>
+        <file>images/indicator_slide.png</file>
+        <file>images/ok.png</file>
+        <file>images/energy.png</file>
+        <file>images/energy_pressed.png</file>
+        <file>images/power.png</file>
+        <file>images/power_pressed.png</file>
+        <file>images/refresh.png</file>
+        <file>IndicatorControl.qml</file>
     </qresource>
 </RCC>

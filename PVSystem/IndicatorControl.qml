@@ -27,20 +27,73 @@ import "basics.js" as Basics
 
 Item {
 
-    property int h
     property int w
-    property int posx
-    property int posy
-    property int posangle: 0
-    property int watts: 0
-
+    property int mode: 0
 
     Image{
-        id: ppointer
-        source: "images/pointer.png"
-        x: posx
-        y: posy
-        transform: Rotation{origin.x: 11; origin.y: 55; angle: posangle}
+        id: powerToggle
+        source:{
+
+            if(mode == 0){
+                "/images/power_pressed.png"
+            }
+            else{
+                "/images/power.png"
+            }
+
+        }
+
+        width: w
+        height: width
+        x: w*1.5/2 - width/2
+        MouseArea{
+            anchors.fill: parent
+            onPressed:{
+                mode = 0
+            }
+        }
+    }
+    Image{
+        id: energyToggle
+        source:{
+
+            if(mode == 1){
+                "/images/energy_pressed.png"
+            }
+            else{
+                "/images/energy.png"
+            }
+
+        }
+        width: w
+        height: width
+        y: powerToggle.y + w
+        x: w*1.5/2 - width/2
+
+        MouseArea{
+            anchors.fill: parent
+            onPressed:{
+                mode = 1
+            }
+        }
+
+    }
+    Image{
+        id: refreshButton
+        source: "images/refresh.png"
+        width: w
+        height: width
+        y: energyToggle.y + w
+        x: w*1.5/2 - width/2
+
+    }
+
+    MouseArea{
+        anchors.fill: parent
+        onPressed:{
+            infoPage.updateValues()
+            infoPage.updateGraph()
+        }
     }
 
 
