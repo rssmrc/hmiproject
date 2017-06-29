@@ -29,7 +29,7 @@ Item {
 
     property int w
     property int h
-    property string g_color: "#599b52"
+    property string g_color: "#f5720d"
 
     function updateValues(){
         //polling update of the infopage values
@@ -91,7 +91,7 @@ Item {
             Label{
                 font.pixelSize: 15
                 text: "Irradiation: "
-                color: "#FFFFFF"
+                color: "#636265"
                 y: 46
                 x: 21
             }
@@ -99,14 +99,14 @@ Item {
                 id: irradiation
                 font.pixelSize: 15
                 text: emonvars.getValue(3)
-                color: "#FFFFFF"
+                color: "#636265"
                 y: 46
                 x: 177
             }
             Label{
                 font.pixelSize: 15
                 text: "Watt Peak: "
-                color: "#FFFFFF"
+                color: "#636265"
                 y: 80
                 x: 21
             }
@@ -114,7 +114,7 @@ Item {
                 id: wattpeak
                 font.pixelSize: 15
                 text: emonvars.getValue(8)
-                color: "#FFFFFF"
+                color: "#636265"
                 y: 80
                 x: 177
             }
@@ -122,7 +122,7 @@ Item {
             Label {
                 x: 21
                 y: 113
-                color: "#ffffff"
+                color: "#636265"
                 text: "Tilt Angle: "
                 font.pixelSize: 15
             }
@@ -131,7 +131,7 @@ Item {
                 id: tilt
                 x: 177
                 y: 113
-                color: "#ffffff"
+                color: "#636265"
                 text: emonvars.getValue(7)
                 font.pixelSize: 15
             }
@@ -139,7 +139,7 @@ Item {
             Label {
                 x: 21
                 y: 145
-                color: "#ffffff"
+                color: "#636265"
                 text: "Azimuth Angle: "
                 font.pixelSize: 15
             }
@@ -148,7 +148,7 @@ Item {
                 id: azimuth
                 x: 177
                 y: 145
-                color: "#ffffff"
+                color: "#636265"
                 text: emonvars.getValue(0)
                 font.pixelSize: 15
             }
@@ -156,7 +156,7 @@ Item {
             Label {
                 x: 21
                 y: 179
-                color: "#ffffff"
+                color: "#636265"
                 text: "Current Energy: "
                 font.pixelSize: 15
             }
@@ -165,7 +165,7 @@ Item {
                 id: energy
                 x: 177
                 y: 179
-                color: "#ffffff"
+                color: "#636265"
                 text: emonvars.getValue(1)
                 font.pixelSize: 15
             }
@@ -173,7 +173,7 @@ Item {
             Label {
                 x: 21
                 y: 212
-                color: "#ffffff"
+                color: "#636265"
                 text: "Inverter Power: "
                 font.pixelSize: 15
             }
@@ -182,7 +182,7 @@ Item {
                 id: power
                 x: 177
                 y: 212
-                color: "#ffffff"
+                color: "#636265"
                 text: emonvars.getValue(2)
                 font.pixelSize: 15
             }
@@ -190,7 +190,7 @@ Item {
             Label {
                 x: 22
                 y: 243
-                color: "#ffffff"
+                color: "#636265"
                 text: "Battery Percentage: "
                 font.pixelSize: 15
             }
@@ -199,7 +199,7 @@ Item {
                 id: battery
                 x: 177
                 y: 243
-                color: "#ffffff"
+                color: "#636265"
                 text: emonvars.getValue(6) + "%"
                 font.pixelSize: 15
             }
@@ -207,7 +207,7 @@ Item {
             Label {
                 x: 22
                 y: 277
-                color: "#ffffff"
+                color: "#636265"
                 text: "Panels Amount: "
                 font.pixelSize: 15
             }
@@ -216,7 +216,7 @@ Item {
                 id: panels
                 x: 177
                 y: 277
-                color: "#ffffff"
+                color: "#636265"
                 text: emonvars.getValue(4)
                 font.pixelSize: 15
             }
@@ -224,7 +224,7 @@ Item {
             Label {
                 x: 22
                 y: 310
-                color: "#ffffff"
+                color: "#636265"
                 text: "Panels Yield: "
                 font.pixelSize: 15
             }
@@ -233,7 +233,7 @@ Item {
                 id: yield
                 x: 177
                 y: 310
-                color: "#ffffff"
+                color: "#636265"
                 text: emonvars.getValue(5)
                 font.pixelSize: 15
             }
@@ -244,7 +244,7 @@ Item {
         Rectangle{
             //graph background attributes
             id: graph
-            color: "#101010"
+            color: "#ffffff"
             height: window.height/2
             width: window.width/6 * 3
             y: 80
@@ -259,7 +259,7 @@ Item {
                 anchors.bottom: parent.bottom
                 width: parent.width/10
                 height: 0
-                border.color: "#42723c"
+                border.color: "#2d2d2d"
                 border.width: 1
             }
             Rectangle{
@@ -269,7 +269,7 @@ Item {
                 width: parent.width/10
                 height: 0
                 x: col1.x + width
-                border.color: "#42723c"
+                border.color: "#2d2d2d"
                 border.width: 1
             }
             Rectangle{
@@ -279,7 +279,7 @@ Item {
                 width: parent.width/10
                 height: 0
                 x: col2.x + width
-                border.color: "#42723c"
+                border.color: "#2d2d2d"
                 border.width: 1
             }
             Rectangle{
@@ -289,7 +289,7 @@ Item {
                 width: parent.width/10
                 height: 0
                 x: col3.x + width
-                border.color: "#42723c"
+                border.color: "#2d2d2d"
                 border.width: 1
             }
             Rectangle{
@@ -299,7 +299,7 @@ Item {
                 width: parent.width/10
                 height: 0
                 x: col4.x + width
-                border.color: "#42723c"
+                border.color: "#2d2d2d"
                 border.width: 1
             }
             Rectangle{
@@ -309,7 +309,7 @@ Item {
                 width: parent.width/10
                 height: 0
                 x: col5.x + width
-                border.color: "#42723c"
+                border.color: "#2d2d2d"
                 border.width: 1
             }
             Rectangle{
@@ -319,7 +319,7 @@ Item {
                 width: parent.width/10
                 height: 0
                 x: col6.x + width
-                border.color: "#42723c"
+                border.color: "#2d2d2d"
                 border.width: 1
             }
             Rectangle{
@@ -329,7 +329,7 @@ Item {
                 width: parent.width/10
                 height: 0
                 x: col7.x + width
-                border.color: "#42723c"
+                border.color: "#2d2d2d"
                 border.width: 1
             }
             Rectangle{
@@ -339,7 +339,7 @@ Item {
                 width: parent.width/10
                 height: 0
                 x: col8.x + width
-                border.color: "#42723c"
+                border.color: "#2d2d2d"
                 border.width: 1
             }
             Rectangle{
@@ -349,7 +349,7 @@ Item {
                 width: parent.width/10
                 height: 0
                 x: col9.x + width
-                border.color: "#42723c"
+                border.color: "#2d2d2d"
                 border.width: 1
 
             }
@@ -363,10 +363,10 @@ Item {
             x: graph.x
             onCheckedChanged: {
                 if(swtch.checked == true){
-                    g_color = "#87b5ff"
+                    g_color = "#f5720d"
                 }
                 else{
-                    g_color = "#599b52";
+                    g_color = "#f5720d";
                 }
             }
         }

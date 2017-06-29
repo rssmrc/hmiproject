@@ -275,7 +275,7 @@ ApplicationWindow {
            Label{
                id: tempInput
                font.pixelSize: 20
-               color: "white"
+               color: "#636265"
                text: ""
                y: height
                anchors.horizontalCenter: parent.horizontalCenter
